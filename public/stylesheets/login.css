@@ -1,0 +1,113 @@
+
+.v2-subpage .content {
+    background: #fff;
+    font-family: "ProximaNovaSemiBold", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: #000;
+}
+.v2-subpage #content-wrapper {
+    margin: 0 auto;
+    padding-top: 130px;
+}
+.v2-subpage #content-wrapper.remove-top-padding {
+    padding-top: 0;
+}
+.v2-subpage a {
+    -o-transition: none 0.3s ease-in-out 0s;
+    -webkit-transition: none 0.3s ease-in-out 0s;
+    -moz-transition: none 0.3s ease-in-out 0s;
+}
+.v2-subpage h1 {
+    font-size: 39px;
+    margin-bottom: 5px;
+}
+.v2-subpage h2 {
+    font-size: 19px;
+    line-height: 31px;
+    margin-bottom: 10px;
+}
+.v2-subpage strong {
+    font-weight: normal;
+    font-family: "ProximaNovaSemiBold", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+.v2-subpage .section-blue {
+    background: #f2f7fa;
+    padding: 60px 0;
+}
+.v2-subpage .section-blue h1, .v2-subpage .section-blue h2, .v2-subpage .section-blue h3 {
+    color: #479ccf;
+}
+.v2-subpage .keyline-990 {
+    height: 1px;
+    border-bottom: 1px solid #e8e8e8;
+    width: 990px;
+    margin: 50px auto;
+}
+.v2-subpage #sub-call-to-action {
+    margin: 0 auto;
+    text-align: center;
+    padding: 70px 0 65px 0;
+}
+.v2-subpage #sub-call-to-action .call-text, .v2-subpage #sub-call-to-action h3 {
+    color: #000;
+    font-size: 26px;
+    line-height: 34px;
+    font-family: "ProximaNovaLight", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+.v2-subpage #sub-call-to-action .call-text strong, .v2-subpage #sub-call-to-action h3 strong {
+    font-family: "ProximaNovaSemiBold", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: normal;
+}
+.v2-subpage #sub-call-to-action .button {
+    font-size: 21px;
+    padding: 10px 30px;
+    margin-left: 15px;
+}
+
+.login-area h3 {
+    font-family: "ProximaNovaRegular", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+.login-area .border-right {
+    border-right: 1px solid #eee;
+    margin-left: -1px;
+}
+.login-area form {
+    background: #f5f5f5;
+    border: 1px solid #e8e8e8;
+    padding: 16px 20px;
+    margin: 0 30px 30px 0;
+}
+.login-area label {
+    display: block;
+    margin-bottom: 2px;
+    font-family: "ProximaNovaSemiBold", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+.login-area input[type="text"], input {
+    display: inline;
+    padding: 3px;
+    font-size: 14px;
+    line-height: 22px;
+    margin-bottom: 10px;
+}
+.login-area input.url {
+    width: 250px;
+    margin-right: 3px;
+}
+.login-area input.email {
+    width: 250px;
+}
+.login-area input.password {
+    width: 200px;
+}
+.login-area label.remember {
+    float: left;
+    margin: -4px 0 0 8px;
+    font-family: "ProximaNovaRegular", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+.login-area .button {
+    padding: 8px 24px;
+}
+.login-area .highlight {
+    background: #fcf5d9;
+    padding: 3px;
+    color: #000;
+}

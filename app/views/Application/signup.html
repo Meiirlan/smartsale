@@ -1,0 +1,105 @@
+#{extends 'main.html' /} #{set title:'Login' /}
+<link rel="stylesheet" type="text/css" 
+	href="@{'/public/stylesheets/login.css'}" media="all">
+<div class="wrapper content">
+    <div id="content-wrapper" class="clearfix row">
+        <div class="row login-area">
+
+	<div class="col8">
+		<h3>Sign Up</h3>
+		#{form @save(user?.id)}        	   
+      	 	#{if flash.error}
+				<h6 class="error">
+					&{flash.error}
+				</h6>
+			#{/if}
+			#{if flash.success}
+				<h6 class="success">
+					&{flash.success}
+				</h6>
+			#{/if}
+		    <label for="login">Email Address</label>
+	    	<input name="email" id="login" type="text" class="email">	
+		    <span class="error">#{error 'user.email' /}</span>
+		    
+		    <label for="pwd">Password</label>
+	    	<input name="pwd" id="pwd" type="password">	
+		    <span class="error">#{error 'user.pwd' /}</span>
+		   
+		    <label for="cpwd">Password confirmation</label>
+	    	<input id="cpwd" type="password"  name="cpwd">	
+		    <span class="error">#{error 'user.cpwd' /}</span>
+		   	<div style="margin: 15px 0;" class="clearfix">
+				<input name="remember" id="remember" type="checkbox" style="float: left;">
+				<label class="remember" for="remember">I agree to the Terms of Service and Honor Code</label>
+			</div>
+		    <p>
+		    	<input type="submit" value="Create Account" class="button button-primary">
+		    </p>
+        #{/form} 
+	</div>
+
+	<div class="col4 border-left">
+		<h3>Have an Account?</h3>
+		<p> 
+			If you already have a password, <br/>please
+			<a href="/login" class="internal-auth"> sign in</a>.
+		</p>
+	</div>
+
+</div>
+
+
+<script type="text/javascript">
+	function shopUrl() {
+		if ($('#subdomain').val() == '') {
+			$('#subdomain').focus();
+			return false;
+		} else {
+			setLoginCookies();
+			_gaq.push(['_setCustomVar', 1, 'existinguser', 'true', 1]);
+			_gaq.push(['_trackEvent', 'user', 'login']);
+			var form = $('#shopify-login-form');
+			form.attr('action', 'https://' + $('#subdomain').val() + '.myshopify.com/admin/auth/login');
+			form.submit();
+			return false;
+		}
+	}
+
+	function getParameter(paramName) {
+	  var searchString   = window.location.search.substring(1);
+	  var i, val, params = searchString.split("&");
+
+	  for (i=0; i < params.length; i++) {
+	    val = params[i].split("=");
+	    if (val[0] == paramName) {
+	      return decodeURIComponent(val[1]);
+	    }
+	  }
+	  return null;
+	}
+
+	$(document).ready(function() {
+		var redirect = getParameter('redirect');
+		if (redirect && redirect != '') {
+			$('#redirect').val(redirect);
+		}
+		$('body').removeClass('long-landing');
+		$('body').addClass('v2-subpage');
+	});
+</script>
+
+
+    </div>
+	
+    <div class="row">
+      <div id="sub-call-to-action">
+		
+      
+        	<h3 class="tc signup">Start your free, <strong>no-risk</strong>, 14 day trial! <a href="#" class="button button-primary call-to-action">Create your store now</a></h3>
+      
+		
+      </div>
+    </div>
+	
+  </div>
