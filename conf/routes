@@ -12,16 +12,17 @@ GET     /favicon.ico                            404
 GET     /public/                                staticDir:public
 
 # Import CRUD routes
-*      /admin              						module:crud
+*      /admin              						Admin.index
 
 # import these default routes as :
 # *         /               module:secure
 # ~~~~
 
-GET			/login			Secure.login
-POST        /login          Secure.authenticate
-GET         /logout         Secure.logout
-GET			/signup			Application.signup
+GET			/login								Secure.login
+POST        /login          					Secure.authenticate
+GET         /logout         					Secure.logout
+GET			/signup								Application.signup
+GET			/signupStore						Application.signupStore
 
 # Catch all
 *       /{controller}/{action}                  {controller}.{action}

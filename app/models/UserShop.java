@@ -26,7 +26,6 @@ public class UserShop extends Model implements Serializable {
 	@Required
 	public String pwd1;
 	public String phoneNumber;
-	public String city;
 	public boolean isActive;
 	@OneToMany(mappedBy = "userShop", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	public Set<UserProperty> userProperties;
@@ -36,4 +35,7 @@ public class UserShop extends Model implements Serializable {
 	public Set<Sale> sales;
 	@OneToMany(mappedBy="userShop", cascade=CascadeType.ALL,fetch = FetchType.EAGER)
 	public Set<Follower> followers;
+	@ManyToOne
+	public City city;
+	
 }

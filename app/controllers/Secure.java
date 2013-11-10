@@ -19,7 +19,7 @@ public class Secure extends Controller {
     @Before(unless={"login", "authenticate", "logout"})
     static void checkAccess() throws Throwable {
         // Authent
-        if(!session.contains("username")) {
+        if(!session.contains("email")) {
             flash.put("url", "GET".equals(request.method) ? request.url : Play.ctxPath + "/"); // seems a good default
             login();
         }
@@ -61,7 +61,7 @@ public class Secure extends Controller {
                     logout();
                 }
                 if(Crypto.sign(restOfCookie).equals(sign)) {
-                    session.put("username", username);
+                    session.put("email", username);
                     redirectToOriginalURL();
                 }
             }
@@ -169,7 +169,7 @@ public class Secure extends Controller {
          * @return
          */
         static String connected() {
-            return session.get("username");
+            return session.get("email");
         }
 
         /**
