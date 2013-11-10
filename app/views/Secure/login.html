@@ -6,22 +6,34 @@
         <div class="row login-area">
 
 	<div class="col8">
-		<h3>Log in to your store</h3>
-			
-			<form method="post" id="shopify-login-form">
-        <input type="hidden" id="redirect" name="redirect" value="">
-				<label for="subdomain">Shop Address</label><input class="formnote url" id="subdomain" name="subdomain" type="text"><span class="formnote">.myshopify.com</span>
-				<label for="login">Email</label><input name="login" id="login" type="text" class="email">
-				<label for="password">Password</label><input class="formnote" id="password" type="password" name="password" value="">
-				<div style="margin: 15px 0;" class="clearfix">
-				  <input name="remember" id="remember" type="checkbox" style="float: left;"><label class="remember" for="remember">Remember my store information</label>
+		<h3>Log in</h3>
+			#{form @Secure.authenticate()}
+				#{if flash.error}
+					<h6 class="error">
+						&{flash.error}
+					</h6>
+				#{/if}
+				#{if flash.success}
+					<h6 class="success">
+						&{flash.success}
+					</h6>
+				#{/if}
+			    <label for="login">Email Address</label>
+		    	<input name="email" id="login" type="text" class="email">	
+			    <span class="error">#{error 'user.email' /}</span>
+			    
+			    <label for="pwd">Password</label>
+		    	<input name="password" id="password" type="password">	
+			    <span class="error">#{error 'user.pwd' /}</span>
+	
+			   	<div style="margin: 15px 0;" class="clearfix">
+					<input name="remember" id="remember" type="checkbox" style="float: left;" ${flash.remember ? 'checked="true"' : ''} >
+					<label class="remember" for="remember">&{'secure.remember'}</label>
 				</div>
-				<input type="submit" name="name" value="Log in" onclick="return shopUrl();" class="button button-primary">
-			</form>
-
-			<p>You can also login by adding <span class="highlight">/admin</span> to the end of your myshopify.com address.</p>
-			<p>Example: <span class="highlight">http://examplestore.myshopify.com/admin</span></p>
-
+				<p>
+			    	<input type="submit" id="signin" value="&{'secure.signin'}" value="Create Account" class="button button-primary">
+			    </p>
+		    #{/form} 
 	</div>
 
 	<div class="col4 border-left">

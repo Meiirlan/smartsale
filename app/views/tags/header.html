@@ -37,7 +37,14 @@
 								<li><a href="http://www.shopify.com/partners"><span
 										class="title">Partners</span>Join the partner program</a></li>
 							</ul></li>
-						<li class="login last"><a href="@{Secure.login()}">Login</a></li>
+						#{if session.email}	  						         
+			          <li class="dropdown">
+			              <li><a href="@{Secure.logout()}" class="navbar-link">Log out</a></li>
+			          </li>
+			         #{/if}
+			         #{else}
+		              	<li class="login last"><a href="@{Secure.login()}">Login</a></li>	
+		              #{/else}
 					</ul>
 				</nav>
 			</div>

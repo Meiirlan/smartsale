@@ -3,8 +3,13 @@ package controllers;
 import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 import java.util.Date;
+
+import org.apache.commons.codec.digest.DigestUtils;
+
+import models.Client;
 import play.Play;
 import play.mvc.*;
+import play.cache.Cache;
 import play.data.validation.*;
 import play.libs.*;
 import play.utils.*;
@@ -65,15 +70,20 @@ public class Secure extends Controller {
         render();
     }
 
-    public static void authenticate(@Required String username, String password, boolean remember) throws Throwable {
+    public static void authenticate(@Required String email, String password, boolean remember) throws Throwable {
         // Check tokens
         Boolean allowed = false;
-        try {
-            // This is the deprecated method name
-            allowed = (Boolean)Security.invoke("authentify", username, password);
-        } catch (UnsupportedOperationException e ) {
-            // This is the official method name
-            allowed = (Boolean)Security.invoke("authenticate", username, password);
+//        try {
+//            // This is the deprecated method name
+//            allowed = (Boolean)Security.invoke("authentify", email, password);
+//        } catch (UnsupportedOperationException e ) {
+//            // This is the official method name
+//            allowed = (Boolean)Security.invoke("authenticate", email, password);
+//        }
+        password = DigestUtils.md5Hex(password);
+        Client client = Client.connect(email,password);
+        if(client != null){
+        	allowed = true;
         }
         if(validation.hasErrors() || !allowed) {
             flash.keep("url");
@@ -82,13 +92,15 @@ public class Secure extends Controller {
             login();
         }
         // Mark user as connected
-        session.put("username", username);
+        Cache.set(session.getId() + "-email", client, "30mn");
+        session.put("email", email);
+        	
         // Remember if needed
         if(remember) {
             Date expiration = new Date();
             String duration = Play.configuration.getProperty("secure.rememberme.duration","30d"); 
             expiration.setTime(expiration.getTime() + Time.parseDuration(duration) * 1000 );
-            response.setCookie("rememberme", Crypto.sign(username + "-" + expiration.getTime()) + "-" + username + "-" + expiration.getTime(), duration);
+            response.setCookie("rememberme", Crypto.sign(email + "-" + expiration.getTime()) + "-" + email + "-" + expiration.getTime(), duration);
 
         }
         // Redirect to the original URL (or /)
@@ -165,7 +177,7 @@ public class Secure extends Controller {
          * @return  true if the user is connected
          */
         static boolean isConnected() {
-            return session.contains("username");
+            return session.contains("email");
         }
 
         /**
