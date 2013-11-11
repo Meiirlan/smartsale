@@ -4,18 +4,15 @@
 	<div class="wrapper">
 		<div class="row">
 			<div class="col3">
-				<a href="/"> <span id="branding"><strong>Shopify
-							Ecommerce - Shopping Cart &amp; Software</strong></span>
-				</a>
+				<a href="/"> <span id="branding"></span></a>
 			</div>
 			<div class="col9">
 				<nav id="dl-menu" class="dl-menuwrapper">
-					<button class="dl-trigger">Open Menu</button>
 					<ul class="sub-menu dl-menu">
-						<li><a href="http://www.shopify.com/website/templates">Features</a></li>
-						<li><a href="http://www.shopify.com/examples">Examples</a></li>
-						<li><a href="http://www.shopify.com/pricing">Pricing</a></li>
-						<li><a href="http://www.shopify.com/pos">POS</a></li>
+						<li><a href="#templates">Features</a></li>
+						<li><a href="#examples">Examples</a></li>
+						<li><a href="#pricing">Pricing</a></li>
+						<li><a href="#pos">POS</a></li>
 						<li><a href="http://www.shopify.com/#"
 							class="drop-menu-title">Resources<span class="arrow"></span></a>
 							<ul class="dl-submenu">
@@ -37,7 +34,7 @@
 								<li><a href="http://www.shopify.com/partners"><span
 										class="title">Partners</span>Join the partner program</a></li>
 							</ul></li>
-						#{if session.email}	  						         
+					 #{if session.email}	  						         
 			          <li class="dropdown">
 			              <li><a href="@{Secure.logout()}" class="navbar-link">Log out</a></li>
 			          </li>

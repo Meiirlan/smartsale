@@ -15,9 +15,6 @@ GET     /public/                                staticDir:public
 #*      /admin              					Admin.index
 *      /admin              						CRUD.index
 
-# import these default routes as :
-*         /               						module:secure
-
 GET			/login								Secure.login
 GET			/recover							Application.recover
 POST        /login          					Secure.authenticate
