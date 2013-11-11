@@ -22,9 +22,11 @@ public class Client extends Model implements Serializable{
 	public String user_email;
 	@Required
 	@MinSize(5)
-	@MaxSize(30)
+	@MaxSize(40)
 	public String pwd;
 	@Required
+	@MinSize(5)
+	@MaxSize(40)
 	public String pwd1;
 	public String gender;
 	public String firstName;
@@ -70,5 +72,8 @@ public class Client extends Model implements Serializable{
 
 	public static List<Client> getnotActiveUsersl() {
 		return Client.find("byIsActive",false).fetch();
+	}
+	public String toString() {
+	    return user_email;
 	}
 }

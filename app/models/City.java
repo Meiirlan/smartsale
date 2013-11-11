@@ -21,4 +21,8 @@ public class City extends Model implements Serializable{
 	public Set<Client> clients;
 	@OneToMany(mappedBy="city", cascade=CascadeType.ALL,fetch = FetchType.EAGER)
 	public Set<UserShop> userShops;
+	
+	public static City getCity(String store) {
+		return find("byCity", store).first();
+	}
 }

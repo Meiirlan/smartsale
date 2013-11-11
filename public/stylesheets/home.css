@@ -414,7 +414,6 @@ a:active, a:hover {
     border-bottom: none;
 }
 #shopify-nav .sub-menu ul li a {
-    color: #666;
     text-transform: none;
     font-size: 13px;
     padding: 8px 0;
@@ -430,7 +429,6 @@ a:active, a:hover {
 }
 #shopify-nav .sub-menu ul li a .title {
     font-size: 13px;
-    color: #666;
     display: block;
     margin-bottom: 4px;
     font-family: "ProximaNovaRegular", "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -500,11 +498,14 @@ a:active, a:hover {
     padding-left: 30px;
 }
 #shopify-footer ul li a, #shopify-footer ul li a .icon {
-    color: #666;
+	color: #666;
     line-height: inherit;
 }
 #shopify-footer ul li a:hover, #shopify-footer ul li a:hover .icon {
     color: #999;
+}
+#shopify-footer p a {
+	color: #666;
 }
 #shopify-footer .social-icons .icon {
     width: 20px;
@@ -520,7 +521,7 @@ a:active, a:hover {
     line-height: 30px;
 }
 #shopify-footer p {
-    color: #666;
+	color: #666;
     margin: 0;
 }
 #shopify-footer p:first-child {
@@ -528,12 +529,6 @@ a:active, a:hover {
 }
 #shopify-footer p:last-child {
     margin-bottom: 20px;
-}
-#shopify-footer p a {
-    color: #666;
-}
-#shopify-footer p a:hover {
-    color: #666;
 }
 #shopify-footer .footer-copy {
     margin-left: 145px;
@@ -1227,7 +1222,6 @@ html *[class*="push"], html *[class*="pull"] {
 }
 .modal-wrapper .error-call {
     font-size: 18px;
-    color: #666;
 }
 .modal-wrapper #creating-store, .modal-wrapper #error-store, .modal-wrapper #success-store {
     width: 960px;
@@ -1251,7 +1245,6 @@ html *[class*="push"], html *[class*="pull"] {
 .modal-wrapper #success-store p {
     font-family: "ProximaNovaLight", "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-size: 18px;
-    color: #666;
     margin-bottom: 60px;
 }
 .modal-wrapper #signup-fields, .modal-wrapper #creating-store, .modal-wrapper #error-store, .modal-wrapper #success-store {
@@ -1871,7 +1864,6 @@ section.blue {
 }
 .modal-wrapper .error-call {
     font-size: 18px;
-    color: #666;
 }
 .modal-wrapper #creating-store, .modal-wrapper #error-store, .modal-wrapper #success-store {
     width: 960px;
@@ -1895,7 +1887,6 @@ section.blue {
 .modal-wrapper #success-store p {
     font-family: "ProximaNovaLight", "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-size: 18px;
-    color: #666;
     margin-bottom: 60px;
 }
 .modal-wrapper #signup-fields, .modal-wrapper #creating-store, .modal-wrapper #error-store, .modal-wrapper #success-store {
@@ -2171,7 +2162,8 @@ section.blue {
     margin-left: 5%;
     float: left;
 }
-#FullScreenFormContainer #FieldsLeft input {
+#FullScreenFormContainer #FieldsLeft input,
+#FullScreenFormContainer #FieldsRight .address input{
     font-family: "ProximaNovaLight", "Helvetica Neue", Helvetica, Arial, sans-serif;
     float: left;
     border: 0px;
@@ -2350,23 +2342,9 @@ section.blue {
 }
 @media screen and (-webkit-min-device-pixel-ratio: 2) {
     #FullScreenFormContainer #FieldsRight select {
-    background: url("/assets/images/landing/photography/drop-down_retina.png") right bottom no-repeat;
-    background-size: 35px 38px;
-}
-}#FullScreenFormContainer #FieldsRight .address input {
-    font-family: "ProximaNovaLight", "Helvetica Neue", Helvetica, Arial, sans-serif;
-    float: left;
-    border: 0px;
-    border-bottom: 1px solid #cacaca;
-    background: none;
-    margin: 2px 0px 11px 0px;
-    padding: 12px 0% 11px 0%;
-    width: 100%;
-    font-size: 24px;
-    line-height: 24px;
-    -o-transition: 0.5s all ease-in-out 0s;
-    -webkit-transition: 0.5s all ease-in-out 0s;
-    -moz-transition: 0.5s all ease-in-out 0s;
+	    background: url("/assets/images/landing/photography/drop-down_retina.png") right bottom no-repeat;
+	    background-size: 35px 38px;
+	}
 }
 #FullScreenFormContainer #FieldsRight .address input:hover {
     background: none;
@@ -2657,7 +2635,6 @@ section.blue {
 #pg-home .overview h3 {
     font-size: 26px;
     font-family: "ProximaNovaThin", "Helvetica Neue", Helvetica, Arial, sans-serif;
-    color: #666;
 }
 #pg-home .icon {
     background: url(//cdn.shopify.com/assets/images/long-landing/sprite.png?473?1383949168) 0 0 no-repeat;
@@ -2947,9 +2924,6 @@ section.blue {
     padding: 0 0 0 20px;
     line-height: 25px;
 }
-#pg-home #segment-test .segments .segment-wrapper h3 {
-    color: #666;
-}
 #pg-home #segment-test .segments .segment-wrapper p.statement {
     font-size: 21px;
     line-height: 28px;
@@ -2959,7 +2933,6 @@ section.blue {
 #pg-home #segment-test .segments .segment-wrapper p {
     font-size: 16px;
     line-height: 28px;
-    color: #666;
     font-family: "ProximaNovaThin", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 #pg-home #segment-test .segments .segment-wrapper .apps-screen {

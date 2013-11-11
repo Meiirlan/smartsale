@@ -33,6 +33,10 @@
 				<option value="almaty">Almaty</option>
 			</select>
 			
+		    <label for="address">Address*</label>
+	    	<input name="address" id="address" type="text" class="address" value="${flash.address}">	
+		    <span class="error">#{error 'user.address' /}</span>
+		    
 		    <label for="pwd">Password*</label>
 	    	<input name="pwd" id="pwd" type="password">	
 		    <span class="error">#{error 'user.pwd' /}</span>

@@ -10,6 +10,8 @@ import notifiers.Mails;
 
 import org.apache.commons.codec.digest.DigestUtils;
 
+import com.sun.mail.handlers.message_rfc822;
+
 import models.*;
 
 public class Application extends Controller {
@@ -63,18 +65,20 @@ public class Application extends Controller {
     		@Required(message="Email is required") String email, 
     		@Required(message="Phone is required") String phone, 
     		@Required(message="City is required") String store, 
+    		@Required(message="City is required") String address, 
     		@Required(message="Password is required") String pwd, 
     		@Required(message="Password confirmation is required") String cpwd) throws Throwable {
     	
     	System.out.println(email);
     	System.out.println(phone);
     	System.out.println(store);
+    	System.out.println(address);
     	System.out.println(pwd);
     	System.out.println(cpwd);
     	
-    	System.out.println("1");
+    	
     	if(validation.hasErrors()) {
-    		flash.error("12");
+    		flash.error("error");
     		params.flash(); // add http parameters to the flash scope
             validation.keep(); // keep the errors for the next request            
             signupStore();
@@ -82,31 +86,44 @@ public class Application extends Controller {
     	System.out.println("2");
     	
     	if(!pwd.equals(cpwd)){
-    		flash.keep("url");
             flash.error("passwords are not equal");
             params.flash();
+            validation.keep(); // keep the errors for the next request        
             signupStore();
     	}
-    	Client client = Client.getUserByEmail(email);
-    	if(client!=null){
-        	flash.keep("url");
+    	System.out.println("3");
+    	UserShop userShop = UserShop.getUserShopByEmail(email);
+    	if(userShop!=null){
             flash.error("email already exists");
             params.flash();
+            validation.keep(); // keep the errors for the next request        
             signupStore();
     	}
+    	System.out.println("4");
 
         
-    	validation.valid(client);
+    	validation.valid(userShop);
         if(validation.hasErrors()){
-        	render("Application/signup.html",client);
+        	render("Application/signupStore.html",userShop);
         }
+        System.out.println("5");
         pwd = DigestUtils.md5Hex(pwd);
-        client = new Client(email,pwd);
-        String address = email;
-        Mails.verifyUser(email, address);    	
+        City city = City.getCity(store);
+        System.out.println(city);
+        if(city!=null){
+        	userShop = new UserShop(email,pwd,city,address,phone);
+        }else{
+        	render("Application/signupStore.html",userShop);
+        }
+        System.out.println("6");
+        String destinationAddress = email;
+        Mails.verifyUser(email, destinationAddress);    	
         // Save
-        client.save();
+    	userShop.save();
         Secure.login();  
+    }
+    public static void recover() {  
+    	render();
     }
     public static void verify(String address) {    
     	

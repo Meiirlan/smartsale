@@ -94,7 +94,7 @@ public class Secure extends Controller {
         // Mark user as connected
         Cache.set(session.getId() + "-email", client, "30mn");
         session.put("email", email);
-        	
+        System.out.println(email);
         // Remember if needed
         if(remember) {
             Date expiration = new Date();

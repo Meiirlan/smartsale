@@ -10,14 +10,14 @@ import controllers.Secure.Security;
 import models.*;
 
 @With(Secure.class)
-@Check("admin")
+@Check("isAdmin")
 public class Admin extends Controller {
     
     @Before
     static void setConnectedUser() {
         if(Security.isConnected()) {
             Client user = Client.getUserByEmail(Security.connected());
-            renderArgs.put("user", user);
+            renderArgs.put("email", user);
         }
     }
  
