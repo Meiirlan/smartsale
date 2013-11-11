@@ -39,8 +39,7 @@ public class Mails extends Mailer {
         setFrom("Me <me@me.com>");
         address = projectSite +"/Application/verify?address="+email;
 		send(email,pName,address);
-		
-        
+		System.out.println("111111111");
 	}
 //   public static void welcome(User user) {
 //      setSubject("Welcome %s", user.username);
@@ -53,12 +52,17 @@ public class Mails extends Mailer {
 //      send(user);
 //   }
  
-   public static void lostPassword(Client client) {
-//      String newpassword = user.pwd;
-//      setFrom("Robot <robot@thecompany.com>");
-//      setSubject("Your password has been reset");
-//      addRecipient(user.email);
-//      send(user, newpassword);
+   public static void lostPassword(String email,String address) {
+		setSubject("Notification: %s", projectName);
+		addRecipient(email);
+		setFrom("Me <me@me.com>");
+		address = projectSite + "/Application/resetOldPwd?email=" + email;
+		try{
+			send(email,projectName,address,projectSite);		
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		
    }
  
 }

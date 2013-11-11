@@ -27,10 +27,14 @@ public class Application extends Controller {
     }
     public static void save(Long id,
     		@Required(message="Email is required") String email, 
+    		String firstName, 
+    		String lastName, 
     		@Required(message="Password is required") String pwd, 
     		@Required(message="Password confirmation is required") String cpwd) throws Throwable {
     	
     	System.out.println(email);
+    	System.out.println(firstName);
+    	System.out.println(lastName);
     	System.out.println(pwd);
     	System.out.println(cpwd);
     	
@@ -54,7 +58,7 @@ public class Application extends Controller {
         	render("Application/signup.html",client);
         }
         pwd = DigestUtils.md5Hex(pwd);
-        client = new Client(email,pwd);
+        client = new Client(email,pwd,firstName,lastName);
         String address = email;
         Mails.verifyUser(email, address);    	
         // Save
@@ -125,6 +129,23 @@ public class Application extends Controller {
     public static void recover() {  
     	render();
     }
+    public static void feedback() {  
+    	render();
+    }
+    public static void reset(String email) { 
+    	String destinationAddress = email;
+    	Mails.lostPassword(email, destinationAddress);    	
+    	render(email);
+    }
+    public static void resetOldPwd(String email) { 
+    	System.out.println(email);
+    	render(email);
+    }
+    public static void saveNewPwd(String email) throws Throwable { 
+    	System.out.println(email);
+    	Secure.login();
+    }
+    
     public static void verify(String address) {    
     	
     	ArrayList<Client> clients = (ArrayList<Client>)Client.getnotActiveUsersl();

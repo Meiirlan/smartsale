@@ -82,18 +82,27 @@ public class Secure extends Controller {
 //        }
         password = DigestUtils.md5Hex(password);
         Client client = Client.connect(email,password);
+        String message = "Unknown email or password.";
         if(client != null){
         	allowed = true;
+        	 if(!client.isActive){
+             	message = "Activation message was send to email";
+             	allowed = false;
+             }
         }
+       
         if(validation.hasErrors() || !allowed) {
             flash.keep("url");
-            flash.error("secure.error");
+            flash.error(message);
             params.flash();
             login();
         }
         // Mark user as connected
         Cache.set(session.getId() + "-email", client, "30mn");
         session.put("email", email);
+        if(client.firstName!=null || !client.firstName.equals("")){
+        	session.put("firstName", client.firstName);
+        }
         
         System.out.println(session.get("email"));
         // Remember if needed

@@ -19,9 +19,9 @@
 					</h6>
 				#{/if}
 			    <label for="login">Email Address</label>
-		    	<input name="email" id="login" type="text" class="email">	
+		    	<input name="email" id="login" type="text" class="email" value="${flash.email}">	
 			    <span class="error">#{error 'user.email' /}</span>
-			    
+			    			    			    
 			    <label for="pwd">Password</label>
 		    	<input name="password" id="password" type="password">	
 			    <span class="error">#{error 'user.pwd' /}</span>

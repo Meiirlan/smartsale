@@ -1,0 +1,43 @@
+#{extends 'main.html' /} #{set title:'Login' /}
+<link rel="stylesheet" type="text/css" 
+	href="@{'/public/stylesheets/login.css'}" media="all">
+<div class="wrapper content">
+    <div id="content-wrapper" class="clearfix row">
+        <div class="row login-area">
+
+	<div class="col8">
+		<h3>Reset password for <strong>${email}</strong>.</h3>
+			#{form @saveNewPwd()}
+				#{if flash.error}
+					<h6 class="error">
+						&{flash.error}
+					</h6>
+				#{/if}
+				#{if flash.success}
+					<h6 class="success">
+						&{flash.success}
+					</h6>
+				#{/if}
+			    <label for="pwd">Password</label>
+		    	<input name="pwd" id="pwd" type="password">	
+			    <span class="error">#{error 'user.pwd' /}</span>
+
+			    <label for="cpwd">Password confirmation</label>
+		    	<input name="cpwd" id="cpwd" type="password">	
+			    <span class="error">#{error 'user.pwd' /}</span>
+
+				<p>
+					<input type="reset" value="Cancel" class="button button-destroy">
+				    <input type="submit" value="Reset password" class="button button-primary">
+			    </p>
+		    #{/form} 
+	</div>
+</div>
+  </div>
+  <script type="text/javascript">
+	$(document).ready(function() {
+		$('body').removeClass('long-landing');
+		$('body').addClass('v2-subpage');
+	});
+</script>
+  </div>

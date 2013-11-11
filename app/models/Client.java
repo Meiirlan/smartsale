@@ -12,10 +12,9 @@ import play.data.validation.Required;
 import play.data.validation.Unique;
 import play.db.jpa.Model;
 
-
 @Entity
 @Table(name = "Client")
-public class Client extends Model implements Serializable{
+public class Client extends Model implements Serializable {
 	@Email
 	@Required
 	@Unique
@@ -32,15 +31,14 @@ public class Client extends Model implements Serializable{
 	public String firstName;
 	public String lastName;
 	public boolean isAdmin;
-    public boolean isActive;
-    public Date birthdate;
-	@OneToMany(mappedBy="client", cascade=CascadeType.ALL,fetch = FetchType.EAGER)
+	public boolean isActive;
+	public Date birthdate;
+	@OneToMany(mappedBy = "client", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	public Set<UserProperty> userProperties;
-	@OneToMany(mappedBy="client", cascade=CascadeType.ALL,fetch = FetchType.EAGER)
+	@OneToMany(mappedBy = "client", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	public Set<Follower> followers;
 	@ManyToOne
 	public City city;
-	
 
 	public Client(String user_email, String pwd, String pwd1, String gender,
 			String firstName, String lastName, boolean isAdmin,
@@ -56,24 +54,34 @@ public class Client extends Model implements Serializable{
 		this.birthdate = birthdate;
 	}
 
-	public Client(String email, String pwd2) {
+	public Client(String email, String pwd2,String firstName,String lastName) {
 		this.user_email = email;
 		this.pwd = pwd2;
-		this.pwd1 = pwd2; 
+		this.pwd1 = pwd2;
+		this.firstName = firstName;
+		this.lastName = lastName;
 	}
 
 	public static Client getUserByEmail(String email) {
-		return find("byUser_email", email ).first();
+		return find("byUser_email", email).first();
 	}
 
 	public static Client connect(String email, String pwd) {
-        return find("byUser_emailAndPwd", email, pwd).first();
-    }
+		return find("byUser_emailAndPwd", email, pwd).first();
+	}
+	public static boolean isUserActive(String email, String pwd) {
+		if(find("byUser_emailAndPwdAndIsActive", email, pwd, true).first()){
+			return true;
+		}else{
+			return false;
+		}
+	}
 
 	public static List<Client> getnotActiveUsersl() {
-		return Client.find("byIsActive",false).fetch();
+		return Client.find("byIsActive", false).fetch();
 	}
+
 	public String toString() {
-	    return user_email;
+		return user_email;
 	}
 }

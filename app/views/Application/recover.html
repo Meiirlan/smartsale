@@ -7,7 +7,7 @@
 			<div class="col8">
 				<h3>Forgot your Password?</h3>
 				<h5>No problem! We'll send you instructions on how to reset it.</h5>
-				#{form @save(user?.id)}        	   
+				#{form @reset()}        	   
 		      	 	#{if flash.error}
 						<h6 class="error">
 							&{flash.error}
@@ -19,10 +19,10 @@
 						</h6>
 					#{/if}
 				    <label for="login">Email Address</label>
-			    	<input name="email" id="login" type="text" class="email">	
+			    	<input name="email" id="email" type="text" class="email">	
 				    <span class="error">#{error 'user.email' /}</span>
 				    <p>
-				    	<input type="submit" value="Cancel" class="button button-destroy">
+				    	<input type="reset" value="Cancel" class="button button-destroy">
 				    	<input type="submit" value="Send Email" class="button button-primary">
 				    </p>
 		        #{/form} 

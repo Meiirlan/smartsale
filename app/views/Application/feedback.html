@@ -6,7 +6,7 @@
         <div class="row login-area">
 
 	<div class="col8">
-		<h3>Sign Up</h3>
+		<h3>Обратная связь</h3>
 		#{form @save(user?.id)}        	   
       	 	#{if flash.error}
 				<h6 class="error">
@@ -18,45 +18,27 @@
 					&{flash.success}
 				</h6>
 			#{/if}
-		    <label for="login">Email Address</label>
-	    	<input name="email" id="login" type="text" class="email">	
-		    <span class="error">#{error 'user.email' /}</span>
-		    
-			<label for="firstName">First name</label>
+		    <label for="firstName">First name</label>
 	    	<input name="firstName" id="firstName" type="text" class="firstName">	
-		    <span class="error">#{error 'user.firstName' /}</span>
 		    
-		    <label for="lastName">Last name</label>
-	    	<input name="lastName" id="lastName" type="text" class="lastName">	
-		    <span class="error">#{error 'user.lastName' /}</span>
-			    		    
+		    <label for="city">Question</label>
+		    <select style="width: 180px; margin-bottom: 10px;" id="store_city" name="store">
+		    	<option value="astana">Astana</option>
+				<option value="almaty">Almaty</option>
+			</select>
+			
 		    <label for="pwd">Password</label>
 	    	<input name="pwd" id="pwd" type="password">	
-		    <span class="error">#{error 'user.pwd' /}</span>
-		   
+
 		    <label for="cpwd">Password confirmation</label>
 	    	<input id="cpwd" type="password"  name="cpwd">	
-		    <span class="error">#{error 'user.cpwd' /}</span>
-		   	<div style="margin: 15px 0;" class="clearfix">
-				<input name="remember" id="remember" type="checkbox" style="float: left;">
-				<label class="remember" for="remember">I agree to the Terms of Service and Honor Code</label>
-			</div>
+
 		    <p>
 		    	<input type="submit" value="Create Account" class="button button-primary">
 		    </p>
         #{/form} 
 	</div>
-
-	<div class="col4 border-left">
-		<h3>Have an Account?</h3>
-		<p> 
-			If you already have a password, <br/>please
-			<a href="/login" class="internal-auth"> sign in</a>.
-		</p>
-	</div>
-
 </div>
-
 
 <script type="text/javascript">
 	$(document).ready(function() {

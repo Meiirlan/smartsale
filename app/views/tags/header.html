@@ -9,36 +9,26 @@
 			<div class="col9">
 				<nav id="dl-menu" class="dl-menuwrapper">
 					<ul class="sub-menu dl-menu">
-						<li><a href="#templates">Features</a></li>
-						<li><a href="#examples">Examples</a></li>
-						<li><a href="#pricing">Pricing</a></li>
-						<li><a href="#pos">POS</a></li>
-						<li><a href="http://www.shopify.com/#"
-							class="drop-menu-title">Resources<span class="arrow"></span></a>
+						<li><a href="#templates">Shops</a></li>
+						<li><a href="#examples">Uslugi</a></li>
+						<li><a href="#pricing">Skidki</a></li>
+						<li><a href="#pos">Categories</a></li>
+						<li><a href="/feedback">Обратная связь</a></li>
+						#{if session.email}	
+						<li>
+							#{if session.firstName}
+								<a href="http://www.shopify.com/#" class="drop-menu-title">${session.firstName}<span class="arrow"></span></a>
+							#{/if}
+							#{else}
+								<a href="http://www.shopify.com/#" class="drop-menu-title">${session.email}<span class="arrow"></span></a>
+							#{/else}
 							<ul class="dl-submenu">
-								<li class="dl-back"><a href="http://www.shopify.com/#">back</a></li>
-								<li><a href="http://www.shopify.com/blog"><span
-										class="title">Blog</span>Ecommerce tips &amp; advice</a></li>
-								<li><a href="http://docs.shopify.com/"><span
-										class="title">Documentation</span>Learn about Shopify</a></li>
-								<li><a href="http://docs.shopify.com/support"><span
-										class="title">Support</span>Talk to Shopify Support</a></li>
-								<li><a href="http://ecommerce.shopify.com/forums"><span
-										class="title">Forums</span>The Shopify Community</a></li>
-								<li><a href="http://themes.shopify.com/"><span
-										class="title">Theme Store</span>Shopify templates</a></li>
-								<li><a href="http://apps.shopify.com/"><span
-										class="title">App Store</span>Shopify store add-ons</a></li>
-								<li><a href="http://experts.shopify.com/"><span
-										class="title">Shopify Experts</span>Get help with your shop</a></li>
-								<li><a href="http://www.shopify.com/partners"><span
-										class="title">Partners</span>Join the partner program</a></li>
-							</ul></li>
-					 #{if session.email}	  						         
-			          <li class="dropdown">
-			              <li><a href="@{Secure.logout()}" class="navbar-link">Log out</a></li>
-			          </li>
-			         #{/if}
+								<li><a href="#blog">Profile</a></li>
+								<li><a href="#settings">Settings</a></li>
+								<li><a href="@{Secure.logout()}" class="navbar-link">Log out</a></li>
+							</ul>
+						</li>
+					 #{/if}
 			         #{else}
 		              	<li class="login last"><a href="@{Secure.login()}">Login</a></li>	
 		              #{/else}
