@@ -7,32 +7,32 @@
 
 	<div class="col8">
 		<h3>Обратная связь</h3>
-		#{form @save(user?.id)}        	   
-      	 	#{if flash.error}
-				<h6 class="error">
-					&{flash.error}
-				</h6>
-			#{/if}
-			#{if flash.success}
-				<h6 class="success">
-					&{flash.success}
-				</h6>
-			#{/if}
+		#{form @SendFeedback()}        	   
 		    <label for="firstName">First name</label>
 	    	<input name="firstName" id="firstName" type="text" class="firstName">	
 		    
-		    <label for="city">Question</label>
-		    <select style="width: 180px; margin-bottom: 10px;" id="store_city" name="store">
-		    	<option value="astana">Astana</option>
-				<option value="almaty">Almaty</option>
+		    <label for="question">Question</label>
+		    <select style="width: 180px; margin-bottom: 10px;" id="question" name="question">
+		    	<option value="quest" selected="">Вопрос</option>
+				<option value="problem">Отзыв об скидке</option>
+				<option value="new_func">Предложение</option>
+				<option value="problem_cupon">Проблема с регистрацией скидки</option>
+				<option value="problem_action">Проблема с участием в скидке</option>
+				<option value="mailer">Вопрос по рассылке</option>
+				<option value="other">Другое</option>
 			</select>
 			
-		    <label for="pwd">Password</label>
-	    	<input name="pwd" id="pwd" type="password">	
+		    <label for="phone">Telephone</label>
+	    	<input name="phone" id="phone" type="text">	
 
-		    <label for="cpwd">Password confirmation</label>
-	    	<input id="cpwd" type="password"  name="cpwd">	
-
+		    <label for="email">Email</label>
+	    	<input id="email" type="text"  name="email">	
+			
+			<label for="content_area">Text</label>
+			<textarea cols="38" rows="4" name="content" id="content_area" class="f-input" 
+			require="true" datatype="require" style="margin-left: 0px; margin-right: 0px;
+			 width: 306px; margin-top: 0px; margin-bottom: 0px; height: 220px; resize: none;">
+			</textarea>
 		    <p>
 		    	<input type="submit" value="Create Account" class="button button-primary">
 		    </p>

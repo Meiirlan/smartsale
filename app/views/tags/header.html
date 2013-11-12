@@ -9,10 +9,10 @@
 			<div class="col9">
 				<nav id="dl-menu" class="dl-menuwrapper">
 					<ul class="sub-menu dl-menu">
-						<li><a href="#templates">Shops</a></li>
-						<li><a href="#examples">Uslugi</a></li>
-						<li><a href="#pricing">Skidki</a></li>
-						<li><a href="#pos">Categories</a></li>
+						<li><a href="#templates">Магазины</a></li>
+						<li><a href="#examples">Услуги</a></li>
+						<li><a href="#pricing">Скидки</a></li>
+						<li><a href="#pos">Категории</a></li>
 						<li><a href="/feedback">Обратная связь</a></li>
 						#{if session.email}	
 						<li>
@@ -25,12 +25,12 @@
 							<ul class="dl-submenu">
 								<li><a href="#blog">Profile</a></li>
 								<li><a href="#settings">Settings</a></li>
-								<li><a href="@{Secure.logout()}" class="navbar-link">Log out</a></li>
+								<li><a href="@{Secure.logout()}" class="navbar-link">Выйти</a></li>
 							</ul>
 						</li>
 					 #{/if}
 			         #{else}
-		              	<li class="login last"><a href="@{Secure.login()}">Login</a></li>	
+		              	<li class="login last"><a href="@{Secure.login()}">Войти</a></li>	
 		              #{/else}
 					</ul>
 				</nav>

@@ -132,6 +132,32 @@ public class Application extends Controller {
     public static void feedback() {  
     	render();
     }
+    public static void sendFeedback(String firstName,String question,
+    		String phone,String email,String content) {
+    	if(question.equals("quest")){
+    		question = "Вопрос";
+    	}else if(question.equals("quest")){
+    		question = "Отзыв об скидке";
+    	}else if(question.equals("new_func")){
+    		question = "Предложение";
+    	}else if(question.equals("problem_cupon")){
+    		question = "Проблема с регистрацией скидки";
+    	}else if(question.equals("problem_action")){
+    		question = "Проблема с участием в скидке";
+    	}else if(question.equals("mailer")){
+    		question = "Вопрос по рассылке";
+    	}else{
+    		question = "Другое";
+    	}
+    	System.out.println(firstName);
+    	System.out.println(question);
+    	System.out.println(phone);
+    	System.out.println(email);
+    	System.out.println(content);
+    	Mails.feedBack(firstName,question,phone,email,content);    
+    	feedback();
+//    	index();
+    }
     public static void reset(String email) { 
     	String destinationAddress = email;
     	Mails.lostPassword(email, destinationAddress);    	
