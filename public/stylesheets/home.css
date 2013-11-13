@@ -29,21 +29,21 @@ table {
 @font-face {
     font-family: 'ProximaNovaThin';
     src: url(//cdn.shopify.com/assets/fonts/shopify-assets/ProximaNova-Thin-webfont.eot?1383949168);
-    src: url(//cdn.shopify.com/assets/fonts/shopify-assets/ProximaNova-Thin-webfont.eot?#iefix?1383949168) format("embedded-opentype"), url(//cdn.shopify.com/assets/fonts/shopify-assets/ProximaNova-Thin-webfont.woff?1383949168) format("woff"), url(//cdn.shopify.com/assets/fonts/shopify-assets/ProximaNova-Thin-webfont.ttf?1383949168) format("truetype"), url(//cdn.shopify.com/assets/fonts/shopify-assets/ProximaNova-Thin-webfont.svg#ProximaNovaThin?1383949168) format("svg");
+    src: url(//cdn.shopify.com/assets/fonts/shopify-assets/ProximaNova-Thin-webfont.eot?#iefix?1383949168) format("embedded-opentype"), url(/public/images/ProximaNova-Thin-webfont.woff) format("woff"), url(//cdn.shopify.com/assets/fonts/shopify-assets/ProximaNova-Thin-webfont.ttf?1383949168) format("truetype"), url(//cdn.shopify.com/assets/fonts/shopify-assets/ProximaNova-Thin-webfont.svg#ProximaNovaThin?1383949168) format("svg");
     font-weight: normal;
     font-style: normal;
 }
 @font-face {
     font-family: 'ProximaNovaLight';
     src: url(//cdn.shopify.com/assets/fonts/shopify-assets/ProximaNova-Light-webfont.eot?1383949168);
-    src: url(//cdn.shopify.com/assets/fonts/shopify-assets/ProximaNova-Light-webfont.eot?#iefix?1383949168) format("embedded-opentype"), url(//cdn.shopify.com/assets/fonts/shopify-assets/ProximaNova-Light-webfont.woff?1383949168) format("woff"), url(//cdn.shopify.com/assets/fonts/shopify-assets/ProximaNova-Light-webfont.ttf?1383949168) format("truetype"), url(//cdn.shopify.com/assets/fonts/shopify-assets/ProximaNova-Light-webfont.svg#ProximaNovaRegular?1383949168) format("svg");
+    src: url(//cdn.shopify.com/assets/fonts/shopify-assets/ProximaNova-Light-webfont.eot?#iefix?1383949168) format("embedded-opentype"), url(/public/images/ProximaNova-Light-webfont.woff) format("woff"), url(//cdn.shopify.com/assets/fonts/shopify-assets/ProximaNova-Light-webfont.ttf?1383949168) format("truetype"), url(//cdn.shopify.com/assets/fonts/shopify-assets/ProximaNova-Light-webfont.svg#ProximaNovaRegular?1383949168) format("svg");
     font-weight: normal;
     font-style: normal;
 }
 @font-face {
     font-family: 'ProximaNovaRegular';
     src: url(//cdn.shopify.com/assets/fonts/shopify-assets/ProximaNova-Reg-webfont.eot?1383949168);
-    src: url(//cdn.shopify.com/assets/fonts/shopify-assets/ProximaNova-Reg-webfont.eot?#iefix?1383949168) format("embedded-opentype"), url(//cdn.shopify.com/assets/fonts/shopify-assets/ProximaNova-Reg-webfont.woff?1383949168) format("woff"), url(//cdn.shopify.com/assets/fonts/shopify-assets/ProximaNova-Reg-webfont.ttf?1383949168) format("truetype"), url(//cdn.shopify.com/assets/fonts/shopify-assets/ProximaNova-Reg-webfont.svg#ProximaNovaReg?1383949168) format("svg");
+    src: url(//cdn.shopify.com/assets/fonts/shopify-assets/ProximaNova-Reg-webfont.eot?#iefix?1383949168) format("embedded-opentype"), url(/public/images/ProximaNova-Reg-webfont.woff) format("woff"), url(//cdn.shopify.com/assets/fonts/shopify-assets/ProximaNova-Reg-webfont.ttf?1383949168) format("truetype"), url(//cdn.shopify.com/assets/fonts/shopify-assets/ProximaNova-Reg-webfont.svg#ProximaNovaReg?1383949168) format("svg");
     font-weight: normal;
     font-style: normal;
 }
@@ -65,7 +65,7 @@ table {
 @font-face {
     font-family: 'ProximaNovaLight';
     src: url(//cdn.shopify.com/assets/fonts/shopify-assets/ProximaNova-Light-webfont.eot?1383949168);
-    src: url(//cdn.shopify.com/assets/fonts/shopify-assets/ProximaNova-Light-webfont.eot?#iefix?1383949168) format("embedded-opentype"), url(//cdn.shopify.com/assets/fonts/shopify-assets/ProximaNova-Light-webfont.woff?1383949168) format("woff"), url(//cdn.shopify.com/assets/fonts/shopify-assets/ProximaNova-Light-webfont.ttf?1383949168) format("truetype"), url(//cdn.shopify.com/assets/fonts/shopify-assets/ProximaNova-Light-webfont.svg#ProximaNovaRegular?1383949168) format("svg");
+    src: url(//cdn.shopify.com/assets/fonts/shopify-assets/ProximaNova-Light-webfont.eot?#iefix?1383949168) format("embedded-opentype"), url(/public/images/ProximaNova-Light-webfont.woff) format("woff"), url(//cdn.shopify.com/assets/fonts/shopify-assets/ProximaNova-Light-webfont.ttf?1383949168) format("truetype"), url(//cdn.shopify.com/assets/fonts/shopify-assets/ProximaNova-Light-webfont.svg#ProximaNovaRegular?1383949168) format("svg");
     font-weight: normal;
     font-style: normal;
 }
@@ -86,14 +86,14 @@ table {
 }@font-face {
     font-family: 'social-circle';
     src: url(//cdn.shopify.com/assets/fonts/shopify-assets/ss-social-circle.eot?1383949168);
-    src: url(//cdn.shopify.com/assets/fonts/shopify-assets/ss-social-circle.eot?#iefix?1383949168) format("embedded-opentype"), url(//cdn.shopify.com/assets/fonts/shopify-assets/ss-social-circle.woff?1383949168) format("woff"), url(//cdn.shopify.com/assets/fonts/shopify-assets/ss-social-circle.ttf?1383949168) format("truetype"), url(//cdn.shopify.com/assets/fonts/shopify-assets/ss-social-circle.svg#SocialicoRegular?1383949168) format("svg");
+    src: url(//cdn.shopify.com/assets/fonts/shopify-assets/ss-social-circle.eot?#iefix?1383949168) format("embedded-opentype"), url(/public/images/ss-social-circle.woff) format("woff"), url(//cdn.shopify.com/assets/fonts/shopify-assets/ss-social-circle.ttf?1383949168) format("truetype"), url(//cdn.shopify.com/assets/fonts/shopify-assets/ss-social-circle.svg#SocialicoRegular?1383949168) format("svg");
     font-weight: normal;
     font-style: normal;
 }
 @font-face {
     font-family: 'social-circle';
     src: url(//cdn.shopify.com/assets/fonts/shopify-assets/ss-social-circle.eot?1383949168);
-    src: url(//cdn.shopify.com/assets/fonts/shopify-assets/ss-social-circle.eot?#iefix?1383949168) format("embedded-opentype"), url(//cdn.shopify.com/assets/fonts/shopify-assets/ss-social-circle.woff?1383949168) format("woff"), url(//cdn.shopify.com/assets/fonts/shopify-assets/ss-social-circle.ttf?1383949168) format("truetype"), url(//cdn.shopify.com/assets/fonts/shopify-assets/ss-social-circle.svg#SocialicoRegular?1383949168) format("svg");
+    src: url(//cdn.shopify.com/assets/fonts/shopify-assets/ss-social-circle.eot?#iefix?1383949168) format("embedded-opentype"), url(/public/images/ss-social-circle.woff) format("woff"), url(//cdn.shopify.com/assets/fonts/shopify-assets/ss-social-circle.ttf?1383949168) format("truetype"), url(//cdn.shopify.com/assets/fonts/shopify-assets/ss-social-circle.svg#SocialicoRegular?1383949168) format("svg");
     font-weight: normal;
     font-style: normal;
 }
@@ -375,7 +375,7 @@ a:active, a:hover {
 #shopify-nav nav>ul>li span.arrow {
     display: block;
     float: right;
-    background: url(//cdn.shopify.com/assets/images/shopify-assets/main-sprite.png?1383949168) no-repeat -255px -55px;
+    background: url(/public/images/main-sprite.png) no-repeat -255px -55px;
     width: 7px;
     height: 4px;
     margin: 4px 0 0 8px;
@@ -3910,6 +3910,7 @@ li.dl-back {
     color: #fff;
 }
 #shopify-nav .sub-menu ul li a, #shopify-nav .sub-menu ul li:last-child a, .dl-submenu li a, .dl-submenu li:last-child a {
+    color:#666;
     padding: 20px !important;
 }
 #shopify-nav .sub-menu ul li a .title, .dl-submenu li a .title {
@@ -3936,7 +3937,8 @@ li.dl-back {
     perspective: 1000px;
     -webkit-perspective-origin: 50% 200%;
     -moz-perspective-origin: 50% 200%;
-    perspective-origin: 50% 200%}
+    perspective-origin: 50% 200%
+}
 .dl-menuwrapper button {
     background: #000;
     border: none;
@@ -4441,6 +4443,7 @@ li.dl-back {
     color: #fff;
 }
 #shopify-nav .sub-menu ul li a, #shopify-nav .sub-menu ul li:last-child a, .dl-submenu li a, .dl-submenu li:last-child a {
+    color: #666;
     padding: 20px !important;
 }
 #shopify-nav .sub-menu ul li a .title, .dl-submenu li a .title {
@@ -5013,6 +5016,7 @@ li.dl-back {
     color: #fff;
 }
 #shopify-nav .sub-menu ul li a, #shopify-nav .sub-menu ul li:last-child a, .dl-submenu li a, .dl-submenu li:last-child a {
+    color: #666;
     padding: 20px !important;
 }
 #shopify-nav .sub-menu ul li a .title, .dl-submenu li a .title {

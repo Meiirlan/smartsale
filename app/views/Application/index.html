@@ -1,4 +1,6 @@
-#{extends 'main.html' /} #{set title:'Smart Sale' /}
+#{extends 'main.html' /} 
+#{set title:'Smart Sale' /}
+#{header isActive:'0' /}
 <div id="segment-test" class="">
 	<section class="segments">
 		<div class="row clearfix">
@@ -7,16 +9,12 @@
 				<!-- Begin slider -->
 				<ul class="tabs clearfix">
 					<li class="tab-nav"><a href="#tab-new"
-						onclick="_gaq.push(['_trackEvent', 'Home', 'Customer Segment', 'Never sold online?', 0]); _visit.tag('home-segment-never');"
 						class="active">Never sold online?</a></li>
 					<li class="tab-nav"><a href="#tab-transfer"
-						onclick="_gaq.push(['_trackEvent', 'Home', 'Customer Segment', 'Already selling online?', 0]); _visit.tag('home-segment-already');"
 						class="">Already selling online?</a></li>
 					<li class="tab-nav"><a href="#tab-apps"
-						onclick="_gaq.push(['_trackEvent', 'Home', 'Customer Segment', 'Moving your brand online?', 0]); _visit.tag('home-segment-moving');"
 						class="">Moving your brand online?</a></li>
 					<li class="tab-nav"><a href="#tab-experts"
-						onclick="_gaq.push(['_trackEvent', 'Home', 'Customer Segment', 'Need help setting up your shop?', 0]); _visit.tag('home-segment-help');"
 						class="">Need help setting up your shop?</a></li>
 				</ul>
 				<div class="segment-wrapper">
@@ -101,8 +99,7 @@
 										to move all of your products automatically.</p>
 								</div>
 								<div class="col7 inner-left">
-									<img
-										src="//cdn.shopify.com/assets/images/long-landing/segment-transfer.png?1383949189">
+									<img src="/public/images/segment-transfer.png">
 								</div>
 							</div>
 						</li>
@@ -113,7 +110,7 @@
 									online ecommerce experience.</h3>
 								<div class="col7 inner-left">
 									<img class="apps-screen"
-										src="//cdn.shopify.com/assets/images/long-landing/segment-apps.png?1383949189">
+										src="/public/images/segment-apps.png">
 								</div>
 								<div class="col5 inner-right">
 									<p class="statement">From POS integration, inventory
@@ -150,7 +147,7 @@
 								</div>
 								<div class="col7 inner-left">
 									<img class="apps-screen"
-										src="//cdn.shopify.com/assets/images/long-landing/segment-experts.png?1383949189">
+										src="/public/images/segment-experts.png">
 								</div>
 							</div>
 						</li>
@@ -162,7 +159,6 @@
 	</section>
 </div>
 
-<!-- ============================================================================================================================================================================================= -->
 <script type="text/javascript">
 $("#segment-test").removeClass('hidden');
 $(".overview").css({"display":"none", "visibility":""});
@@ -170,6 +166,7 @@ $(".experience").css({"display":"none", "visibility":""});
 $(".testimonials").css({"padding-top":"0"});
 $(".examples").css({"padding-bottom":"60px"});
 </script>
+
 <script>
   $(function() {
     $( '#dl-menu' ).dlmenu({
@@ -178,92 +175,6 @@ $(".examples").css({"padding-bottom":"60px"});
   });
 </script>
 
-<script type="text/javascript">_visit.tag('long-landing');</script>
-<!-- Scripts -->
-<!-- Include Javascripts -->
 <script src="@{'/public/javascripts/all.js'}"></script>
-<!-- Fancybox -->
 <script src="@{'/public/javascripts/jquery.fancybox.pack.js'}"></script>
-<!-- Cycle Full Version -->
-<!-- Long Landing Page -->
 <script src="@{'/public/javascripts/v2-home.js'}" async="true"></script>
-<!-- Signup Modal -->
-<!-- signup-modal -->
-
-<!-- End signup-modal -->
-<!-- Partners -->
-<script type="text/javascript">
-  (function(r) {
-    var brandedKeyword = function(ref) {
-      var match1 = new RegExp("((google|yahoo|bing)(.*)&?q=([^&]*)shopify)", "gi").test(ref);
-      return (match1);
-    }
-
-    var match1 = new RegExp("[\\?&](source|r|ref)=([^&#]*)", "gi").exec(r);
-    if(match1 && !brandedKeyword(document.referrer)) {
-      var days = 30;
-      var date = new Date();
-      date.setTime(date.getTime()+days*86400000);
-      jQuery.cookie("source", match1[2], {expires: date, domain: ".shopify.com", path: "/"});
-    }
-  })(window.location.href);
-</script>
-<script type="text/javascript">
-$(document).ready(function(){
-	// Homepage Screenshot Cycle //
-	$('.cycle').cycle({
-	  fx: 'fade',
-	  speed: 800,
-		delay: -1000
-	 });
-  // Signup Modal redirect //
-  //
-  if (ShopifySignup) {
-  }
-});
-</script>
-<!-- Analytics -->
-<!-- 3 -->
-<script type="text/javascript">
-/* <![CDATA[ */
-var google_conversion_id = 1033599327;
-var google_conversion_language = "en";
-var google_conversion_format = "3";
-var google_conversion_color = "666666";
-var google_conversion_label = "ISC2COOZmQIQ3_Lt7AM";
-var google_conversion_value = 0;
-/* ]]> */
-</script>
-<div style="display: none">
-	<script type="text/javascript"
-		src="@{'/public/javascripts/conversion.js'}"></script>
-</div>
-<noscript>&lt;img height="1" width="1"
-	style="border-style:none;"
-	src="//www.googleadservices.com/pagead/conversion/1033599327/?label=ISC2COOZmQIQ3_Lt7AM&amp;amp;guid=ON&amp;amp;script=0"/&gt;
-</noscript>
-<script src="@{'/public/javascripts/pixel.js'}"></script>
-<noscript>&lt;img
-	src="//segment-pixel.invitemedia.com/pixel?pixelID=79152&amp;partnerID=340&amp;clientID=6481&amp;key=segment"
-	width="1" height="1" /&gt;</noscript>
-<!-- Qualaroo for shopify.com -->
-<script type="text/javascript">var _kiq = _kiq || [];</script>
-<script type="text/javascript">
-// Optimizely Multitracking
-var oeuid = $.cookie('optimizelyEndUserId');
-var obuck = $.cookie('optimizelyBuckets');
-if (oeuid && oeuid != '' && obuck && obuck != '') {
-  _visit.keyValue("optimizelyEndUserId", oeuid)
-  _visit.keyValue("optimizelyBuckets", obuck)
-}
-</script>
-<script type="text/javascript">
-// <![CDATA[
-var _ls_pub_id = "191";
-(function(d, t){
-var mb = d.createElement(t), s = d.getElementsByTagName(t)[0];
-mb.async = mb.src = '//cdn.linksmart.com/linksmart_2.3.0.min.js';
-s.parentNode.insertBefore(mb, s);
-}(document, 'script'));
-// ]]>
-</script>

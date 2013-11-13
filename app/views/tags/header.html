@@ -8,12 +8,38 @@
 			</div>
 			<div class="col9">
 				<nav id="dl-menu" class="dl-menuwrapper">
+					<button class="dl-trigger">Open Menu</button>
 					<ul class="sub-menu dl-menu">
-						<li><a href="#templates">Магазины</a></li>
-						<li><a href="#examples">Услуги</a></li>
-						<li><a href="#pricing">Скидки</a></li>
-						<li><a href="#pos">Категории</a></li>
-						<li><a href="/feedback">Обратная связь</a></li>
+						#{if _isActive=='1'}
+							<li><a href="#templates" class="current">Магазины</a></li>
+						#{/if}
+						#{else}
+							<li><a href="#templates" >Магазины</a></li>
+						#{/else}
+						#{if _isActive=='2'}
+							<li><a href="#examples" class="current">Услуги</a></li>
+						#{/if}
+						#{else}
+							<li><a href="#examples">Услуги</a></li>
+						#{/else}
+						#{if _isActive=='3'}
+							<li><a href="#pricing" class="current">Скидки</a></li>
+						#{/if}
+						#{else}
+							<li><a href="#pricing">Скидки</a></li>
+						#{/else}
+						#{if _isActive=='4'}
+							<li><a href="#pos" class="current">Категории</a></li>
+						#{/if}
+						#{else}
+							<li><a href="#pos">Категории</a></li>
+						#{/else}				
+						#{if _isActive=='5'}
+							<li><a href="/feedback" class="current">Обратная связь</a></li>
+						#{/if}
+						#{else}
+							<li><a href="/feedback">Обратная связь</a></li>
+						#{/else}
 						#{if session.email}	
 						<li>
 							#{if session.firstName}
