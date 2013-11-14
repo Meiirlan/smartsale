@@ -25,6 +25,15 @@ public class Application extends Controller {
     public static void signupStore() {    	
     	render();
     }
+    public static void profile() {    	
+    	render();
+    }
+    public static void clientFollowers() {    	
+    	render();
+    }
+    public static void myQuestions() {    	
+    	render();
+    }
     public static void save(Long id,
     		@Required(message="Email is required") String email, 
     		String firstName, 

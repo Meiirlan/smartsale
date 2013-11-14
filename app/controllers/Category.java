@@ -10,7 +10,7 @@ import org.apache.commons.codec.digest.DigestUtils;
 
 import com.sun.mail.handlers.message_rfc822;
 
-public class Shop extends Controller{
+public class Category extends Controller{
     
 	public static void index() {
         render();

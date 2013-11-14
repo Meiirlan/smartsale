@@ -1,4 +1,3 @@
-
 <!-- Begin nav -->
 <div id="shopify-nav">
 	<div class="wrapper">
@@ -11,46 +10,51 @@
 					<button class="dl-trigger">Open Menu</button>
 					<ul class="sub-menu dl-menu">
 						#{if _isActive=='1'}
-							<li><a href="#templates" class="current">Магазины</a></li>
+							<li><a href="@{Shop.index()}" class="current">Сервисы</a></li>
 						#{/if}
 						#{else}
-							<li><a href="#templates" >Магазины</a></li>
+							<li><a href="@{Shop.index()}" >Сервисы</a></li>
 						#{/else}
 						#{if _isActive=='2'}
-							<li><a href="#examples" class="current">Услуги</a></li>
+							<li><a href="@{Sale.index()}" class="current">Скидки</a></li>
 						#{/if}
 						#{else}
-							<li><a href="#examples">Услуги</a></li>
+							<li><a href="@{Sale.index()}">Скидки</a></li>
 						#{/else}
 						#{if _isActive=='3'}
-							<li><a href="#pricing" class="current">Скидки</a></li>
+							<li><a href="@{Category.index()}" class="current">Категории</a></li>
 						#{/if}
 						#{else}
-							<li><a href="#pricing">Скидки</a></li>
-						#{/else}
-						#{if _isActive=='4'}
-							<li><a href="#pos" class="current">Категории</a></li>
-						#{/if}
-						#{else}
-							<li><a href="#pos">Категории</a></li>
+							<li><a  href="@{Category.index()}">Категории</a></li>
 						#{/else}				
-						#{if _isActive=='5'}
-							<li><a href="/feedback" class="current">Обратная связь</a></li>
+						#{if _isActive=='4'}
+							<li><a href="@{Application.feedback()}" class="current">Обратная связь</a></li>
 						#{/if}
 						#{else}
-							<li><a href="/feedback">Обратная связь</a></li>
+							<li><a href="@{Application.feedback()}">Обратная связь</a></li>
 						#{/else}
 						#{if session.email}	
 						<li>
-							#{if session.firstName}
-								<a href="http://www.shopify.com/#" class="drop-menu-title">${session.firstName}<span class="arrow"></span></a>
+							#{if _isActive=='5'}
+								#{if session.firstName}
+									<a href="#" class="drop-menu-title current">${session.firstName}<span class="arrow"></span></a>
+								#{/if}
+								#{else}
+									<a href="#" class="drop-menu-title current">${session.email}<span class="arrow"></span></a>
+								#{/else}
 							#{/if}
 							#{else}
-								<a href="http://www.shopify.com/#" class="drop-menu-title">${session.email}<span class="arrow"></span></a>
+								#{if session.firstName}
+									<a href="#" class="drop-menu-title">${session.firstName}<span class="arrow"></span></a>
+								#{/if}
+								#{else}
+									<a href="#" class="drop-menu-title">${session.email}<span class="arrow"></span></a>
+								#{/else}
 							#{/else}
 							<ul class="dl-submenu">
-								<li><a href="#blog">Profile</a></li>
-								<li><a href="#settings">Settings</a></li>
+								<li><a href="@{Application.profile()}">Профиль</a></li>
+								<li><a href="@{Application.clientFollowers()}">Мои подписки</a></li>
+								<li><a href="@{Application.myQuestions()}">Мои вопросы</a></li>
 								<li><a href="@{Secure.logout()}" class="navbar-link">Выйти</a></li>
 							</ul>
 						</li>

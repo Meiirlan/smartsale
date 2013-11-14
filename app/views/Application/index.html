@@ -1,6 +1,6 @@
 #{extends 'main.html' /} 
 #{set title:'Smart Sale' /}
-#{header isActive:'0' /}
+#{header isActive:'1' /}
 <div id="segment-test" class="">
 	<section class="segments">
 		<div class="row clearfix">
@@ -25,130 +25,24 @@
 								<div class="row clearfix">
 									<!-- Begin examples feed -->
 									<div class="col12 new-to">
-										<div class="col4">
-											<div class="mask">
-												<a href="public/images/cxxvi.jpg?1383949189" class="info"
-													rel="fancybox">View Screenshot</a> <a
-													href="http://www.cxxvi.net/" class="info" rel="fancyframe"
-													target="_blank">Visit Website</a>
-											</div>
-											<img class="thumbnail" src="public/images/cxxvi-sm.jpg"
-												width="285" height="289" alt="CXXVI">
-											<div class="description">
-												<h4 class="tc">CXXVI</h4>
-												<p class="tc">Unique american made clothing and
-													accessories. Their custom theme is a great example of a
-													simple yet beautiful clothing store ecommerce template.</p>
-											</div>
-										</div>
-										<div class="col4">
-											<div class="mask">
-												<a href="public/images/pop-chart-lab.jpg?1383949189"
-													class="info" rel="fancybox">View Screenshot</a> <a
-													href="http://popchartlab.com/" class="info"
-													rel="fancyframe" target="_blank">Visit Website</a>
-											</div>
-											<img class="thumbnail"
-												src="public/images/pop-chart-lab-sm.jpg" width="285"
-												height="289" alt="Pop Chart Lab">
-											<div class="description">
-												<h4 class="tc">Pop Chart Lab</h4>
-												<p class="tc">Stunning infographics, prints and apparel.
-													This simple custom template effectively showcases their
-													unique works of art.</p>
-											</div>
-										</div>
-										<div class="col4">
-											<div class="mask">
-												<a href="public/images/hard-graft.jpg?1383949189"
-													class="info" rel="fancybox">View Screenshot</a> <a
-													href="http://hardgraft.com/" class="info" rel="fancyframe"
-													target="_blank">Visit Website</a>
-											</div>
-											<img class="thumbnail" src="public/images/hard-graft-sm.jpg"
-												width="285" height="289" alt="Hard Graft">
-											<div class="description">
-												<h4 class="tc">Hard Graft</h4>
-												<p class="tc">This UK-based lifestyle and tech accessory
-													company uses a stunning and simple custom template to
-													showcase their products, complete with rich photography.</p>
-											</div>
-										</div>
+										#{shop /}
 									</div>
 								</div>
 							</section> <!-- End examples feed -->
 						</li>
 						<li id="tab-transfer" class="" style="display: none;">
 							<div class="col12 transfer">
-								<h2 class="tc">Already selling online?</h2>
-								<h3 class="tc p60">Learn why thousands are switching to
-									Shopify each month.</h3>
-								<div class="col5 inner-right">
-									<p class="statement">Shopify is the largest and fastest
-										growing hosted ecommerce platform in the world.</p>
-									<p>Here's what you get when you switch to Shopify:</p>
-									<ul class="user-content-list">
-										<li>Unlimited bandwidth and a 99.94% uptime record</li>
-										<li>Unlimited products on the Basic $29/month plan</li>
-										<li>Integration with 70+ payment gateways and PayPal</li>
-										<li>Over 200 Shopify Apps that plug into your store</li>
-										<li>Unlimited 24x7 toll-free phone, chat and email
-											support</li>
-									</ul>
-									<p>Switch to Shopify today and use our free importing tools
-										to move all of your products automatically.</p>
-								</div>
-								<div class="col7 inner-left">
-									<img src="/public/images/segment-transfer.png">
-								</div>
+								#{shop /}
 							</div>
 						</li>
 						<li id="tab-apps" style="display: none;" class="">
 							<div class="col12 apps">
-								<h2 class="tc">Moving your brand online?</h2>
-								<h3 class="tc p60">Use Shopify for seamless offline to
-									online ecommerce experience.</h3>
-								<div class="col7 inner-left">
-									<img class="apps-screen"
-										src="/public/images/segment-apps.png">
-								</div>
-								<div class="col5 inner-right">
-									<p class="statement">From POS integration, inventory
-										tracking, shipping and fulfilment, and accounting, Shopify has
-										everything you need.</p>
-									<p>Shopify has partnered with hundreds of different vendors
-										to ensure you have a seamless experience offline and online.</p>
-									<p>Start a free trial and talk with one of our knowledgable
-										ecommerce support guru's.</p>
-								</div>
+								#{shop /}
 							</div>
 						</li>
 						<li id="tab-experts" style="display: none;" class="">
 							<div class="col12 experts">
-								<h2 class="tc">Need help setting up your shop?</h2>
-								<h3 class="tc p60">A Shopify Expert will help with the
-									basics to get your store running in no time.</h3>
-								<div class="col5 inner-right">
-									<p class="statement">
-										<a href="http://experts.shopify.com" target="_blank">Let a
-											Setup Expert walk you through the ABCs of ecommerce.</a>
-									</p>
-									<p>These talented pros can help you launch your business
-										online or seamlessly migrate your shop from another ecommerce
-										platform.</p>
-									<p>Create a beautiful, customized online store with the
-										help of a Shopify Expert. Our roster of talented designers and
-										developers can tweak a template or craft a new design from
-										scratch.</p>
-									<a class="button button-secondary button-small"
-										href="http://experts.shopify.com" target="_blank"
-										onclick="_gaq.push(['_trackEvent', 'Home', 'Talk to an Expert', 'Help to build your business', 0]);">Talk
-										to an Expert now</a>
-								</div>
-								<div class="col7 inner-left">
-									<img class="apps-screen"
-										src="/public/images/segment-experts.png">
-								</div>
+								#{shop /}
 							</div>
 						</li>
 					</ul>
@@ -158,23 +52,3 @@
 		</div>
 	</section>
 </div>
-
-<script type="text/javascript">
-$("#segment-test").removeClass('hidden');
-$(".overview").css({"display":"none", "visibility":""});
-$(".experience").css({"display":"none", "visibility":""});
-$(".testimonials").css({"padding-top":"0"});
-$(".examples").css({"padding-bottom":"60px"});
-</script>
-
-<script>
-  $(function() {
-    $( '#dl-menu' ).dlmenu({
-      animationClasses : { classin : 'dl-animate-in-2', classout : 'dl-animate-out-2' }
-    });
-  });
-</script>
-
-<script src="@{'/public/javascripts/all.js'}"></script>
-<script src="@{'/public/javascripts/jquery.fancybox.pack.js'}"></script>
-<script src="@{'/public/javascripts/v2-home.js'}" async="true"></script>

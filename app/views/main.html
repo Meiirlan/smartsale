@@ -7,31 +7,30 @@
 <!-- Title -->
 <title>#{get 'title' /}</title>
 <!-- Description -->
-<meta name="description" content="Shopify is a powerful ecommerce website solution that allows you to sell online by providing everything you need to create an online store. Try our free 14 day trial.">
+<meta name="description" content="SmartSale is a powerful ecommerce website solution that allows you to sell online by providing everything you need to create an online store. Try our free 14 day trial.">
 <meta name="google-site-verification" content="zRqqHlRwmANV6MgOAicWpxHgU35MZvREm89M13cNQTg">
 <meta name="verify-a" value="c56c27a8f68c6ddcafdf">
 <meta name="msvalidate.01" content="AE1E888386499A412C42CB1A632DA95C">
 <meta name="p:domain_verify" content="8c574a25baf8ff1451e95459fdc79ed8">
-<link rel="canonical" href="./index/Ecommerce Software, Online Store Builder, Website Store Hosting Solution- Free 14 day Trial by Shopify..html">
+<link rel="canonical" href="./index/Ecommerce Software, Online Store Builder, Website Store Hosting Solution- Free 14 day Trial by SmartSale.kz">
 <!-- Mobile viewport -->
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <!-- Responsive -->
 <!-- Icons -->
-<link rel="shortcut icon" type="image/x-icon" href="http://cdn.shopify.com/assets/favicon.ico?1383949189">
+<link rel="shortcut icon" type="image/x-icon" href="/public/images/favicon.ico">
 <!-- Facebook card -->
-<meta property="og:image" content="http://cdn.shopify.com/assets/images/logos/shopify-bag.png?1341928631">
-<meta property="og:title" content="Ecommerce Software, Online Store Builder, Website Store Hosting Solution- Free 14 day Trial by Shopify.">
-<meta property="og:site_name" content="Shopify">
+<meta property="og:image" content="/public/images/smartsale-bag.png">
+<meta property="og:title" content="Ecommerce Software, Online Store Builder, Website Store Hosting Solution- Free 14 day Trial by SmartSale.">
+<meta property="og:site_name" content="SmartSale">
 <!-- Twitter card -->
 <meta property="twitter:card" content="summary">
-<meta property="twitter:title" content="Shopify">
-<meta property="twitter:description" content="Shopify is a powerful ecommerce platform that includes everything you need to create an online store and sell online. Try it free for 14 days.">
-<meta property="twitter:image" content="http://cdn.shopify.com/assets/images/logos/shopify-bag.png?1341928631">
-<meta property="twitter:site" content="@Shopify">
+<meta property="twitter:title" content="SmartSale">
+<meta property="twitter:description" content="SmartSale is a powerful ecommerce platform that includes everything you need to create an online store and sell online. Try it free for 14 days.">
+<meta property="twitter:image" content="/public/images/smartsale-bag.png">
+<meta property="twitter:site" content="@SmartSaleKz">
 <!-- Begin CSS -->
-<link rel="stylesheet" type="text/css" href="@{'/public/stylesheets/home.css'}" media="all">
+<link rel="stylesheet" type="text/css" href="@{'/public/stylesheets/home.min.css'}" media="all">
 #{get 'moreStyles' /}
-	<!-- Begin jQuery -->
 <script src="@{'/public/javascripts/jquery.min.js'}"></script>
 <!-- Modernizr -->
 <script src="@{'/public/javascripts/modernizr.min.js'}"></script>
@@ -73,6 +72,23 @@
 			style="position: absolute; width: 9999px; visibility: hidden; display: none;"></div>
 	</div>
 	<div id="pg-home">#{doLayout /} #{footer /}</div>
+	<!-- Begin jQuery -->
+
+<script type="text/javascript">
+$("#segment-test").removeClass('hidden');
+$(".overview").css({"display":"none", "visibility":""});
+$(".experience").css({"display":"none", "visibility":""});
+$(".testimonials").css({"padding-top":"0"});
+$(".examples").css({"padding-bottom":"60px"});
+$(function() {
+    $( '#dl-menu' ).dlmenu({
+      animationClasses : { classin : 'dl-animate-in-2', classout : 'dl-animate-out-2' }
+    });
+  });
+</script>
+<script src="@{'/public/javascripts/all.js'}"></script>
+<script src="@{'/public/javascripts/jquery.fancybox.pack.js'}"></script>
+<script src="@{'/public/javascripts/v2-home.js'}" async="true"></script>
 
 #{get 'moreScripts' /}
 </body>

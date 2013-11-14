@@ -1,105 +1,48 @@
-#{extends 'main.html' /} #{set title:'Login' /}
-<link rel="stylesheet" type="text/css" 
-	href="@{'/public/stylesheets/login.css'}" media="all">
-<div class="wrapper content">
-    <div id="content-wrapper" class="clearfix row">
-        <div class="row login-area">
-
-	<div class="col8">
-		<h3>Log in</h3>
-			#{form @Secure.authenticate()}
-				#{if flash.error}
-					<h6 class="error">
-						&{flash.error}
-					</h6>
-				#{/if}
-				#{if flash.success}
-					<h6 class="success">
-						&{flash.success}
-					</h6>
-				#{/if}
-			    <label for="login">Email Address</label>
-		    	<input name="email" id="login" type="text" class="email" value="${flash.email}">	
-			    <span class="error">#{error 'user.email' /}</span>
-			    			    			    
-			    <label for="pwd">Password</label>
-		    	<input name="password" id="password" type="password">	
-			    <span class="error">#{error 'user.pwd' /}</span>
-			    <a href="/recover">Forgot your password?</a>
-	
-			   	<div style="margin: 15px 0;" class="clearfix">
-					<input name="remember" id="remember" type="checkbox" style="float: left;" ${flash.remember ? 'checked="true"' : ''} >
-					<label class="remember" for="remember">&{'secure.remember'}</label>
-				</div>
-				<p>
-			    	<input type="submit" id="signin" value="&{'secure.signin'}" value="Create Account" class="button button-primary">
-			    </p>
-		    #{/form} 
-	</div>
-
-	<div class="col4 border-left">
-		<h3>No Account Yet?</h3>
-		<p>
-			<a href="/signup" class="internal-auth">Sign up as <strong>client</strong></a>. 
-		</p>
-		<p>
-			<a href="/signupStore" class="internal-auth">Sign up as <strong>store</strong></a>. 
-		</p>
-	</div>
-
-</div>
-
-
+#{extends 'main.html' /} #{set title:'Login' /} #{header/}
 <script type="text/javascript">
-	function shopUrl() {
-		if ($('#subdomain').val() == '') {
-			$('#subdomain').focus();
-			return false;
-		} else {
-			setLoginCookies();
-			_gaq.push(['_setCustomVar', 1, 'existinguser', 'true', 1]);
-			_gaq.push(['_trackEvent', 'user', 'login']);
-			var form = $('#shopify-login-form');
-			form.attr('action', 'https://' + $('#subdomain').val() + '.myshopify.com/admin/auth/login');
-			form.submit();
-			return false;
-		}
-	}
-
-	function getParameter(paramName) {
-	  var searchString   = window.location.search.substring(1);
-	  var i, val, params = searchString.split("&");
-
-	  for (i=0; i < params.length; i++) {
-	    val = params[i].split("=");
-	    if (val[0] == paramName) {
-	      return decodeURIComponent(val[1]);
-	    }
-	  }
-	  return null;
-	}
-
 	$(document).ready(function() {
-		var redirect = getParameter('redirect');
-		if (redirect && redirect != '') {
-			$('#redirect').val(redirect);
-		}
 		$('body').removeClass('long-landing');
 		$('body').addClass('v2-subpage');
 	});
 </script>
+<link rel="stylesheet" type="text/css"
+	href="@{'/public/stylesheets/login.css'}" media="all">
+<div class="wrapper content">
+	<div id="content-wrapper" class="clearfix row">
+		<div class="row login-area">
+			<div class="col8">
+				<h3>Log in</h3>
+				#{form @Secure.authenticate()} #{if flash.error}
+				<h6 class="error">&{flash.error}</h6>
+				#{/if} #{if flash.success}
+				<h6 class="success">&{flash.success}</h6>
+				#{/if} <label for="login">Email Address</label> <input name="email"
+					id="login" type="text" class="email" value="${flash.email}">
+				<span class="error">#{error 'user.email' /}</span> <label for="pwd">Password</label>
+				<input name="password" id="password" type="password"> <span
+					class="error">#{error 'user.pwd' /}</span> <a href="/recover">Forgot
+					your password?</a>
 
-
-    </div>
-	
-    <div class="row">
-      <div id="sub-call-to-action">
-		
-      
-        	<h3 class="tc signup">Start your free, <strong>no-risk</strong>, 14 day trial! <a href="#" class="button button-primary call-to-action">Create your store now</a></h3>
-      
-		
-      </div>
-    </div>
-	
-  </div>
+				<div style="margin: 15px 0;" class="clearfix">
+					<input name="remember" id="remember" type="checkbox"
+						style="float: left;" ${flash.remember ? 'checked="true"' : ''} >
+					<label class="remember" for="remember">&{'secure.remember'}</label>
+				</div>
+				<p>
+					<input type="submit" id="signin" value="&{'secure.signin'}"
+						value="Create Account" class="button button-primary">
+				</p>
+				#{/form}
+			</div>
+			<div class="col4 border-left">
+				<h3>No Account Yet?</h3>
+				<p>
+					<a href="/signup" class="internal-auth">Sign up as <strong>client</strong></a>.
+				</p>
+				<p>
+					<a href="/signupStore" class="internal-auth">Sign up as <strong>store</strong></a>.
+				</p>
+			</div>
+		</div>
+	</div>
+</div>
