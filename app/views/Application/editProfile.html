@@ -1,0 +1,87 @@
+#{extends 'main.html' /} #{set title:'Login' /} #{header/}
+<script type="text/javascript">
+	$(document).ready(function() {
+		$('body').removeClass('long-landing');
+		$('body').addClass('v2-subpage');
+	});
+</script>
+<link rel="stylesheet" type="text/css"
+	href="@{'/public/stylesheets/login.css'}" media="all">
+<div class="wrapper content">
+	<div id="content-wrapper" class="clearfix row">
+		<div class="row login-area">
+			<div class="col8">
+				<h4>Редактировать профиль</h4>
+				<h6>Поля, отмеченные звездочкой, обязательны для заполнения.</h6>
+				#{form @Application.editProfile()} 
+				#{if flash.error}
+				<h6 class="error">&{flash.error}</h6>
+				#{/if} #{if flash.success}
+				<h6 class="success">&{flash.success}</h6>
+				#{/if}
+				
+				<label for="email">E-mail:</label> 
+				<input name="email" id="login" type="text" class="email" value="${flash.email}">
+				<span class="error">#{error 'user.email' /}</span>  
+				
+				<label for="firstName">Имя*::</label> 
+				<input name="firstName" id="firstName" type="text" class="firstName" value="${flash.email}">
+				<span class="error">#{error 'user.email' /}</span>  
+				
+				<label for="lastName">Фамилия*:</label> 
+				<input name="lastName" id="lastName" type="text" class="lastName" value="${flash.email}">
+				<span class="error">#{error 'user.email' /}</span>  
+				
+				<label for="photo">Фото:</label> 
+				<input name="photo" id="photo" type="text" class="photo" value="${flash.email}">
+				<span class="error">#{error 'user.email' /}</span>  
+				
+				<label for="gender">Пол*:</label> 
+				<input name="gender" id="gender" type="text" class="gender" value="${flash.email}">
+				<span class="error">#{error 'user.email' /}</span>  
+				
+				<label for="phone">Мобильный телефон:</label> 
+				<input name="phone" id="phone" type="text" class="phone" value="${flash.email}">
+				<span class="error">#{error 'user.email' /}</span>  
+				
+				<label for="birthdate">Дата рождения*:</label> 
+				 
+
+  
+				<p>Date: <input type="text" id="datepicker" /></p>
+				<input name="birthdate" id="birthdate" type="text" class="birthdate" value="${flash.email}">
+				<span class="error">#{error 'user.email' /}</span>  
+				
+		        <label for="city">Город:</label>
+			    <select style="width: 180px; margin-bottom: 10px;" id="store_city" name="store">
+			    	#{list items:cities, as:'c'}
+		            	<option value="" disabled="true" >${c.city}</option>
+					#{/list}
+				</select>
+			
+				<p>
+					<input type="submit" id="signin"
+						value="Сохранить" class="button button-primary">
+				</p>
+				#{/form}
+			</div>
+			<div class="col4 border-left">
+				<p>
+					<a href="@{Application.profile()}" class="internal-auth">Назад</a>.
+				</p>
+			</div>
+		</div>
+	</div>
+</div>
+#{set 'moreScripts' }
+<link rel="stylesheet" href="/public/stylesheets/jquery-ui.css" />
+<script src="/public/javascripts/jquery-ui.js"></script>
+<script>
+  $(function() {
+    $( "#datepicker" ).datepicker({
+      changeMonth: true,
+      changeYear: true
+    });
+  });
+  </script>
+#{/set}

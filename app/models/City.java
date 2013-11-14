@@ -10,6 +10,7 @@ import play.data.validation.MaxSize;
 import play.data.validation.MinSize;
 import play.data.validation.Required;
 import play.data.validation.Unique;
+import play.db.jpa.JPABase;
 import play.db.jpa.Model;
 
 
@@ -24,5 +25,13 @@ public class City extends Model implements Serializable{
 	
 	public static City getCity(String store) {
 		return find("byCity", store).first();
+	}
+	
+	public static List<City> getAllCity() {
+		return  City.findAll();
+	}
+	
+	public String toString() {
+		return city;
 	}
 }

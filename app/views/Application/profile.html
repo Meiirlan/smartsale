@@ -1,48 +1,54 @@
-#{extends 'main.html' /} 
-#{set title:'Smart Sale' /}
-#{header isActive:'5' /}
-<div id="segment-test" class="">
-	<section class="segments">
-		<div class="row clearfix">
-			<br />
-			<div class="col12">
-				<div class="col2">
+#{extends 'main.html' /} #{set title:'Login' /} #{header/}
+<script type="text/javascript">
+	$(document).ready(function() {
+		$('body').removeClass('long-landing');
+		$('body').addClass('v2-subpage');
+	});
+</script>
+<link rel="stylesheet" type="text/css"
+	href="@{'/public/stylesheets/login.css'}" media="all">
+<div class="wrapper content">
+	<div id="content-wrapper" class="clearfix row">
+		<div class="row login-area">
+			<div class="col2">
 					<div class="user_foto">
 					    <img src="/public/images/avatar.jpg" width="100px;" height="100px;"><br/>
 					    <a class="ajaxlink" href="/script/settings?action=edituser">Изменить фото</a>
 					</div>
 				</div>
-				<div class="col3">
-					<div class="user_table">
+				<div class="col4">
+					<div class="user_table" style="text-align: left">
 						<table>
 							<tbody><tr>
 								<th>Имя:</th>
-								<td>Sultan</td>
+								<td>${user.firstName}</td>
 							</tr>
 							<tr>
 								<th>Фамилия:</th>
-								<td>Zhiyenbay</td>
+								<td>${user.lastName}</td>
 							</tr>
 							<tr>
 								<th>Пол:</th>
-								<td>Мужской</td>
+								<td>${user.gender}</td>
 							</tr>
 							<tr>
 								<th>Дата рождения:</th>
-								<td>30-11--0001</td>
+								<td>${user.birthdate}</td>
 							</tr>
 							<tr>
 								<th>E-mail:</th>
-								<td>zh.sulta@gmail.com</td>
+								<td>${user.user_email}</td>
 							</tr>
 							<tr>
 								<th>Город:</th>
-								<td>Астана</td>
+								<td>${user.city}</td>
 							</tr>
 						</tbody></table>
 					</div>
 				</div>
-			</div>
+				<div class="user_link_edit">
+					<a class="ajaxlink" href="@{Application.editProfile()}">Редактировать</a>
+				</div>
 		</div>
-	</section>
+	</div>
 </div>

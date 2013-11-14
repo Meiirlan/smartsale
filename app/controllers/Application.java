@@ -1,6 +1,7 @@
 package controllers;
 
 import play.*;
+import play.cache.Cache;
 import play.data.validation.Required;
 import play.mvc.*;
 
@@ -25,8 +26,23 @@ public class Application extends Controller {
     public static void signupStore() {    	
     	render();
     }
+	@Before
+    static void setConnectedUser() {
+        if(Security.isConnected()) { 
+        	Client user = Cache.get(session.getId() + "-user",Client.class);
+        	if(user==null){
+        		user = Client.getUserByEmail(session.get("email"));
+        		Cache.set(session.getId() + "-user", user, "30mn");
+        	}        	
+            renderArgs.put("user", user);            
+        }
+    }	
     public static void profile() {    	
     	render();
+    }
+    public static void editProfile() { 
+    	List<City> cities = City.getAllCity();
+    	render(cities);
     }
     public static void clientFollowers() {    	
     	render();
