@@ -1,0 +1,78 @@
+#{extends 'main.html' /} #{set title:'Login' /} #{header/}
+<script type="text/javascript">
+	$(document).ready(function() {
+		$('body').removeClass('long-landing');
+		$('body').addClass('v2-subpage');
+	});
+</script>
+<link rel="stylesheet" type="text/css"
+	href="@{'/public/stylesheets/login.css'}" media="all">
+<div class="wrapper content">
+	<div id="content-wrapper" class="clearfix row">
+		<div class="row login-area">
+			<div class="col8">
+				<h4>Редактировать профиль</h4>
+				<h6>Поля, отмеченные звездочкой, обязательны для заполнения.</h6>
+				#{form @Application.saveServiceProfile(), enctype:'multipart/form-data'} 
+				#{if flash.error}
+				<h6 class="error">&{flash.error}</h6>
+				#{/if} #{if flash.success}
+				<h6 class="success">&{flash.success}</h6>
+				#{/if}
+				
+				<input name="email" style="display: none" id="login" type="text" class="email" value="${userShop.user_email}">
+				
+				<label for="firstName">Имя*:</label> 
+				<input name="firstName" id="firstName" type="text" class="firstName" value="${userShop.firstName}">
+				<span class="error">#{error 'client.email' /}</span>  
+				
+				<label for="lastName">Фамилия*:</label> 
+				<input name="lastName" id="lastName" type="text" class="lastName" value="${userShop.lastName}">
+				<span class="error">#{error 'client.email' /}</span>  
+				
+				<label for="phone">Мобильный телефон:</label> 
+				<input name="phone" id="phone" type="text" class="phone" value="${userShop.phone}">
+				<span class="error">#{error 'client.email' /}</span>  
+				
+		        <label for="address">Адрес*:</label> 
+		        <input name="address" id="address" type="text" class="address" value="${userShop.address}">
+				<span class="error">#{error 'user.address' /}</span> 
+				
+				<label for="photo">Фото:</label> 
+				<img src="@{Application.userShopPhoto(userShop.id)}" 
+				style="width: 120px; height: 120px;'">
+				<input type="file" id="photo" name="photo" />		
+				
+				<label for="city">Город:</label>
+			    <select style="width: 180px; margin-bottom: 10px;" id="city" name="city">
+			    	#{list items:cities, as:'c'}
+		            	<option value="${c.city}">${c.city}</option>
+					#{/list}
+				</select>
+				<p>
+					<input type="submit" id="signin"
+						value="Сохранить" class="button button-primary">
+				</p>
+				#{/form}
+			</div>
+			<div class="col4 border-left">
+				<p>
+					<a href="@{Application.serviceProfile()}" class="internal-auth">Назад</a>.
+				</p>
+			</div>
+		</div>
+	</div>
+</div>
+#{set 'moreScripts' }
+<link rel="stylesheet" href="/public/stylesheets/jquery-ui.css" />
+<script src="/public/javascripts/jquery-ui.js"></script>
+<script>
+  $(function() {
+    $( "#birthday" ).datepicker({
+      changeMonth: true,
+      changeYear: true,
+      dateFormat: 'dd-mm-yy' 
+    });
+  });
+  </script>
+#{/set}

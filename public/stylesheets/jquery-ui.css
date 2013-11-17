@@ -624,7 +624,7 @@ button.ui-button::-moz-focus-inner {
 }
 .ui-slider .ui-slider-range {
 	position: absolute;
-	z-index: 1;
+	z-index: 10000;
 	font-size: .7em;
 	display: block;
 	border: 0;

@@ -13,52 +13,55 @@
 			<div class="col8">
 				<h4>Редактировать профиль</h4>
 				<h6>Поля, отмеченные звездочкой, обязательны для заполнения.</h6>
-				#{form @Application.editProfile()} 
+				#{form @Application.saveProfile(), enctype:'multipart/form-data'} 
 				#{if flash.error}
 				<h6 class="error">&{flash.error}</h6>
 				#{/if} #{if flash.success}
 				<h6 class="success">&{flash.success}</h6>
 				#{/if}
 				
-				<label for="email">E-mail:</label> 
-				<input name="email" id="login" type="text" class="email" value="${flash.email}">
-				<span class="error">#{error 'user.email' /}</span>  
+				<input name="email" style="display: none" id="login" type="text" class="email" value="${client.user_email}">
 				
-				<label for="firstName">Имя*::</label> 
-				<input name="firstName" id="firstName" type="text" class="firstName" value="${flash.email}">
-				<span class="error">#{error 'user.email' /}</span>  
+				<label for="firstName">Имя*:</label> 
+				<input name="firstName" id="firstName" type="text" class="firstName" value="${client.firstName}">
+				<span class="error">#{error 'client.email' /}</span>  
 				
 				<label for="lastName">Фамилия*:</label> 
-				<input name="lastName" id="lastName" type="text" class="lastName" value="${flash.email}">
-				<span class="error">#{error 'user.email' /}</span>  
+				<input name="lastName" id="lastName" type="text" class="lastName" value="${client.lastName}">
+				<span class="error">#{error 'client.email' /}</span>  
 				
 				<label for="photo">Фото:</label> 
-				<input name="photo" id="photo" type="text" class="photo" value="${flash.email}">
-				<span class="error">#{error 'user.email' /}</span>  
-				
+				<img src="@{Application.userPhoto(client.id)}" 
+				style="width: 120px; height: 120px;'">
+				<input type="file" id="photo" name="photo" />					      	    
+				      
+				      
 				<label for="gender">Пол*:</label> 
-				<input name="gender" id="gender" type="text" class="gender" value="${flash.email}">
-				<span class="error">#{error 'user.email' /}</span>  
+			    <select style="width: 180px; margin-bottom: 10px;" id="gender" name="gender">
+			    	#{if client.gender == 'mail'}
+			    		<option value="mail" selected="selected">Мужской</option>
+						<option value="femail">Женский</option>
+					#{/if}
+					#{else}
+			    		<option value="mail">Мужской</option>
+						<option value="femail" selected="selected">Женский</option>
+					#{/else}
+				</select>
+				<span class="error">#{error 'client.email' /}</span>  
 				
 				<label for="phone">Мобильный телефон:</label> 
-				<input name="phone" id="phone" type="text" class="phone" value="${flash.email}">
-				<span class="error">#{error 'user.email' /}</span>  
+				<input name="phone" id="phone" type="text" class="phone" value="${client.phone}">
+				<span class="error">#{error 'client.email' /}</span>  
 				
-				<label for="birthdate">Дата рождения*:</label> 
-				 
-
-  
-				<p>Date: <input type="text" id="datepicker" /></p>
-				<input name="birthdate" id="birthdate" type="text" class="birthdate" value="${flash.email}">
-				<span class="error">#{error 'user.email' /}</span>  
+				<label for="birthday">Дата рождения*:</label> 
+				<input name="birthday" id="birthday" type="text" class="birthday" value="${client.birthday.format('dd-MM-yyyy')}">
 				
 		        <label for="city">Город:</label>
-			    <select style="width: 180px; margin-bottom: 10px;" id="store_city" name="store">
+			    <select style="width: 180px; margin-bottom: 10px;" id="city" name="city">
 			    	#{list items:cities, as:'c'}
-		            	<option value="" disabled="true" >${c.city}</option>
+		            	<option value="${c.city}">${c.city}</option>
 					#{/list}
 				</select>
-			
 				<p>
 					<input type="submit" id="signin"
 						value="Сохранить" class="button button-primary">
@@ -67,7 +70,7 @@
 			</div>
 			<div class="col4 border-left">
 				<p>
-					<a href="@{Application.profile()}" class="internal-auth">Назад</a>.
+					<a href="@{Application.clientProfile()}" class="internal-auth">Назад</a>.
 				</p>
 			</div>
 		</div>
@@ -78,9 +81,10 @@
 <script src="/public/javascripts/jquery-ui.js"></script>
 <script>
   $(function() {
-    $( "#datepicker" ).datepicker({
+    $( "#birthday" ).datepicker({
       changeMonth: true,
-      changeYear: true
+      changeYear: true,
+      dateFormat: 'dd-mm-yy' 
     });
   });
   </script>

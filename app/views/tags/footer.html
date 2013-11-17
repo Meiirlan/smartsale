@@ -5,22 +5,22 @@
 				<div class="col3 inner-left">
 					<ul>
 						<li class="title p10">Компания</li>
-						<li><a href="">О SmartSale</a></li>
-						<li><a href="">Работай с нами</a></li>					
+						<li><a href="@{Application.aboutUs()}">О SmartSale</a></li>
+						<li><a href="@{Application.WorkWithUs()}">Работай с нами</a></li>					
 					</ul>
 				</div>
 				<div class="col3">
 					<ul>
 						<li class="title p10">Клиентам</li>
-						<li><a href="/faq">Как это работает?</a></li>
-						<li><a href="/faq">Вопросы и ответы</a></li>
-						<li><a href="/faq">Публичная оферта</a></li>
+						<li><a href="@{Application.howDoesItWorks()}">Как это работает?</a></li>
+						<li><a href="@{Application.faqs()}">Вопросы и ответы</a></li>
+						<li><a href="@{Application.offerta()}">Публичная оферта</a></li>
 					</ul>
 				</div>
 				<div class="col3">
 					<ul>
 						<li class="title p10">Партнерам</li>
-						<li><a href="/faq">Для вашего бизнеса</a></li>
+						<li><a href="@{Application.ownBusiness()}">Для вашего бизнеса</a></li>
 					</ul>
 				</div>
 				<div class="col3 inner-right">
@@ -30,11 +30,11 @@
 					</ul>
 					<ul class="social-icons">
 						<li class="title p10">Социальные сети</li>
-						<li class="clearfix"><a href="https://www.facebook.com/smartsalekz" rel="nofollow"><span class="icon"></span> Facebook</a></li>
-						<li class="clearfix"><a href="#" rel="nofollow"><span class="icon"></span> Twitter</a></li>
-						<li class="clearfix"><a href="#" rel="nofollow"><span class="icon"></span> YouTube</a></li>
-						<li class="clearfix"><a rel="publisher" href="#"><span class="icon"></span> Google+</a></li>
-						<li class="clearfix"><a href="#" rel="nofollow"><span class="icon"></span> LinkedIn</a></li>
+						<li class="clearfix"><a href="https://www.facebook.com/smartsalekz" rel="nofollow" target="_blank"><span class="icon"></span> Facebook</a></li>
+						<li class="clearfix"><a href="https://twitter.com/smartSaleKz" rel="nofollow" target="_blank"><span class="icon"></span> Twitter</a></li>
+						<li class="clearfix"><a href="https://www.youtube.com/SmartSaleKz" rel="nofollow" target="_blank"><span class="icon"></span> YouTube</a></li>
+						<li class="clearfix"><a rel="publisher" href="https://plus.google.com/101727947987011292813/about" target="_blank"><span class="icon"></span> Google+</a></li>
+						<li class="clearfix"><a href="#linkedIn" rel="nofollow" target="_blank"><span class="icon"></span> LinkedIn</a></li>
 					</ul>
 				</div>
 			</div>
@@ -50,7 +50,7 @@
 						style="border: 0;" src="/public/images/logo-bbb.png"></a>
 					<p class="p0">
 						© 2012-2013 Smart Sale Inc. &nbsp; <a
-							href="/terms" target="_blank"
+							href="@{Application.offerta()}" target="_blank"
 							rel="nofollow">Публичная оферта</a> &nbsp; <a
 							href="/privacy" target="_blank"
 							rel="nofollow">Конфиденциальность</a> &nbsp; <a

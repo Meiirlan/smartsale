@@ -15,8 +15,30 @@ import play.db.jpa.*;
 @Entity
 @Table(name = "Category")
 public class Category extends Model implements Serializable{
-	public int usluga_item;//usluga = 1;item = 2
 	public String name;
+	public String nameRus;
 	@ManyToOne
-	public UserShop userShop;
+	public Category parent;
+	@OneToMany(mappedBy = "parent")
+	public List<Category> categories;
+	
+	@ManyToMany(cascade = CascadeType.ALL)
+    public List<UserShop> userShops;
+	
+	public String toString() {
+		return nameRus;
+	}
+	public static Category getCategoryByParent(String parent) {
+		return Category.find("byName", parent).first();
+	}
+	public static List<Category> getSubcategories(String parentName) {
+		if(parentName.equals("all")){
+			return Category.findAll();
+		}
+		Category parent = Category.getCategoryByParent(parentName);
+		return Category.find("byParent", parent).fetch();	
+	}
+	public static Category getCategoryRusName(String name) {
+		return Category.find("byName", name).first();
+	}
 }

@@ -12,8 +12,14 @@
 		<div class="row login-area">
 			<div class="col2">
 					<div class="user_foto">
-					    <img src="/public/images/avatar.jpg" width="100px;" height="100px;"><br/>
-					    <a class="ajaxlink" href="/script/settings?action=edituser">Изменить фото</a>
+						#{if client.photo}
+						<img src="@{Application.userPhoto(client.id)}" 
+						style="width: 120px; height: 120px;" class="img-polaroid">
+					    #{/if}
+					    #{else}
+					    	<img src="/public/images/avatar.jpg" width="100px;" height="100px;"><br/>
+					   	#{/else}
+					    <a href="@{Application.editProfile()}">Изменить фото</a>
 					</div>
 				</div>
 				<div class="col4">
@@ -21,34 +27,35 @@
 						<table>
 							<tbody><tr>
 								<th>Имя:</th>
-								<td>${user.firstName}</td>
+								<td>${client.firstName}</td>
 							</tr>
 							<tr>
 								<th>Фамилия:</th>
-								<td>${user.lastName}</td>
+								<td>${client.lastName}</td>
 							</tr>
 							<tr>
 								<th>Пол:</th>
-								<td>${user.gender}</td>
+								<td>${client.gender}</td>
 							</tr>
 							<tr>
 								<th>Дата рождения:</th>
-								<td>${user.birthdate}</td>
+								<td>${client.birthday.format('dd-MM-yyyy')}</td>
 							</tr>
 							<tr>
 								<th>E-mail:</th>
-								<td>${user.user_email}</td>
+								<td>${client.user_email}</td>
 							</tr>
 							<tr>
 								<th>Город:</th>
-								<td>${user.city}</td>
+								<td>${client.city.city}</td>
 							</tr>
 						</tbody></table>
 					</div>
 				</div>
 				<div class="user_link_edit">
-					<a class="ajaxlink" href="@{Application.editProfile()}">Редактировать</a>
+					<a href="@{Application.editProfile()}">Редактировать</a>
 				</div>
 		</div>
+		<br/>
 	</div>
 </div>

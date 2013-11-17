@@ -9,30 +9,10 @@
 				<nav id="dl-menu" class="dl-menuwrapper">
 					<button class="dl-trigger">Open Menu</button>
 					<ul class="sub-menu dl-menu">
-						#{if _isActive=='1'}
-							<li><a href="@{Shop.index()}" class="current">Сервисы</a></li>
-						#{/if}
-						#{else}
-							<li><a href="@{Shop.index()}" >Сервисы</a></li>
-						#{/else}
-						#{if _isActive=='2'}
-							<li><a href="@{Sale.index()}" class="current">Скидки</a></li>
-						#{/if}
-						#{else}
-							<li><a href="@{Sale.index()}">Скидки</a></li>
-						#{/else}
-						#{if _isActive=='3'}
-							<li><a href="@{Category.index()}" class="current">Категории</a></li>
-						#{/if}
-						#{else}
-							<li><a  href="@{Category.index()}">Категории</a></li>
-						#{/else}				
-						#{if _isActive=='4'}
-							<li><a href="@{Application.feedback()}" class="current">Обратная связь</a></li>
-						#{/if}
-						#{else}
-							<li><a href="@{Application.feedback()}">Обратная связь</a></li>
-						#{/else}
+						<li><a href="@{Sale.index()}" class="${_isActive=='1'?'current':''}">Скидки</a></li>
+						<li><a href="@{Service.index()}" class="${_isActive=='2'?'current':''}">Сервисы</a></li>
+						<li><a href="@{Category.index()}" class="${_isActive=='3'?'current':''}">Категории</a></li>
+						<li><a href="@{Application.feedback()}" class="${_isActive=='4'?'current':''}">Обратная связь</a></li>
 						#{if session.email}	
 						<li>
 							#{if _isActive=='5'}
@@ -52,8 +32,15 @@
 								#{/else}
 							#{/else}
 							<ul class="dl-submenu">
-								<li><a href="@{Application.profile()}">Профиль</a></li>
-								<li><a href="@{Application.clientFollowers()}">Мои подписки</a></li>
+								#{if session.user == 'client'}
+									<li><a href="@{Application.clientProfile()}">Профиль</a></li>
+									<li><a href="@{Sale.clientSales()}">Мои скидки</a></li>
+									<li><a href="@{Application.clientFollowers()}">Мои подписки</a></li>
+								#{/if}	
+								#{else}
+									<li><a href="@{Application.serviceProfile()}">Профиль</a></li>
+									<li><a href="@{Sale.serviceSales()}">Мои скидки</a></li>
+								#{/else}
 								<li><a href="@{Application.myQuestions()}">Мои вопросы</a></li>
 								<li><a href="@{Secure.logout()}" class="navbar-link">Выйти</a></li>
 							</ul>

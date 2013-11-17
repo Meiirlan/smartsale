@@ -1,0 +1,52 @@
+#{extends 'main.html' /} #{set title:'Smart Sale' /} #{header
+isActive:'1' /}
+<div class="wrapper content">
+	<div id="content-wrapper" class="clearfix row">
+		<div class="row">
+			#{serviceProfileMenu isActive:'category'/}
+			<div class="segment-wrapper">
+				<div class="col2">
+					<div class="user_foto">
+						#{if userShop.photo}
+						<img src="@{Application.userShopPhoto(userShop.id)}" 
+						style="width: 120px; height: 120px;" class="img-polaroid">
+					    #{/if}
+					    #{else}
+					    	<img src="/public/images/avatar.jpg" width="100px;" height="100px;"><br/>
+					   	#{/else}
+					    <a href="@{Application.editServiceProfile()}">Изменить фото</a>
+					</div>
+				</div>
+				<div class="col4">
+					<div class="user_table" style="text-align: left">
+						<table>
+							<tbody><tr>
+								<th>Имя:</th>
+								<td>${userShop.firstName}</td>
+							</tr>
+							<tr>
+								<th>Фамилия:</th>
+								<td>${userShop.lastName}</td>
+							</tr>
+							<tr>
+								<th>E-mail:</th>
+								<td>${userShop.user_email}</td>
+							</tr>
+							<tr>
+								<th>Город:</th>
+								<td>${userShop.city.city}</td>
+							</tr>
+							<tr>
+								<th>Адрес:</th>
+								<td>${userShop.address}</td>
+							</tr>
+						</tbody></table>
+					</div>
+				</div>
+				<div class="user_link_edit">
+					<a href="@{Application.editServiceProfile()}">Редактировать</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

@@ -10,11 +10,12 @@ import play.data.validation.MaxSize;
 import play.data.validation.MinSize;
 import play.data.validation.Required;
 import play.data.validation.Unique;
+import play.db.jpa.Blob;
 import play.db.jpa.Model;
 
 @Entity
 @Table(name = "Client")
-public class Client extends Model implements Serializable {
+public class Client extends Model implements Serializable{
 	@Email
 	@Required
 	@Unique
@@ -30,19 +31,22 @@ public class Client extends Model implements Serializable {
 	public String gender;
 	public String firstName;
 	public String lastName;
+	public String phone;
 	public boolean isAdmin;
 	public boolean isActive;
-	public Date birthdate;
+	public Date birthday;
 	@OneToMany(mappedBy = "client", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	public Set<UserProperty> userProperties;
 	@OneToMany(mappedBy = "client", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	public Set<Follower> followers;
 	@ManyToOne
 	public City city;
+//	@OneToOne(mappedBy="client", cascade=CascadeType.ALL,fetch = FetchType.LAZY)
+	public Blob photo;
 
 	public Client(String user_email, String pwd, String pwd1, String gender,
 			String firstName, String lastName, boolean isAdmin,
-			boolean isActive, Date birthdate) {
+			boolean isActive, Date birthday) {
 		this.user_email = user_email;
 		this.pwd = pwd;
 		this.pwd1 = pwd1;
@@ -51,7 +55,8 @@ public class Client extends Model implements Serializable {
 		this.lastName = lastName;
 		this.isAdmin = isAdmin;
 		this.isActive = isActive;
-		this.birthdate = birthdate;
+		this.birthday = birthday;
+		this.photo = new Blob();
 	}
 
 	public Client(String email, String pwd2,String firstName,String lastName) {
@@ -60,6 +65,7 @@ public class Client extends Model implements Serializable {
 		this.pwd1 = pwd2;
 		this.firstName = firstName;
 		this.lastName = lastName;
+		this.photo = new Blob();
 	}
 
 	public static Client getUserByEmail(String email) {

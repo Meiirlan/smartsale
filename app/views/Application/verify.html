@@ -1,13 +1,19 @@
-#{extends 'main.html' /} 
-#{set title:'Smart Sale' /}
-<div id="segment-test" class="">
-	<section class="segments">
-		<div class="row clearfix">
-			<br />
+#{extends 'main.html' /} #{set title:'Login' /} #{header/}
+<script type="text/javascript">
+	$(document).ready(function() {
+		$('body').removeClass('long-landing');
+		$('body').addClass('v2-subpage');
+	});
+</script>
+<link rel="stylesheet" type="text/css"
+	href="@{'/public/stylesheets/login.css'}" media="all">
+<div class="wrapper content">
+	<div id="content-wrapper" class="clearfix row">
+		<div class="row login-area">
 			<div class="col12">				
 				Your account successfully verified
 				<a href="@{Secure.login()}">Login</a>
 			</div>
 		</div>
-	</section>
+	</div>
 </div>

@@ -1,0 +1,57 @@
+#{extends 'main.html' /} #{set title:'Smart Sale' /} #{header
+isActive:'1' /}
+<div class="wrapper content">
+	<div id="content-wrapper" class="clearfix row">
+		<div class="row">
+			<div class="segment-wrapper">
+				<div class="col8">
+					<h3>Новая скидка</h3>
+					#{form @Sale.saveServiceSale()} #{if flash.error}
+					<h6 class="error">&{flash.error}</h6>
+					#{/if} #{if flash.success}
+					<h6 class="success">&{flash.success}</h6>
+					#{/if} <label for="startDate">Начало скидок*:</label> <input
+						name="startDate" id="startDate" type="text"><select id="startHour" name="startHour">
+					</select>
+					 <label for="endDate">Конец скидок*:</label> <input name="endDate"
+						id="endDate" type="text">
+						<select id="endHour" name="endHour">
+					</select>
+					<p>
+						<input type="submit" id="signin" value="Сохранить"
+							class="button button-primary">
+					</p>
+					#{/form}
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<link rel="stylesheet" href="/public/stylesheets/jquery-ui.css" />
+#{set 'moreScripts' }
+<script src="/public/javascripts/jquery-ui.js"></script>
+<script>
+ $(function() {
+    $( "#startDate" ).datepicker({
+      changeMonth: true,
+      changeYear: true,
+      dateFormat: 'dd-mm-yy' 
+    });
+    for(var i = 0;i<24;i++){
+        if(i<10){
+        	$('#startHour').append('<option value='+i+'>0'+i+':00</option>');
+        	$('#endHour').append('<option value='+i+'>0'+i+':00</option>');
+        }else{
+        	$('#startHour').append('<option value='+i+'>'+i+':00</option>');
+        	$('#endHour').append('<option value='+i+'>'+i+':00</option>');
+        }
+    }
+    $( "#endDate" ).datepicker({
+        changeMonth: true,
+        changeYear: true,
+        dateFormat: 'dd-mm-yy' 
+      });
+  });
+ </script>
+
+#{/set}

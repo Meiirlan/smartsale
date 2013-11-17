@@ -1,0 +1,19 @@
+#{extends 'main.html' /} #{set title:'Smart Sale' /} #{header
+isActive:'2' /}
+<div class="wrapper content">
+	<div id="content-wrapper" class="clearfix row">
+		<div class="row">
+			#{servicesMenu isActive:'1'/}
+			<div class="segment-wrapper">
+				<ul class="tabs-content">
+					<li id="tab-new" style="display: list-item;" class="active">
+						<div class="row clearfix">
+							<div class="col12 new-to">#{shop /}</div>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+

@@ -7,6 +7,7 @@ import java.util.Date;
 import org.apache.commons.codec.digest.DigestUtils;
 
 import models.Client;
+import models.UserShop;
 import play.Play;
 import play.mvc.*;
 import play.cache.Cache;
@@ -16,218 +17,251 @@ import play.utils.*;
 
 public class Secure extends Controller {
 
-    @Before(unless={"login", "authenticate", "logout"})
-    static void checkAccess() throws Throwable {
-        // Authent
-        if(!session.contains("email")) {
-            flash.put("url", "GET".equals(request.method) ? request.url : Play.ctxPath + "/"); // seems a good default
-            login();
-        }
-        // Checks
-        Check check = getActionAnnotation(Check.class);
-        if(check != null) {
-            check(check);
-        }
-        check = getControllerInheritedAnnotation(Check.class);
-        if(check != null) {
-            check(check);
-        }
-    }
+	@Before(unless = { "login", "authenticate", "logout" })
+	static void checkAccess() throws Throwable {
+		// Authent
+		if (!session.contains("email")) {
+			flash.put("url", "GET".equals(request.method) ? request.url
+					: Play.ctxPath + "/"); // seems a good default
+			login();
+		}
+		// Checks
+		Check check = getActionAnnotation(Check.class);
+		if (check != null) {
+			check(check);
+		}
+		check = getControllerInheritedAnnotation(Check.class);
+		if (check != null) {
+			check(check);
+		}
+	}
 
-    private static void check(Check check) throws Throwable {
-        for(String profile : check.value()) {
-            boolean hasProfile = (Boolean)Security.invoke("check", profile);
-            if(!hasProfile) {
-                Security.invoke("onCheckFailed", profile);
-            }
-        }
-    }
+	private static void check(Check check) throws Throwable {
+		for (String profile : check.value()) {
+			boolean hasProfile = (Boolean) Security.invoke("check", profile);
+			if (!hasProfile) {
+				Security.invoke("onCheckFailed", profile);
+			}
+		}
+	}
 
-    // ~~~ Login
+	// ~~~ Login
 
-    public static void login() throws Throwable {
-        Http.Cookie remember = request.cookies.get("rememberme");
-        if(remember != null) {
-            int firstIndex = remember.value.indexOf("-");
-            int lastIndex = remember.value.lastIndexOf("-");
-            if (lastIndex > firstIndex) {
-                String sign = remember.value.substring(0, firstIndex);
-                String restOfCookie = remember.value.substring(firstIndex + 1);
-                String username = remember.value.substring(firstIndex + 1, lastIndex);
-                String time = remember.value.substring(lastIndex + 1);
-                Date expirationDate = new Date(Long.parseLong(time)); // surround with try/catch?
-                Date now = new Date();
-                if (expirationDate == null || expirationDate.before(now)) {
-                    logout();
-                }
-                if(Crypto.sign(restOfCookie).equals(sign)) {
-                    session.put("email", username);
-                    redirectToOriginalURL();
-                }
-            }
-        }
-        flash.keep("url");
-        render();
-    }
+	public static void login() throws Throwable {
+		Http.Cookie remember = request.cookies.get("rememberme");
+		if (remember != null) {
+			int firstIndex = remember.value.indexOf("-");
+			int lastIndex = remember.value.lastIndexOf("-");
+			if (lastIndex > firstIndex) {
+				String sign = remember.value.substring(0, firstIndex);
+				String restOfCookie = remember.value.substring(firstIndex + 1);
+				String username = remember.value.substring(firstIndex + 1,
+						lastIndex);
+				String time = remember.value.substring(lastIndex + 1);
+				Date expirationDate = new Date(Long.parseLong(time)); // surround
+																		// with
+																		// try/catch?
+				Date now = new Date();
+				if (expirationDate == null || expirationDate.before(now)) {
+					logout();
+				}
+				if (Crypto.sign(restOfCookie).equals(sign)) {
+					session.put("email", username);
+					redirectToOriginalURL();
+				}
+			}
+		}
+		flash.keep("url");
+		render();
+	}
 
-    public static void authenticate(@Required String email, String password, boolean remember) throws Throwable {
-        // Check tokens
-        Boolean allowed = false;
-//        try {
-//            // This is the deprecated method name
-//            allowed = (Boolean)Security.invoke("authentify", email, password);
-//        } catch (UnsupportedOperationException e ) {
-//            // This is the official method name
-//            allowed = (Boolean)Security.invoke("authenticate", email, password);
-//        }
-        password = DigestUtils.md5Hex(password);
-        Client client = Client.connect(email,password);
-        String message = "Unknown email or password.";
-        if(client != null){
-        	allowed = true;
-        	 if(!client.isActive){
-             	message = "Activation message was send to email";
-             	allowed = false;
-             }
-        }
-       
-        if(validation.hasErrors() || !allowed) {
-            flash.keep("url");
-            flash.error(message);
-            params.flash();
-            login();
-        }
-        // Mark user as connected
-        Cache.set(session.getId() + "-email", client, "30mn");
-        session.put("email", email);
-        if(client.firstName!=null || !client.firstName.equals("")){
-        	session.put("firstName", client.firstName);
-        }
-        
-        System.out.println(session.get("email"));
-        // Remember if needed
-        if(remember) {
-            Date expiration = new Date();
-            String duration = Play.configuration.getProperty("secure.rememberme.duration","30d"); 
-            expiration.setTime(expiration.getTime() + Time.parseDuration(duration) * 1000 );
-            response.setCookie("rememberme", Crypto.sign(email + "-" + expiration.getTime()) + "-" + email + "-" + expiration.getTime(), duration);
+	public static void authenticate(@Required String email, String password,
+			boolean remember) throws Throwable {
+		// Check tokens
+		Boolean allowed = false;
+		// try {
+		// // This is the deprecated method name
+		// allowed = (Boolean)Security.invoke("authentify", email, password);
+		// } catch (UnsupportedOperationException e ) {
+		// // This is the official method name
+		// allowed = (Boolean)Security.invoke("authenticate", email, password);
+		// }
+		password = DigestUtils.md5Hex(password);
+		Client client = Client.connect(email, password);
+		String message = "Неверный e-mail или пароль.";
+		if (client != null) {
+			allowed = true;
+			if (!client.isActive) {
+				message = "Сообщение для активации учетной записи было отправлено на почте";
+				allowed = false;
+			}
+		}
+		UserShop userShop = UserShop.getUserShopByEmail(email);
+		if (userShop != null) {
+			allowed = true;
+			if (!userShop.isActive) {
+				message = "Сообщение для активации учетной записи было отправлено на почте";
+				allowed = false;
+			}
+		}
+		if (validation.hasErrors() || !allowed) {
+			flash.keep("url");
+			flash.error(message);
+			params.flash();
+			login();
+		}
+		// Mark user as connected
+		if (client != null) {
+			Cache.set(session.getId() + "client", client, "30mn");
+			session.put("user","client");
+		} else if (userShop != null) {
+			Cache.set(session.getId() + "userShop", userShop, "30mn");
+			session.put("user","userShop");
+		}
+		session.put("email", email);
+		if (client != null && client.firstName != null
+				&& !client.firstName.equals("")) {
+			session.put("firstName", client.firstName);
+		} else if (userShop != null && userShop.firstName != null
+				&& !userShop.firstName.equals("")) {
+			session.put("firstName", userShop.firstName);
+		}
+		// Remember if needed
+		if (remember) {
+			Date expiration = new Date();
+			String duration = Play.configuration.getProperty(
+					"secure.rememberme.duration", "30d");
+			expiration.setTime(expiration.getTime()
+					+ Time.parseDuration(duration) * 1000);
+			response.setCookie("rememberme",
+					Crypto.sign(email + "-" + expiration.getTime()) + "-"
+							+ email + "-" + expiration.getTime(), duration);
 
-        }
-        // Redirect to the original URL (or /)
-        redirectToOriginalURL();
-    }
+		}
+		// Redirect to the original URL (or /)
+		redirectToOriginalURL();
+	}
 
-    public static void logout() throws Throwable {
-        Security.invoke("onDisconnect");
-        session.clear();
-        response.removeCookie("rememberme");
-        Security.invoke("onDisconnected");
-        flash.success("secure.logout");
-        login();
-    }
+	public static void logout() throws Throwable {
+		Security.invoke("onDisconnect");
+		session.clear();
+		response.removeCookie("rememberme");
+		Security.invoke("onDisconnected");
+		flash.success("secure.logout");
+		login();
+	}
 
-    // ~~~ Utils
+	// ~~~ Utils
 
-    static void redirectToOriginalURL() throws Throwable {
-        Security.invoke("onAuthenticated");
-        String url = flash.get("url");
-        if(url == null) {
-            url = Play.ctxPath + "/";
-        }
-        redirect(url);
-    }
+	static void redirectToOriginalURL() throws Throwable {
+		Security.invoke("onAuthenticated");
+		String url = flash.get("url");
+		if (url == null) {
+			url = Play.ctxPath + "/";
+		}
+		redirect(url);
+	}
 
-    public static class Security extends Controller {
+	public static class Security extends Controller {
 
-        /**
-         * @Deprecated
-         * 
-         * @param username
-         * @param password
-         * @return
-         */
-        static boolean authentify(String username, String password) {
-            throw new UnsupportedOperationException();
-        }
+		/**
+		 * @Deprecated
+		 * 
+		 * @param username
+		 * @param password
+		 * @return
+		 */
+		static boolean authentify(String username, String password) {
+			throw new UnsupportedOperationException();
+		}
 
-        /**
-         * This method is called during the authentication process. This is where you check if
-         * the user is allowed to log in into the system. This is the actual authentication process
-         * against a third party system (most of the time a DB).
-         *
-         * @param username
-         * @param password
-         * @return true if the authentication process succeeded
-         */
-        static boolean authenticate(String username, String password) {
-            return true;
-        }
+		/**
+		 * This method is called during the authentication process. This is
+		 * where you check if the user is allowed to log in into the system.
+		 * This is the actual authentication process against a third party
+		 * system (most of the time a DB).
+		 * 
+		 * @param username
+		 * @param password
+		 * @return true if the authentication process succeeded
+		 */
+		static boolean authenticate(String username, String password) {
+			return true;
+		}
 
-        /**
-         * This method checks that a profile is allowed to view this page/method. This method is called prior
-         * to the method's controller annotated with the @Check method. 
-         *
-         * @param profile
-         * @return true if you are allowed to execute this controller method.
-         */
-        static boolean check(String profile) {
-            return true;
-        }
+		/**
+		 * This method checks that a profile is allowed to view this
+		 * page/method. This method is called prior to the method's controller
+		 * annotated with the @Check method.
+		 * 
+		 * @param profile
+		 * @return true if you are allowed to execute this controller method.
+		 */
+		static boolean check(String profile) {
+			return true;
+		}
 
-        /**
-         * This method returns the current connected username
-         * @return
-         */
-        static String connected() {
-            return session.get("email");
-        }
+		/**
+		 * This method returns the current connected username
+		 * 
+		 * @return
+		 */
+		static String connected() {
+			return session.get("email");
+		}
 
-        /**
-         * Indicate if a user is currently connected
-         * @return  true if the user is connected
-         */
-        static boolean isConnected() {
-            return session.contains("email");
-        }
+		/**
+		 * Indicate if a user is currently connected
+		 * 
+		 * @return true if the user is connected
+		 */
+		static boolean isConnected() {
+			return session.contains("email");
+		}
 
-        /**
-         * This method is called after a successful authentication.
-         * You need to override this method if you with to perform specific actions (eg. Record the time the user signed in)
-         */
-        static void onAuthenticated() {
-        }
+		/**
+		 * This method is called after a successful authentication. You need to
+		 * override this method if you with to perform specific actions (eg.
+		 * Record the time the user signed in)
+		 */
+		static void onAuthenticated() {
+		}
 
-         /**
-         * This method is called before a user tries to sign off.
-         * You need to override this method if you wish to perform specific actions (eg. Record the name of the user who signed off)
-         */
-        static void onDisconnect() {
-        }
+		/**
+		 * This method is called before a user tries to sign off. You need to
+		 * override this method if you wish to perform specific actions (eg.
+		 * Record the name of the user who signed off)
+		 */
+		static void onDisconnect() {
+		}
 
-         /**
-         * This method is called after a successful sign off.
-         * You need to override this method if you wish to perform specific actions (eg. Record the time the user signed off)
-         */
-        static void onDisconnected() {
-        }
+		/**
+		 * This method is called after a successful sign off. You need to
+		 * override this method if you wish to perform specific actions (eg.
+		 * Record the time the user signed off)
+		 */
+		static void onDisconnected() {
+		}
 
-        /**
-         * This method is called if a check does not succeed. By default it shows the not allowed page (the controller forbidden method).
-         * @param profile
-         */
-        static void onCheckFailed(String profile) {
-            forbidden();
-        }
+		/**
+		 * This method is called if a check does not succeed. By default it
+		 * shows the not allowed page (the controller forbidden method).
+		 * 
+		 * @param profile
+		 */
+		static void onCheckFailed(String profile) {
+			forbidden();
+		}
 
-        private static Object invoke(String m, Object... args) throws Throwable {
+		private static Object invoke(String m, Object... args) throws Throwable {
 
-            try {
-                return Java.invokeChildOrStatic(Security.class, m, args);       
-            } catch(InvocationTargetException e) {
-                throw e.getTargetException();
-            }
-        }
+			try {
+				return Java.invokeChildOrStatic(Security.class, m, args);
+			} catch (InvocationTargetException e) {
+				throw e.getTargetException();
+			}
+		}
 
-    }
+	}
 
 }

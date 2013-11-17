@@ -21,6 +21,10 @@ public class Sale extends Model implements Serializable{
 	public boolean boy;
 	public boolean girl;
 	public Date dateStart;
+	public boolean isActive;
+	public int score;
+	@Lob
+	public String text;
 	public Date dateFinish;
 	@OneToMany(mappedBy="sale", cascade=CascadeType.ALL,fetch = FetchType.EAGER)
 	public Set<SaleProperty> saleProperties;

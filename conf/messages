@@ -1,12 +1,17 @@
 # You can specialize this file for each language.
 # For example, for French create a messages.fr file
 #
+alphabetical = По алфавиту
+random = Случайный выбор
+recent = Последние
+popular = Наиболее популярные
+all = Все
 secure.title=
 secure.username=Username:
 secure.password=Password:
-secure.remember=Remember me
+secure.remember=Запомнить
 secure.signin=Log in
-secure.error=Unknown email or password.
+secure.error=Неверный e-mail или пароль.
 secure.logout=You have been logged out.
 
 # Default CRUD messages

@@ -98,7 +98,7 @@ $.fn.extend({
 			}
 		}
 
-		return 0;
+		return 1000;
 	},
 
 	uniqueId: function() {

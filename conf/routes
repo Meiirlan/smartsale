@@ -3,13 +3,14 @@
 # ~~~~
 
 # Home page
-GET     /                                       Shop.index
+GET     /                                       Sale.index
 
 # Ignore favicon requests
 GET     /favicon.ico                            404
 
 # Map static resources from the /app/public folder to the /public path
 GET     /public/                                staticDir:public
+GET     /robots.txt           	 				Application.robots 
 
 # Import CRUD routes
 #*      /admin              					Admin.index

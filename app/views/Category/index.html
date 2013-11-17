@@ -1,70 +1,87 @@
-#{extends 'main.html' /} 
-#{set title:'Smart Sale' /}
-#{header isActive:'3' /}
-<div id="segment-test" class="">
-	<section class="segments">
-		<div class="row clearfix">
-			<br />
-			<div class="col12">
-				<!-- Begin slider -->
-				<ul class="tabs clearfix">
-					<li class="tab-nav"><a href="#tab-new"
-						class="active">Never sold online?</a></li>
-					<li class="tab-nav"><a href="#tab-transfer"
-						class="">Already selling online?</a></li>
-					<li class="tab-nav"><a href="#tab-apps"
-						class="">Moving your brand online?</a></li>
-					<li class="tab-nav"><a href="#tab-experts"
-						class="">Need help setting up your shop?</a></li>
-				</ul>
-				<div class="segment-wrapper">
-					<ul class="tabs-content">
-						<li id="tab-new" style="display: list-item;" class="active">
-							<section class="examples"
-								style="padding-bottom: 60px; padding-top: 0px; margin-top: 50px;">
-								<div class="row clearfix">
-									<!-- Begin examples feed -->
-									<div class="col12 new-to">
-										#{shop /}
+#{extends 'main.html' /} #{set title:'Smart Sale' /} #{header
+isActive:'3' /}
+<div class="wrapper content">
+	<div id="content-wrapper" class="clearfix row">
+		<div class="row">
+			#{categoryMenu isActive:category/}
+			<div class="segment-wrapper">
+				<div class="col3">
+					<div id="filter-bar" class="searchbar">
+						#{if category != 'new' }
+						<h3>Сортировать по:</h3>
+						<div class="selector-group">
+							<ul>
+								<li class="active"><a href="#" class="list-selector"
+									id="theme-sort"><span>&{sortBy}</span></a>
+									<ul class="select-list" data-field="sortby" data-default=""
+										style="display: none;">
+										<li><a href="@{Category.index(category,'popular',subCategory)}" class="list-item" data-value="popular"
+											data-label="Most Popular" onclick="">&{'popular'}</a></li>
+										<li><a href="@{Category.index(category,'recent',subCategory)}" class="list-item" data-value="date desc"
+											data-label="Most Recent" onclick="">&{'recent'}</a></li>
+										<li><a href="@{Category.index(category,'random',subCategory)}" class="list-item" data-value=""
+											data-label="Randomly Sorted" onclick="">&{'random'}</a></li>
+										<li><a href="@{Category.index(category,'alphabetical',subCategory)}" class="list-item"
+											data-value="alphabetical" data-label="Alphabetical"
+											onclick="">&{'alphabetical'}</a></li>
+									</ul></li>
+							</ul>
+						</div>
+						#{/if}
+						#{if category != 'all' && category != 'new'}
+						<h3>Подкатегории</h3>
+						<div class="selector-group">
+							<ul class="filter-industry">
+								<li class="active"><a href="#" class="list-selector"
+									data-value="" data-label="All Industries"
+									id="industry-selector"><span>&{subCategory}</span></a>
+									<ul class="select-list" data-field="industry" data-default=""
+										style="display: none;">
+										<li><a href="@{Category.index(category,sortBy,'all')}" class="filter-button list-item"
+											data-value="" data-label="All Industries">&{'all'}</a></li>
+										#{list items:categories, as:'c'}
+											<li><a href="@{Category.index(category,sortBy,c.name)}"
+												class="filter-button list-item" onclick="">${c.nameRus}</a></li>
+											<li>
+										#{/list}
+									</ul>
+								</li>
+							</ul>
+						</div>
+						#{/if}
+
+
+					</div>
+					<!-- #filter-bar -->
+				</div>
+				<div class="col9">
+					<div class="segment-wrapper">
+						<ul class="tabs-content">
+							<li id="tab-new" style="display: list-item;" class="active">
+								<section class="examples"
+									style="padding-bottom: 60px; padding-top: 0px; margin-top: 50px;">
+									<div class="row clearfix">
+										<!-- Begin examples feed -->
+										<div class="col new-to">#{shop /}</div>
 									</div>
-								</div>
-							</section> <!-- End examples feed -->
-						</li>
-						<li id="tab-transfer" class="" style="display: none;">
-							<div class="col12 transfer">
-								#{shop /}
-							</div>
-						</li>
-						<li id="tab-apps" style="display: none;" class="">
-							<div class="col12 apps">
-								#{shop /}
-							</div>
-						</li>
-						<li id="tab-experts" style="display: none;" class="">
-							<div class="col12 experts">
-								#{shop /}
-							</div>
-						</li>
-					</ul>
+								</section> <!-- End examples feed -->
+								<section class="examples"
+									style="padding-bottom: 60px; padding-top: 0px; margin-top: 50px;">
+									<div class="row clearfix">
+										<!-- Begin examples feed -->
+										<div class="col new-to">#{shop /}</div>
+									</div>
+								</section> <!-- End examples feed -->
+							</li>
+						</ul>
+					</div>
 				</div>
 				<!-- End slider -->
 			</div>
 		</div>
-	</section>
+	</div>
 </div>
+<script>
 
-<script type="text/javascript">
-$("#segment-test").removeClass('hidden');
-$(".overview").css({"display":"none", "visibility":""});
-$(".experience").css({"display":"none", "visibility":""});
-$(".testimonials").css({"padding-top":"0"});
-$(".examples").css({"padding-bottom":"60px"});
-$(function() {
-    $( '#dl-menu' ).dlmenu({
-      animationClasses : { classin : 'dl-animate-in-2', classout : 'dl-animate-out-2' }
-    });
-  });
 </script>
-<script src="@{'/public/javascripts/all.js'}"></script>
-<script src="@{'/public/javascripts/jquery.fancybox.pack.js'}"></script>
-<script src="@{'/public/javascripts/v2-home.js'}" async="true"></script>
+<script src="@{'/public/javascripts/application.js'}"></script>

@@ -10,7 +10,7 @@
 <meta name="description" content="SmartSale is a powerful ecommerce website solution that allows you to sell online by providing everything you need to create an online store. Try our free 14 day trial.">
 <meta name="google-site-verification" content="zRqqHlRwmANV6MgOAicWpxHgU35MZvREm89M13cNQTg">
 <meta name="verify-a" value="c56c27a8f68c6ddcafdf">
-<meta name="msvalidate.01" content="AE1E888386499A412C42CB1A632DA95C">
+<meta name="msvalidate.01" content="176BA89D99C0DABEA2C14879ADB48909" />
 <meta name="p:domain_verify" content="8c574a25baf8ff1451e95459fdc79ed8">
 <link rel="canonical" href="./index/Ecommerce Software, Online Store Builder, Website Store Hosting Solution- Free 14 day Trial by SmartSale.kz">
 <!-- Mobile viewport -->
@@ -29,53 +29,18 @@
 <meta property="twitter:image" content="/public/images/smartsale-bag.png">
 <meta property="twitter:site" content="@SmartSaleKz">
 <!-- Begin CSS -->
-<link rel="stylesheet" type="text/css" href="@{'/public/stylesheets/home.min.css'}" media="all">
+<link rel="stylesheet" type="text/css" href="@{'/public/stylesheets/home.css'}" media="all">
 #{get 'moreStyles' /}
 <script src="@{'/public/javascripts/jquery.min.js'}"></script>
 <!-- Modernizr -->
 <script src="@{'/public/javascripts/modernizr.min.js'}"></script>
 <!-- Multitrack -->
 </head>
-<body id="long-landing" class="loaded">
-	<div id="cboxOverlay" style="display: none;"></div>
-	<div id="colorbox" class=""
-		style="padding-bottom: 0px; padding-right: 0px; display: none;">
-		<div id="cboxWrapper" style="">
-			<div style="">
-				<div id="cboxTopLeft" style="float: left;"></div>
-				<div id="cboxTopCenter" style="float: left;"></div>
-				<div id="cboxTopRight" style="float: left;"></div>
-			</div>
-			<div style="clear: left;">
-				<div id="cboxMiddleLeft" style="float: left;"></div>
-				<div id="cboxContent" style="float: left;">
-					<div id="cboxLoadedContent" class=""
-						style="width: 0px; height: 0px; overflow: hidden;"></div>
-					<div id="cboxLoadingOverlay" class="" style=""></div>
-					<div id="cboxLoadingGraphic" class="" style=""></div>
-					<div id="cboxTitle" class="" style=""></div>
-					<div id="cboxCurrent" class="" style=""></div>
-					<div id="cboxNext" class="" style=""></div>
-					<div id="cboxPrevious" class="" style=""></div>
-					<div id="cboxSlideshow" class="" style=""></div>
-					<div id="cboxClose" class="" style=""></div>
-				</div>
-				<div id="cboxMiddleRight" style="float: left;"></div>
-			</div>
-			<div style="clear: left;">
-				<div id="cboxBottomLeft" style="float: left;"></div>
-				<div id="cboxBottomCenter" style="float: left;"></div>
-				<div id="cboxBottomRight" style="float: left;"></div>
-			</div>
-		</div>
-		<div
-			style="position: absolute; width: 9999px; visibility: hidden; display: none;"></div>
-	</div>
-	<div id="pg-home">#{doLayout /} #{footer /}</div>
-	<!-- Begin jQuery -->
+<body class="loaded">
+#{doLayout /} 
+#{footer /}
 
 <script type="text/javascript">
-$("#segment-test").removeClass('hidden');
 $(".overview").css({"display":"none", "visibility":""});
 $(".experience").css({"display":"none", "visibility":""});
 $(".testimonials").css({"padding-top":"0"});
@@ -101,6 +66,24 @@ $(function() {
   ga('send', 'pageview');
 
 </script>
+
+<script type="text/javascript">
+$("#segment-test").removeClass('hidden');
+$(".overview").css({"display":"none", "visibility":""});
+$(".experience").css({"display":"none", "visibility":""});
+$(".testimonials").css({"padding-top":"0"});
+$(".examples").css({"padding-bottom":"60px"});
+$(function() {
+    $( '#dl-menu' ).dlmenu({
+      animationClasses : { classin : 'dl-animate-in-2', classout : 'dl-animate-out-2'}     
+      event.preventDefault();
+    });
+    
+  });
+</script>
+<script src="@{'/public/javascripts/all.js'}"></script>
+<script src="@{'/public/javascripts/jquery.fancybox.pack.js'}"></script>
+<script src="@{'/public/javascripts/v2-home.js'}" async="true"></script>
 </body>
 </html>
 

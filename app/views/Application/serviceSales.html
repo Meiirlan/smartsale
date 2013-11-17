@@ -1,0 +1,26 @@
+#{extends 'main.html' /} #{set title:'Smart Sale' /} #{header
+isActive:'1' /}
+<div class="wrapper content">
+	<div id="content-wrapper" class="clearfix row">
+		<div class="row">
+			#{serviceProfileMenu isActive:'sale'/}
+			<div class="segment-wrapper">
+				<div class="col9">
+					<ul class="forum-navigation-home category-ecommerce-discussion">
+						<li id="category-17"
+							class="clearfix  category-ecommerce-discussion"><a
+							class="ecommercediscussion" href="/c/ecommerce-discussion">
+								<div class="blurb">
+									<h2>List of sales</h2>
+								</div>
+						</a></li>
+					</ul>
+				</div>
+				<div class="col3">
+					<a href="@{Sale.newSales()}" class="button button-primary">Новая скидка</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<br/>

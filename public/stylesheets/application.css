@@ -1,0 +1,73 @@
+#filter-bar h3 {
+    font-size: 14px;
+    border-bottom: 1px solid #eee;
+    line-height: 30px;
+    clear: both;
+}
+#filter-bar ul {
+    margin-bottom: 24px;
+}
+#filter-bar li a {
+    line-height: 19px;
+    display: inline-block;
+    margin-bottom: 6px;
+    padding: 1px 6px;
+    font-size: 14px;
+}
+#filter-bar .show-all-colors {
+    margin: 13px 0 0 0;
+    clear: both;
+}
+#filter-bar .show-all-colors a {
+    border: none!important;
+}
+#filter-bar .list-selector {
+    position: relative;
+    padding: 3px 22px 3px 12px;
+    width: 70%}
+#filter-bar .list-selector:after {
+    position: absolute;
+    right: 10px;
+    top: 11px;
+    content: "";
+    border-left: 3px solid transparent;
+    border-right: 3px solid transparent;
+    border-top: 3px solid #479ccf;
+}
+#filter-bar .select-list li a {
+    background: none;
+    border: 0;
+    border-bottom: 1px solid #eee;
+    display: block;
+    border-radius: 0;
+    padding-bottom: 5px;
+}
+#filter-bar .color.active a {
+    border-radius: 50px;
+}
+#filter-bar .active.color a:after {
+    position: absolute;
+    content: "";
+    position: absolute;
+    left: 3px;
+    top: 3px;
+    width: 14px;
+    height: 14px;
+    background: white;
+    border-radius: 50%}
+#filter-bar .active a, #filter-bar .toggle-button.selected {
+    background: #f2f7fa;
+    border-radius: 3px;
+    display: inline-block;
+    border: 1px solid #e6eef3;
+}
+#filter-bar .toggle-group {
+    margin-bottom: 24px;
+}
+#filter-bar .toggle-button {
+    padding: 3px 0 3px 0;
+}
+#filter-bar .toggle-button.selected {
+    background: #f2f7fa url("/assets/icons/close-icon.png") no-repeat right 10px top 10px;
+    padding: 1px 24px 0 6px;
+}

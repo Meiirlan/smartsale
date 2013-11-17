@@ -1,27 +1,18 @@
 #{extends 'main.html' /} #{set title:'Login' /} #{header/}
-<script type="text/javascript">
-	$(document).ready(function() {
-		$('body').removeClass('long-landing');
-		$('body').addClass('v2-subpage');
-	});
-</script>
-<link rel="stylesheet" type="text/css"
-	href="@{'/public/stylesheets/login.css'}" media="all">
 <div class="wrapper content">
 	<div id="content-wrapper" class="clearfix row">
-		<div class="row login-area">
+		<div class="row">
 			<div class="col8">
-				<h3>Log in</h3>
+				<h3>Войти</h3>
 				#{form @Secure.authenticate()} #{if flash.error}
 				<h6 class="error">&{flash.error}</h6>
 				#{/if} #{if flash.success}
 				<h6 class="success">&{flash.success}</h6>
-				#{/if} <label for="login">Email Address</label> <input name="email"
+				#{/if} <label for="login">E-mail:</label> <input name="email"
 					id="login" type="text" class="email" value="${flash.email}">
-				<span class="error">#{error 'user.email' /}</span> <label for="pwd">Password</label>
+				<span class="error">#{error 'user.email' /}</span> <label for="pwd">Пароль</label>
 				<input name="password" id="password" type="password"> <span
-					class="error">#{error 'user.pwd' /}</span> <a href="/recover">Forgot
-					your password?</a>
+					class="error">#{error 'user.pwd' /}</span> <a href="/recover">Забыли пароль?</a>
 
 				<div style="margin: 15px 0;" class="clearfix">
 					<input name="remember" id="remember" type="checkbox"
@@ -35,12 +26,12 @@
 				#{/form}
 			</div>
 			<div class="col4 border-left">
-				<h3>No Account Yet?</h3>
+				<h4>Еще не зарегистрированы?</h4>
 				<p>
-					<a href="/signup" class="internal-auth">Sign up as <strong>client</strong></a>.
+					<a href="/signup" class="internal-auth"><span class="blackLink">Зарегистрироваться как</span> <span style="font-weight: bold;">клиент</span></a>.
 				</p>
 				<p>
-					<a href="/signupStore" class="internal-auth">Sign up as <strong>store</strong></a>.
+					<a href="/signupStore" class="internal-auth"><span class="blackLink">Зарегистрироваться как </span><span style="font-weight: bold;">сервис</span></a>.
 				</p>
 			</div>
 		</div>
