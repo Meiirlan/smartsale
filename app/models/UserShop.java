@@ -20,6 +20,7 @@ public class UserShop extends Model implements Serializable {
 	@Required
 	@Unique
 	public String user_email;
+	public String serviceName;
 	@Required
 	@MinSize(2)
 	@MaxSize(30)
@@ -33,11 +34,9 @@ public class UserShop extends Model implements Serializable {
 	public boolean isShopActive;
 	public boolean isActive;
 	@OneToMany(mappedBy = "userShop", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-	public Set<UserProperty> userProperties;
-	
-	@ManyToMany(mappedBy = "userShops")
-    public List<Category> categories;
-    
+	public Set<UserProperty> userProperties;	
+	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    public List<Category> categories;    
 	@OneToMany(mappedBy="userShop", cascade=CascadeType.ALL,fetch = FetchType.EAGER)
 	public Set<Sale> sales;
 	@OneToMany(mappedBy="userShop", cascade=CascadeType.ALL,fetch = FetchType.EAGER)
@@ -48,9 +47,10 @@ public class UserShop extends Model implements Serializable {
 	public String firstName;
 	public String lastName;
 	public Blob photo;
+	public Date createDate;
 	
 	public UserShop(String email, String pwd2, City city2, String address2,
-			String phone) {
+			String phone,String serviceName) {
 		this.user_email = email;
 		this.score = 0;
 		isActive = false;
@@ -59,6 +59,7 @@ public class UserShop extends Model implements Serializable {
 		this.city = city2;
 		this.address = address2;
 		this.phone = phone;
+		this.serviceName = serviceName;
 	}
 
 	public static UserShop getUserShopByEmail(String email) {
@@ -66,5 +67,29 @@ public class UserShop extends Model implements Serializable {
 	}
 	public static UserShop connect(String email, String pwd) {
 		return find("byUser_emailAndPwd", email, pwd).first();
+	}
+	public static List<UserShop> getUserShops(String sortBy) {
+		if(sortBy.equals("all")){
+			return find("order by score desc").fetch();
+		}else if(sortBy.equals("new")){
+			return find("order by createDate,score desc").fetch();
+		}
+		List<UserShop> userShops =  find("order by score desc").fetch();
+		int length = userShops.size();
+		System.out.println("length = "+length);
+		List<UserShop> result = new ArrayList<UserShop>();
+		for(int i=0;i<length;i++){
+			int s = userShops.get(i).categories.size();
+			for(int j=0;j<s;j++){
+				if(userShops.get(i).categories.get(j).name.equals(sortBy)){
+					result.add(userShops.get(i));
+					break;
+				}
+			}
+		}
+		return result;
+	}
+	public String toString(){
+		return this.serviceName;
 	}
 }

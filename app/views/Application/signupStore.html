@@ -12,33 +12,47 @@
 				<h6 class="error">&{flash.error}</h6>
 				#{/if} #{if flash.success}
 				<h6 class="success">&{flash.success}</h6>
-				#{/if} <label for="login">E-mail*:</label> <input name="email"
-					id="login" type="text" class="email" value="${flash.email}">
-				<span class="error">#{error 'user.email' /}</span> <label
-					for="phone">Мобильный телефон*:</label> <input name="phone"
-					id="phone" type="text" class="phone" value="${flash.phone}">
-				<span class="error">#{error 'user.phone' /}</span> <label for="city">Город*:</label>
+				#{/if} 
+				<label for="login">E-mail*:</label> 
+				<input name="email" id="login" type="text" class="email" value="${flash.email}">
+				<span class="error">#{error 'user.email' /}</span> 
+
+				<label for="serviceName">Название сервиса/магазина*:</label> 
+				<input name="serviceName" id="serviceName" type="text" value="${flash.serviceName}">
+				<span class="error">#{error 'user.serviceName' /}</span> 
+				
+				<label for="phone">Мобильный телефон*:</label> 
+				<input name="phone" id="phone" type="text" class="phone" value="${flash.phone}">
+				<span class="error">#{error 'user.phone' /}</span> 
+				<label for="city">Город*:</label>
 				<select style="width: 180px; margin-bottom: 10px;" id="city"
 					name="city"> #{list items:cities, as:'c'}
 					<option value="${c.city}">${c.city}</option> #{/list}
-				</select> <label for="address">Адрес*:</label> <input name="address"
-					id="address" type="text" class="address" value="${flash.address}">
-				<span class="error">#{error 'user.address' /}</span> <label
-					for="photo">Фото:</label> <input type="file" id="photo"
-					name="photo" /> <label for="pwd">Пароль*:</label> <input
-					name="pwd" id="pwd" type="password"> <span class="error">#{error
-					'user.pwd' /}</span> <label for="cpwd">Подтверждение пароля*:</label> <input
-					id="cpwd" type="password" name="cpwd"> <span class="error">#{error
-					'user.cpwd' /}</span>
+				</select> 
+				
+				<label for="address">Адрес*:</label> 
+				<input name="address" id="address" type="text" class="address" value="${flash.address}">
+				<span class="error">#{error 'user.address' /}</span> 
+				
+				<label for="photo">Фото:</label> 
+				<input type="file" id="photo" name="photo" /> 
+				
+				<label for="pwd">Пароль*:</label> 
+				<input name="pwd" id="pwd" type="password"> 
+				<span class="error">#{error 'user.pwd' /}</span> 
+				
+				<label for="cpwd">Подтверждение пароля*:</label> 
+				<input id="cpwd" type="password" name="cpwd"> 
+				<span class="error">#{error 'user.cpwd' /}</span>
+				
 				<div style="margin: 15px 0;" class="clearfix">
-					<input name="oferta" id="oferta" type="checkbox"
-						style="float: left;"> <label for="check02">С
-						правилами <a href="@{Application.offerta()}" target="_blank">оферты</a>
-						согласен
+					<input name="oferta" id="oferta" type="checkbox" style="float: left;"> 
+					<label for="check02">С правилами <a href="@{Application.offerta()}" target="_blank">
+						оферты</a> согласен
 					</label>
 				</div>
 				<p>
-					<input type="submit" value="Create Account"
+					<input type="submit" value="Зарегистрироваться"
 						class="button button-primary button-disabled">
 				</p>
 				#{/form}

@@ -1,18 +1,18 @@
 <ul class="tabs clearfix">
-	<li class="tab-nav"><a href="@{Sale.index()}"
-		class="${_isActive=='1'?'active':''}">Все</a></li>
-	<li class="tab-nav"><a href="@{Sale.newSales()}"
-		class="${_isActive=='2'?'active':''}">Новые</a></li>
-	<li class="tab-nav"><a href="#tab-apps"
-		class="${_isActive=='3'?'active':''}">Красота и здоровье </a></li>
-	<li class="tab-nav"><a href="#tab-experts"
-		class="${_isActive=='4'?'active':''}">Еда</a></li>
-	<li class="tab-nav"><a href="#tab-experts"
-		class="${_isActive=='5'?'active':''}">Товары</a></li>	
-	<li class="tab-nav"><a href="#tab-experts"
-		class="${_isActive=='6'?'active':''}">Отдых</a></li>
-	<li class="tab-nav"><a href="#tab-experts"
-		class="${_isActive=='7'?'active':''}">Услуги</a></li>
-	<li class="tab-nav"><a href="#tab-experts"
-		class="${_isActive=='8'?'active':''}">Развлечения</a></li>	
+	<li class="tab-nav"><a href="@{Service.index('all')}"
+		class="${_isActive=='all'?'active':''}">Все</a></li>
+	<li class="tab-nav"><a href="@{Service.index('new')}"
+		class="${_isActive=='new'?'active':''}">Новые</a></li>
+	<li class="tab-nav"><a href="@{Service.index('beauty')}"
+		class="${_isActive=='beauty'?'active':''}">Красота и здоровье </a></li>
+	<li class="tab-nav"><a href="@{Service.index('food')}"
+		class="${_isActive=='food'?'active':''}">Еда</a></li>
+	<li class="tab-nav"><a href="@{Service.index('goods')}"
+		class="${_isActive=='goods'?'active':''}">Товары</a></li>	
+	<li class="tab-nav"><a href="@{Service.index('relax')}"
+		class="${_isActive=='relax'?'active':''}">Отдых</a></li>
+	<li class="tab-nav"><a href="@{Service.index('service')}"
+		class="${_isActive=='service'?'active':''}">Услуги</a></li>
+	<li class="tab-nav"><a href="@{Service.index('entertainment')}"
+		class="${_isActive=='entertainment'?'active':''}">Развлечения</a></li>	
 </ul>

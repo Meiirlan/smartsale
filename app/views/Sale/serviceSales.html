@@ -3,16 +3,24 @@ isActive:'1' /}
 <div class="wrapper content">
 	<div id="content-wrapper" class="clearfix row">
 		<div class="row">
-			#{salesMenu  isActive:'2'/}
+			#{serviceProfileMenu isActive:'sale'/}
 			<div class="segment-wrapper">
-				<ul class="tabs-content">
-					<li id="tab-new" style="display: list-item;" class="active">
-						<div class="row clearfix">
-							<div class="col12 new-to">#{shop /}</div>
-						</div>
-					</li>
-				</ul>
+				<div class="col9">
+					<ul class="forum-navigation-home category-ecommerce-discussion">
+						<li id="category-17"
+							class="clearfix  category-ecommerce-discussion"><a
+							class="ecommercediscussion" href="/c/ecommerce-discussion">
+								<div class="blurb">
+									<h2>В данный момент нет ни одной скидки</h2>
+								</div>
+						</a></li>
+					</ul>
+				</div>
+				<div class="col3">
+					<a href="@{Sale.newSales()}" class="button button-primary">Новая скидка</a>
+				</div>
 			</div>
 		</div>
 	</div>
 </div>
+<br/>

@@ -1,16 +1,19 @@
 <div class="col4">
 	<div class="mask">
-		<a href="/public/images/cxxvi.jpg?1383949189" class="info"
-			rel="fancybox">View Screenshot</a> <a href="http://www.cxxvi.net/"
-			class="info" rel="fancyframe" target="_blank">Visit Website</a>
-	</div>
-	<img class="thumbnail" src="/public/images/cxxvi-sm.jpg" width="285"
-		height="289" alt="CXXVI">
-	<div class="description">
-		<h4 class="tc">CXXVI</h4>
-		<p class="tc">Uni template.</p>
+		#{if _service.photo}
+		<img class="thumbnail" src="@{Application.userShopPhoto(_service.id)}" width="285"
+			height="200" alt="CXXVI">
+	    #{/if}
+	    #{else}
+	    <img class="thumbnail" src="/public/images/avatar.jpg" width="285"
+			height="200" alt="CXXVI">
+	   	#{/else}
+	   	<div class="description">
+			<h4 class="tc">${_service.serviceName}</h4>
+		</div> 
 	</div>
 </div>
+<!-- 
 <div class="col4">
 	<div class="mask">
 		<a href="/public/images/pop-chart-lab.jpg?1383949189" class="info"
@@ -24,3 +27,4 @@
 		<p class="tc">Stut.</p>
 	</div>
 </div>
+ -->

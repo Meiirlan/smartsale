@@ -20,6 +20,7 @@ public class Sale extends Model implements Serializable{
 	public boolean female;
 	public boolean boy;
 	public boolean girl;
+	public boolean baby;
 	public Date dateStart;
 	public boolean isActive;
 	public int score;

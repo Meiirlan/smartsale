@@ -11,12 +11,45 @@ isActive:'1' /}
 					#{/if} #{if flash.success}
 					<h6 class="success">&{flash.success}</h6>
 					#{/if} <label for="startDate">Начало скидок*:</label> <input
-						name="startDate" id="startDate" type="text"><select id="startHour" name="startHour">
+						name="startDate" id="startDate" type="text"><select
+						id="startHour" name="startHour">
+					</select> <label for="endDate">Конец скидок*:</label> <input name="endDate"
+						id="endDate" type="text"> <select id="endHour"
+						name="endHour">
 					</select>
-					 <label for="endDate">Конец скидок*:</label> <input name="endDate"
-						id="endDate" type="text">
-						<select id="endHour" name="endHour">
-					</select>
+					
+					<label for="content_area">Для какого:</label>
+					<div class="col2">
+						<label for="male">Мужской</label>
+						<input name="male" id="male" type="checkbox">
+					</div>
+					<div class="col2">
+						<label for="female">Женский</label>
+						<input name="female" id="female" type="checkbox">
+					</div>
+					<div class="col2">
+						<label for="boy">Мальчик</label>
+						<input name="boy" id="boy" type="checkbox">
+					</div>
+					<div class="col2">
+						<label for="girl">Девочка</label>
+						<input name="girl" id="girl" type="checkbox">
+					</div>
+					<div class="col2">
+						<label for="baby">Младенец</label>
+						<input name="baby" id="baby" type="checkbox">
+					</div>
+					
+					<div class="row">
+						<div class="col8">
+							<label for="content_area">Текст</label>
+							<textarea cols="38" rows="4" name="content" id="content_area"
+								class="f-input" require="true" datatype="require"
+								style="margin-left: 0px; margin-right: 0px; width: 306px; margin-top: 0px; margin-bottom: 0px; height: 220px; resize: none;">
+							</textarea>
+						</div>
+					</div>
+
 					<p>
 						<input type="submit" id="signin" value="Сохранить"
 							class="button button-primary">

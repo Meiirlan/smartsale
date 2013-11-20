@@ -10,21 +10,28 @@ import org.apache.commons.codec.digest.DigestUtils;
 
 import com.sun.mail.handlers.message_rfc822;
 
-public class Sale extends Controller{
-    //all sales
-	public static void index() {
-        render();
-    }
+public class Sale extends Controller {
+
+	public static void index(String category) {
+		if (category == null || category.equals("")) {
+			category = "all";
+		}
+		render(category);
+	}
+
 	public static void newSales() {
-        render();
-    }
+		render();
+	}
+
 	public static void clientSales() {
-        render();
-    }
+		render();
+	}
+
 	public static void serviceSales() {
-        render();
-    }
+		render();
+	}
+
 	public static void saveServiceSale() {
-        serviceSales();
-    }
+		serviceSales();
+	}
 }

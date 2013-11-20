@@ -22,6 +22,11 @@
 				
 				<input name="email" style="display: none" id="login" type="text" class="email" value="${userShop.user_email}">
 				
+				<label for="serviceName">Название сервиса/магазина*:</label> 
+				<input name="serviceName" id="serviceName" type="text" value="${userShop.serviceName}">
+				<span class="error">#{error 'user.serviceName' /}</span> 
+				
+				
 				<label for="firstName">Имя*:</label> 
 				<input name="firstName" id="firstName" type="text" class="firstName" value="${userShop.firstName}">
 				<span class="error">#{error 'client.email' /}</span>  

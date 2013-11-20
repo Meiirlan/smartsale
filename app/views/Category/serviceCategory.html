@@ -1,0 +1,32 @@
+#{extends 'main.html' /} #{set title:'Smart Sale' /} #{header
+isActive:'1' /}
+<div class="wrapper content">
+	<div id="content-wrapper" class="clearfix row">
+		<div class="row">
+			#{serviceProfileMenu isActive:'category'/}
+			<div class="segment-wrapper">
+				<h4>Ваши категории: </h4>
+				<ul style="padding-top: 10px; padding-left: 10px; padding-bottom: 20px;">
+				#{list items:userShop.categories, as:'category'} 
+					<li>${category}</li>
+				#{/list}
+				</ul>
+				<h4>Выберите категории</h4>
+				#{form @Category.saveServiceCategory()}
+					<select name="category" multiple style="width: 200px; height: 100px;">
+					#{list items:categories, as:'category'}
+							<option value="${category.name}">${category.nameRus}</option>
+					#{/list}
+					</select>
+					<input name="serviceId" style="display: none" 
+					id="login" type="text" value="${userShop.id}">
+				
+					<p>
+						<input type="submit" id="signin" value="Войти"
+							value="Create Account" class="button button-primary">
+					</p>
+				#{/form}
+			</div>
+		</div>
+	</div>
+</div>

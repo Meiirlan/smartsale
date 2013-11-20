@@ -22,7 +22,7 @@ public class Category extends Model implements Serializable{
 	@OneToMany(mappedBy = "parent")
 	public List<Category> categories;
 	
-	@ManyToMany(cascade = CascadeType.ALL)
+	@ManyToMany(mappedBy = "categories",cascade = CascadeType.ALL)
     public List<UserShop> userShops;
 	
 	public String toString() {
@@ -30,6 +30,9 @@ public class Category extends Model implements Serializable{
 	}
 	public static Category getCategoryByParent(String parent) {
 		return Category.find("byName", parent).first();
+	}
+	public static Category getCategoryByName(String name) {
+		return Category.find("byName", name).first();
 	}
 	public static List<Category> getSubcategories(String parentName) {
 		if(parentName.equals("all")){

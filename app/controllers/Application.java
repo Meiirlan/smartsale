@@ -65,12 +65,7 @@ public class Application extends Controller {
 	public static void serviceProfile() {
 		render();
 	}
-	public static void serviceCategory() {
-		render();
-	}
-	public static void serviceSales() {
-		render();
-	}
+	
 	public static void editProfile() {
 		List<City> cities = City.getAllCity();
 		render(cities);
@@ -134,7 +129,7 @@ public class Application extends Controller {
 	}
 	
 	public static void saveServiceProfile(String email, String firstName,
-			String lastName, File photo, String phone, String address,
+			String lastName, File photo, String phone, String address, String serviceName,
 			 String city) throws FileNotFoundException {
 		System.out.println(photo + "q22222222222222");
 		UserShop userShop = UserShop.getUserShopByEmail(email);
@@ -143,6 +138,7 @@ public class Application extends Controller {
 		userShop.lastName = lastName;
 		userShop.phone = phone;
 		userShop.address = address;
+		userShop.serviceName = serviceName;
 		
 		City clientCity = City.getCity(city);
 		userShop.city = clientCity;
@@ -215,7 +211,7 @@ public class Application extends Controller {
 			@Required(message = "City is required") String city,
 			@Required(message = "City is required") String address,
 			@Required(message = "Password is required") String pwd,
-			File photo,
+			File photo,String serviceName,
 			@Required(message = "Password confirmation is required") String cpwd)
 			throws Throwable {
 
@@ -223,8 +219,7 @@ public class Application extends Controller {
 		System.out.println(phone);
 		System.out.println(city);
 		System.out.println(address);
-		System.out.println(pwd);
-		System.out.println(cpwd);
+		System.out.println(serviceName);
 
 		if (validation.hasErrors()) {
 			flash.error("Пожалуйста заполните поля с *");
@@ -259,7 +254,7 @@ public class Application extends Controller {
 		City myCity = City.getCity(city);
 		System.out.println(city);
 		if (city != null) {
-			userShop = new UserShop(email, pwd, myCity, address, phone);
+			userShop = new UserShop(email, pwd, myCity, address, phone,serviceName);
 		} else {
 			render("Application/signupStore.html", userShop);
 		}

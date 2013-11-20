@@ -3,12 +3,18 @@ isActive:'2' /}
 <div class="wrapper content">
 	<div id="content-wrapper" class="clearfix row">
 		<div class="row">
-			#{servicesMenu isActive:'1'/}
+			#{servicesMenu isActive:category/}
 			<div class="segment-wrapper">
 				<ul class="tabs-content">
 					<li id="tab-new" style="display: list-item;" class="active">
 						<div class="row clearfix">
-							<div class="col12 new-to">#{shop /}</div>
+							<div class="col12 new-to">
+								#{list items:userShops, as:'service'} 
+									<div class="col4 new-to">
+										#{shop service:service/} 
+									</div> 
+								#{/list}
+							</div>
 						</div>
 					</li>
 				</ul>
