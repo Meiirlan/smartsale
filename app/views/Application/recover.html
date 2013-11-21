@@ -1,12 +1,10 @@
-#{extends 'main.html' /} #{set title:'Login' /}
-<link rel="stylesheet" type="text/css" 
-	href="@{'/public/stylesheets/login.css'}" media="all">
+#{extends 'main.html' /} #{set title:'Login' /} #{header/}
 <div class="wrapper content">
-    <div id="content-wrapper" class="clearfix row">
-        <div class="row login-area">
+	<div id="content-wrapper" class="clearfix row">
+		<div class="row login-area">
 			<div class="col8">
-				<h3>Forgot your Password?</h3>
-				<h5>No problem! We'll send you instructions on how to reset it.</h5>
+				<h3>Забыли пароль?</h3>
+				<h5>Это не проблема! Мы вышлем вам инструкции о том, как его сбросить.</h5>
 				#{form @reset()}        	   
 		      	 	#{if flash.error}
 						<h6 class="error">
@@ -35,15 +33,5 @@
 				</p>
 			</div>
 		</div>
-	<script type="text/javascript">
-		$(document).ready(function() {
-			var redirect = getParameter('redirect');
-			if (redirect && redirect != '') {
-				$('#redirect').val(redirect);
-			}
-			$('body').removeClass('long-landing');
-			$('body').addClass('v2-subpage');
-		});
-	</script>
-    </div>
+	</div>
 </div>

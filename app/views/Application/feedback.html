@@ -1,51 +1,41 @@
 #{extends 'main.html' /} #{set title:'Login' /}
 #{header isActive:'4' /}
-<link rel="stylesheet" type="text/css" 
-	href="@{'/public/stylesheets/login.css'}" media="all">
 <div class="wrapper content">
     <div id="content-wrapper" class="clearfix row">
         <div class="row login-area">
-
-	<div class="col8">
-		<h3>Обратная связь</h3>
-		#{form @SendFeedback()}        	   
-		    <label for="firstName">First name</label>
-	    	<input name="firstName" id="firstName" type="text" class="firstName">	
-		    
-		    <label for="question">Question</label>
-		    <select style="width: 180px; margin-bottom: 10px;" id="question" name="question">
-		    	<option value="quest" selected="">Вопрос</option>
-				<option value="problem">Отзыв об скидке</option>
-				<option value="new_func">Предложение</option>
-				<option value="problem_cupon">Проблема с регистрацией скидки</option>
-				<option value="problem_action">Проблема с участием в скидке</option>
-				<option value="mailer">Вопрос по рассылке</option>
-				<option value="other">Другое</option>
-			</select>
-			
-		    <label for="phone">Telephone</label>
-	    	<input name="phone" id="phone" type="text">	
-
-		    <label for="email">Email</label>
-	    	<input id="email" type="text"  name="email">	
-			
-			<label for="content_area">Text</label>
-			<textarea cols="38" rows="4" name="content" id="content_area" class="f-input" 
-			require="true" datatype="require" style="margin-left: 0px; margin-right: 0px;
-			 width: 306px; margin-top: 0px; margin-bottom: 0px; height: 220px; resize: none;">
-			</textarea>
-		    <p>
-		    	<input type="submit" value="Create Account" class="button button-primary">
-		    </p>
-        #{/form} 
-	</div>
-</div>
-
-<script type="text/javascript">
-	$(document).ready(function() {
-		$('body').removeClass('long-landing');
-		$('body').addClass('v2-subpage');
-	});
-</script>
+			<div class="col8">
+				<h3>Обратная связь</h3>
+				#{form @SendFeedback()}        	   
+				    <label for="firstName">Имя*:</label>
+			    	<input name="firstName" id="firstName" type="text" class="firstName">	
+				    
+				    <label for="question">Вопрос*:</label>
+				    <select style="width: 180px; margin-bottom: 10px;" id="question" name="question">
+				    	<option value="quest" selected="">Вопрос</option>
+						<option value="problem">Отзыв об скидке</option>
+						<option value="new_func">Предложение</option>
+						<option value="problem_cupon">Проблема с регистрацией скидки</option>
+						<option value="problem_action">Проблема с участием в скидке</option>
+						<option value="mailer">Вопрос по рассылке</option>
+						<option value="other">Другое</option>
+					</select>
+					
+				    <label for="phone">Телефон*:</label>
+			    	<input name="phone" id="phone" type="text">	
+		
+				    <label for="email">Ваш е-mail*:</label>
+			    	<input id="email" type="text"  name="email">	
+					
+					<label for="content_area">Текст сообщения</label>
+					<textarea cols="38" rows="4" name="content" id="content_area" class="f-input" 
+					require="true" datatype="require" style="margin-left: 0px; margin-right: 0px;
+					 width: 306px; margin-top: 0px; margin-bottom: 0px; height: 220px; resize: none;">
+					</textarea>
+				    <p>
+				    	<input type="submit" value="Отправить сообщение" class="button button-primary">
+				    </p>
+		        #{/form} 
+			</div>
+		</div>
     </div>
   </div>

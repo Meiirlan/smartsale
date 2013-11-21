@@ -1,23 +1,46 @@
 #{extends 'main.html' /} #{set title:'Smart Sale' /} #{header
-isActive:'1' /}
+isActive:'5' /}
 <div class="wrapper content">
 	<div id="content-wrapper" class="clearfix row">
 		<div class="row">
 			#{serviceProfileMenu isActive:'sale'/}
+			<div style="float: right; margin-bottom: 10px;margin-top: -50px;">
+				<a href="@{Sale.newSales()}" class="button button-primary">Новая скидка</a>
+			</div>	
 			<div class="segment-wrapper">
-				<div class="col9">
+				<div class="col12">
 					<ul class="forum-navigation-home category-ecommerce-discussion">
-						<li id="category-17"
-							class="clearfix  category-ecommerce-discussion"><a
-							class="ecommercediscussion" href="/c/ecommerce-discussion">
-								<div class="blurb">
-									<h2>В данный момент нет ни одной скидки</h2>
-								</div>
-						</a></li>
+						#{if sales}
+						<div class="col12 new-to">
+								#{list items:sales, as:'sale'} 
+									<div class="col4 new-to">
+										#{sale sale:sale/} 
+									</div> 
+								#{/list}
+							</div>
+						<table class="table table-bordered table-hover table-condensed">
+							<thead>
+								<tr>
+									<th>Начало скидок</th>
+									<th>Конец скидок</th>
+									<th>Активно</th>
+								</tr>
+							</thead>
+							<tbody>
+							#{list items:sales, as:'s'}
+								<tr>
+								<td>${s.dateStart.format('dd-MM-yyyy HH:mm')}</td>
+								<td>${s.dateFinish.format('dd-MM-yyyy HH:mm')}</td>
+								<td>${s.isActive==false?'нет':'да'}</td>
+								</tr>
+							#{/list}
+							</tbody>
+						</table>
+						#{/if}				
+						#{else}
+							<h2>В данный момент нет ни одной скидки</h2>
+						#{/else}
 					</ul>
-				</div>
-				<div class="col3">
-					<a href="@{Sale.newSales()}" class="button button-primary">Новая скидка</a>
 				</div>
 			</div>
 		</div>

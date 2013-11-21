@@ -13,7 +13,8 @@ import models.Client;
 
 public class Mails extends Mailer {
 	public static String projectName = "Smart Sale";
-	public static String projectSite = "http://localhost:9000";
+//	public static String projectSite = "http://localhost:9000";
+	public static String projectSite = "http://smartsale.kz";
 
 	public static void welcome() {
 		setSubject("Welcome %s", "sultan");

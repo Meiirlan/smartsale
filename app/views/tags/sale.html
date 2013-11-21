@@ -1,0 +1,30 @@
+<div class="col4">
+	<div class="mask">
+		#{if _sale.mainPhoto}
+		<a href="@{Sale.mySale()}"><img class="thumbnail" src="@{Sale.salePhoto(_sale.id)}" width="285"
+			height="200" alt="CXXVI"></a>
+	    #{/if}
+	    #{else}
+	    <img class="thumbnail" src="/public/images/avatar.jpg" width="285"
+			height="200" alt="CXXVI">
+	   	#{/else}
+	   	<div class="description">
+			<h4 class="tc">${_sale.userShop.serviceName}</h4>
+		</div> 
+	</div>
+</div>
+<!-- 
+<div class="col4">
+	<div class="mask">
+		<a href="/public/images/pop-chart-lab.jpg?1383949189" class="info"
+			rel="fancybox">View Screenshot</a> <a href="http://popchartlab.com/"
+			class="info" rel="fancyframe" target="_blank">Visit Website</a>
+	</div>
+	<img class="thumbnail" src="/public/images/pop-chart-lab-sm.jpg"
+		width="285" height="289" alt="Pop Chart Lab">
+	<div class="description">
+		<h4 class="tc">Pop Chart Lab</h4>
+		<p class="tc">Stut.</p>
+	</div>
+</div>
+ -->

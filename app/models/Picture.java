@@ -18,7 +18,6 @@ import play.db.jpa.Model;
 @Table(name = "Files")
 public class Picture extends Model implements Serializable{
 	public Blob file;
-	@OneToOne
-	public Client client;
-	
+//	@ManyToOne
+//	public Sale sale;
 }

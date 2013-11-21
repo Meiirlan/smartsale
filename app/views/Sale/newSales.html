@@ -6,16 +6,20 @@ isActive:'1' /}
 			<div class="segment-wrapper">
 				<div class="col8">
 					<h3>Новая скидка</h3>
-					#{form @Sale.saveServiceSale()} #{if flash.error}
+					#{form @Sale.saveServiceSale(), enctype:'multipart/form-data'}  
+					#{if flash.error}
 					<h6 class="error">&{flash.error}</h6>
 					#{/if} #{if flash.success}
 					<h6 class="success">&{flash.success}</h6>
-					#{/if} <label for="startDate">Начало скидок*:</label> <input
-						name="startDate" id="startDate" type="text"><select
-						id="startHour" name="startHour">
-					</select> <label for="endDate">Конец скидок*:</label> <input name="endDate"
-						id="endDate" type="text"> <select id="endHour"
-						name="endHour">
+					#{/if} 
+					<label for="startDate">Начало скидок*:</label> 
+					<input name="startDate" id="startDate" type="text">
+					<select id="startHour" name="startHour">
+					</select> 
+					
+					<label for="endDate">Конец скидок*:</label> 
+					<input name="endDate" id="endDate" type="text"> 
+					<select id="endHour" name="endHour">
 					</select>
 					
 					<label for="content_area">Для какого:</label>
@@ -40,6 +44,21 @@ isActive:'1' /}
 						<input name="baby" id="baby" type="checkbox">
 					</div>
 					
+					<label for="photo">Фото:</label> 
+					<input type="file" id="photo" name="photo" />					      	    
+				
+					<label for="photo">Главное фото:</label> 
+					<input type="file" id="photo" name="photo" />					      	    
+				
+					<label for="photo1">Первое фото для слайда:</label> 
+					<input type="file" id="photo1" name="photo1" />					      	    
+				
+					<label for="photo2">Второе фото для слайда:</label> 
+					<input type="file" id="photo2" name="photo2" />					      	    
+				
+					<label for="photo3">Третее фото для слайда:</label> 
+					<input type="file" id="photo3" name="photo3" />					      	    
+				
 					<div class="row">
 						<div class="col8">
 							<label for="content_area">Текст</label>
