@@ -31,7 +31,7 @@ public class UserShop extends Model implements Serializable {
 	public String pwd1;
 	public String phone;
 	public int score;
-	public boolean isShopActive;
+	public boolean isShopActive;//must be checked by moderator
 	public boolean isActive;
 	@OneToMany(mappedBy = "userShop", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	public Set<UserProperty> userProperties;	

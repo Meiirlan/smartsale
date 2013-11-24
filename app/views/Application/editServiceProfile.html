@@ -1,12 +1,4 @@
 #{extends 'main.html' /} #{set title:'Login' /} #{header/}
-<script type="text/javascript">
-	$(document).ready(function() {
-		$('body').removeClass('long-landing');
-		$('body').addClass('v2-subpage');
-	});
-</script>
-<link rel="stylesheet" type="text/css"
-	href="@{'/public/stylesheets/login.css'}" media="all">
 <div class="wrapper content">
 	<div id="content-wrapper" class="clearfix row">
 		<div class="row login-area">
@@ -44,8 +36,7 @@
 				<span class="error">#{error 'user.address' /}</span> 
 				
 				<label for="photo">Фото:</label> 
-				<img src="@{Application.userShopPhoto(userShop.id)}" 
-				style="width: 120px; height: 120px;'">
+				<img src="@{Service.userServicePhoto(userShop.id)}"  width="120px" height="120px">
 				<input type="file" id="photo" name="photo" />		
 				
 				<label for="city">Город:</label>
@@ -69,15 +60,17 @@
 	</div>
 </div>
 #{set 'moreScripts' }
-<link rel="stylesheet" href="/public/stylesheets/jquery-ui.css" />
-<script src="/public/javascripts/jquery-ui.js"></script>
+<link rel="stylesheet" href="/public/stylesheets/jquery-ui.min.css" />
+<script src="/public/javascripts/jquery.ui.datepicker.min.js"></script>
 <script>
   $(function() {
     $( "#birthday" ).datepicker({
       changeMonth: true,
       changeYear: true,
-      dateFormat: 'dd-mm-yy' 
-    });
+      dateFormat: 'dd-mm-yy',
+  	  monthNames: ['Январь','Февраль','Март','Апрель','Май','Июнь','Июль','Август','Сентябрь','Октябрь','Ноябрь','Декабрь'],
+	  monthNamesShort: ['Январь','Февраль','Март','Апрель','Май','Июнь','Июль','Август','Сентябрь','Октябрь','Ноябрь','Декабрь']
+	});
   });
   </script>
 #{/set}

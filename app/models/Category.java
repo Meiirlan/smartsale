@@ -21,7 +21,8 @@ public class Category extends Model implements Serializable{
 	public Category parent;
 	@OneToMany(mappedBy = "parent")
 	public List<Category> categories;
-	
+	@OneToMany(mappedBy = "category")
+	public List<Follower> followers;
 	@ManyToMany(mappedBy = "categories",cascade = CascadeType.ALL)
     public List<UserShop> userShops;
 	

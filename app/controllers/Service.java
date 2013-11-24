@@ -33,4 +33,20 @@ public class Service extends Controller{
 //		}
         render(category,userShops);
     }
+	public static void serviceQuestions() {
+		render();
+	}
+	public static void myService(long serviceId) {
+		models.UserShop service = models.UserShop.findById(serviceId);
+		render(service);
+	}
+	public static void userServicePhoto(long id) {
+		final UserShop userShop = UserShop.findById(id);
+		notFoundIfNull(userShop);
+		System.out.println(userShop.photo + "---------------");
+		if (userShop.photo != null) {
+			response.setContentTypeIfNotSet(userShop.photo.type());
+			renderBinary(userShop.photo.get());
+		}
+	}
 }

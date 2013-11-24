@@ -1,10 +1,8 @@
-#{extends 'main.html' /} #{set title:'Login' /}
-<link rel="stylesheet" type="text/css" 
-	href="@{'/public/stylesheets/login.css'}" media="all">
+#{extends 'main.html' /} 
+#{set title:'Login' /}
 <div class="wrapper content">
     <div id="content-wrapper" class="clearfix row">
         <div class="row login-area">
-
 	<div class="col8">
 		<h3>Reset password for <strong>${email}</strong>.</h3>
 			#{form @saveNewPwd()}
@@ -34,10 +32,4 @@
 	</div>
 </div>
   </div>
-  <script type="text/javascript">
-	$(document).ready(function() {
-		$('body').removeClass('long-landing');
-		$('body').addClass('v2-subpage');
-	});
-</script>
   </div>

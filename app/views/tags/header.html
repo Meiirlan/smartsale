@@ -9,6 +9,12 @@
 				<nav id="dl-menu" class="dl-menuwrapper">
 					<button class="dl-trigger">Open Menu</button>
 					<ul class="sub-menu dl-menu">
+						#{if !session?.user}
+							<li><a href="@{Application.howDoesItWorks()}" class="${_isActive=='0'?'current':''}">Как это работает</a></li>
+						#{/if}
+						#{if session?.user == 'client'}
+							<li><a href="@{Sale.clientSales()}" class="${_isActive=='0'?'current':''}">Мои скидки</a></li>
+						#{/if}
 						<li><a href="@{Sale.index()}" class="${_isActive=='1'?'current':''}">Скидки</a></li>
 						<li><a href="@{Service.index()}" class="${_isActive=='2'?'current':''}">Сервисы</a></li>
 						<li><a href="@{Category.index()}" class="${_isActive=='3'?'current':''}">Категории</a></li>
@@ -34,14 +40,13 @@
 							<ul class="dl-submenu">
 								#{if session.user == 'client'}
 									<li><a href="@{Application.clientProfile()}">Профиль</a></li>
-									<li><a href="@{Sale.clientSales()}">Мои скидки</a></li>
-									<li><a href="@{Application.clientFollowers()}">Мои подписки</a></li>
+									<li><a href="@{Application.clientQuestions()}">Мои вопросы</a></li>
 								#{/if}	
 								#{else}
 									<li><a href="@{Application.serviceProfile()}">Профиль</a></li>
 									<li><a href="@{Sale.serviceSales()}">Мои скидки</a></li>
+									<li><a href="@{Service.serviceQuestions()}">Мои вопросы</a></li>
 								#{/else}
-								<li><a href="@{Application.myQuestions()}">Мои вопросы</a></li>
 								<li><a href="@{Secure.logout()}" class="navbar-link">Выйти</a></li>
 							</ul>
 						</li>

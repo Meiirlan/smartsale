@@ -13,6 +13,7 @@ import java.io.FileNotFoundException;
 import java.util.*;
 
 import models.Client;
+import models.Follower;
 import models.Picture;
 import models.UserShop;
 
@@ -59,9 +60,31 @@ public class Sale extends Controller {
 	}
 
 	public static void clientSales() {
-		render();
+		Client client = Cache.get(session.getId() + "client", Client.class);
+		List <models.Follower>followers = models.Follower.getFollowersByClient(client); 
+		List <models.Sale> mySales = new ArrayList<models.Sale>();
+		for(int i=0;i<followers.size();i++){
+			models.Follower f = followers.get(i);
+			if(f.ok){
+				List <models.Sale> s = models.Sale.getSalesByService(f.userShop);
+				mySales.addAll(s);
+			}
+		}
+		render(mySales);
 	}
-
+	public static void clientProfileSales() {
+		Client client = Cache.get(session.getId() + "client", Client.class);
+		List <models.Follower>followers = models.Follower.getFollowersByClient(client); 
+		List <models.Sale> mySales = new ArrayList<models.Sale>();
+		for(int i=0;i<followers.size();i++){
+			models.Follower f = followers.get(i);
+			if(f.ok){
+				List <models.Sale> s = models.Sale.getSalesByService(f.userShop);
+				mySales.addAll(s);
+			}
+		}
+		render(mySales);
+	}
 	public static void serviceSales() {
 		UserShop userShop = Cache.get(session.getId() + "userShop",
 				UserShop.class);
@@ -69,14 +92,32 @@ public class Sale extends Controller {
 		List<models.Sale> sales = models.Sale.getSalesByService(userShop);
 		render(sales);
 	}
-	public static void mySale(){
-		render();
+
+	public static void mySale(long saleId) {
+		models.Sale sale = models.Sale.findById(saleId);
+		Client client = Cache.get(session.getId() + "client", Client.class);
+		models.UserShop userShop = models.UserShop.findById(sale.userShop.id);
+		models.Follower  follower = models.Follower.getFollowerByUserShop(client,userShop);
+		render(sale,follower);
+	}
+	public static void follow(long saleId,long userShopId) {
+		Client client = Cache.get(session.getId() + "client", Client.class);
+		models.UserShop userShop = models.UserShop.findById(userShopId);
+		models.Follower  follower = models.Follower.getFollowerByUserShop(client,userShop);
+		System.out.println(follower);
+		if(follower!=null){
+			follower.ok = !follower.ok;
+			follower.save();
+		}else{
+			models.Follower f = new models.Follower(client, userShop,  true);
+			f.save();
+		}
+		mySale(saleId);
 	}
 	public static void saveServiceSale(String startDate, String startHour,
-			String endDate, String endHour, File photo,File photo1
-			,File photo2,File photo3, boolean male,
-			boolean female, boolean boy, boolean girl, boolean baby,
-			String content) {
+			String endDate, String endHour, File photo, File photo1,
+			File photo2, File photo3, boolean male, boolean female,
+			boolean boy, boolean girl, boolean baby, String content) {
 		System.out.println(startDate);
 		System.out.println(startHour);
 		System.out.println(endDate);
@@ -136,12 +177,29 @@ public class Sale extends Controller {
 		serviceSales();
 	}
 
-	public static void salePhoto(long id) {
+	public static void salePhoto(long id, long number) {
 		final models.Sale sale = models.Sale.findById(id);
 		notFoundIfNull(sale);
-		if (sale.mainPhoto != null) {
-			response.setContentTypeIfNotSet(sale.mainPhoto.type());
-			renderBinary(sale.mainPhoto.get());
+		if (number == 0) {
+			if (sale.mainPhoto != null) {
+				response.setContentTypeIfNotSet(sale.mainPhoto.type());
+				renderBinary(sale.mainPhoto.get());
+			}
+		} else if (number == 1) {
+			if (sale.photo1 != null) {
+				response.setContentTypeIfNotSet(sale.photo1.type());
+				renderBinary(sale.photo1.get());
+			}
+		} else if (number == 2) {
+			if (sale.photo2 != null) {
+				response.setContentTypeIfNotSet(sale.photo2.type());
+				renderBinary(sale.photo2.get());
+			}
+		} else if (number == 3) {
+			if (sale.photo3 != null) {
+				response.setContentTypeIfNotSet(sale.photo3.type());
+				renderBinary(sale.photo3.get());
+			}
 		}
 	}
 }

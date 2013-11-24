@@ -3,6 +3,8 @@
 		class="${_isActive=='profile'?'active':''}">Профиль</a></li>
 	<li class="tab-nav"><a href="@{Category.serviceCategory()}"
 		class="${_isActive=='category'?'active':''}">Категории</a></li>
-		<li class="tab-nav"><a href="@{Sale.serviceSales()}"
+	<li class="tab-nav"><a href="@{Sale.serviceSales()}"
 		class="${_isActive=='sale'?'active':''}">Мои скидки</a></li>
+	<li class="tab-nav"><a href="@{Service.serviceQuestions()}"
+		class="${_isActive=='question'?'active':''}">Мои вопросы</a></li>
 </ul>

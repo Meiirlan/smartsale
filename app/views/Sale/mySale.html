@@ -1,9 +1,9 @@
 #{extends 'main.html' /} #{set title:'Smart Sale' /} #{header
-isActive:'5' /}
+isActive:'1' /}
 <div class="wrapper content">
 	<div id="content-wrapper" class="clearfix row">
 		<div class="row">
-			#{saleSlideShow /}
+			#{saleSlideShow follower:follower, sale:sale/}
 		</div>
 	</div>
 </div>

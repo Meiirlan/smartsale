@@ -1,0 +1,15 @@
+#{extends 'main.html' /} 
+#{set title:'Smart Sale' /} 
+#{header isActive:'2' /}
+<div class="wrapper content">
+	<div id="content-wrapper" class="clearfix row">
+		<div class="row">
+			<h4>${service.serviceName}</h4>
+			<h4>${service.city}</h4>
+			<h4>${service.address}</h4>
+		</div>
+	</div>
+</div>
+#{set 'moreScripts'}
+<script src="@{'/public/javascripts/application-slide.js'}"></script>
+#{/set}

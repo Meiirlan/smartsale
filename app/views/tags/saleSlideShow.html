@@ -4,77 +4,30 @@
     <div class="slideshow col12">
       <ul class="slideshow-banners">
       	<li style="margin-top: 0px;">
-      		<a href="/retentiongrid" itemprop="significantLinks">
-      		<img alt="Splash" height="300" src="//s3.amazonaws.com/shopify-app-store/features/240/splash.png?1383921846" width="680">
+      		<a href="#" itemprop="significantLinks">
+      			<img alt="Splash" height="300" src="@{Sale.salePhoto(_sale.id,1)}" width="990">
       		</a>
       	</li>
       	<li style="margin-top: 0px;">
-      		<a href="/pict-shoppable-photos" itemprop="significantLinks">
-      			<img alt="Splash" height="300" src="//s3.amazonaws.com/shopify-app-store/features/247/splash.jpg?1384799022" width="680">
+      		<a href="#" itemprop="significantLinks">
+      			<img alt="Splash" height="300" src="@{Sale.salePhoto(_sale.id,2)}" width="990">
       		</a>
       	</li>
       	<li style="margin-top: 0px;">
-      		<a href="/mobile-shop-by-shoutem" itemprop="significantLinks">
-      			<img alt="Splash" height="300" src="//s3.amazonaws.com/shopify-app-store/features/246/splash.png?1384786308" width="680">
+      		<a href="#" itemprop="significantLinks">
+      			<img alt="Splash" height="300" src="@{Sale.salePhoto(_sale.id,3)}" width="990">
       		</a>
-      	</li>
-      	<li style="margin-top: 0px;">
-	      	<a href="/social-login" itemprop="significantLinks">
-	      		<img alt="Splash" height="300" src="//s3.amazonaws.com/shopify-app-store/features/242/splash.jpg?1384195895" width="680">
-	      	</a>
-      	</li>
-      	<li style="margin-top: 0px;">
-	      	<a href="/taxjar" itemprop="significantLinks">
-	      		<img alt="Splash" height="300" src="//s3.amazonaws.com/shopify-app-store/features/241/splash.png?1384183604" width="680">
-	      	</a>
       	</li>
       </ul>
-      <ul class="slideshow-selectors">
-  		<li style="margin-top: 0px;" class="">
- 			<a href="/taxjar">
- 				<img alt="Splash" height="100" src="//s3.amazonaws.com/shopify-app-store/shopify_applications/small_banners/934/splash.png?1384385164" width="310">
- 			</a>
-		</li>
-		<li class="current" style="margin-top: 0px;">
-			<a href="/retentiongrid">
-				<img alt="Splash" height="100" src="//s3.amazonaws.com/shopify-app-store/shopify_applications/small_banners/767/splash.png?1383927231" width="310">
-			</a>
-		</li>
-		<li class="" style="margin-top: 0px;">
-			<a href="/pict-shoppable-photos">
-				<img alt="Splash" height="100" src="//s3.amazonaws.com/shopify-app-store/shopify_applications/small_banners/661/splash.jpg?1366403026" width="310">
-			</a>
-		</li>
-		<li style="margin-top: 0px;" class="">
-			<a href="/mobile-shop-by-shoutem">
-				<img alt="Splash" height="100" src="//s3.amazonaws.com/shopify-app-store/shopify_applications/small_banners/912/splash.png?1376043279" width="310">
-			</a>
-		</li>
-		<li style="margin-top: 0px;" class="">
-			<a href="/social-login">
-				<img alt="Splash" height="100" src="//s3.amazonaws.com/shopify-app-store/shopify_applications/small_banners/1063/splash.jpg?1384189976" width="310">
-			</a>
-		</li>
-  	</ul>
-	<a class="slideshow-next ir" data-action="next" href="#">Next</a>
-	<a class="slideshow-prev ir" data-action="prev" href="#">Prev</a>
-	<a href="/retentiongrid" class="slideshow-overlay ir">Overlay</a>
-</div>
+      <a class="slideshow-next ir" data-action="next" href="#">Next</a>
+	  <a class="slideshow-prev ir" data-action="prev" href="#">Prev</a>
+	  <a href="/retentiongrid" class="slideshow-overlay ir">Overlay</a>
+	</div>
+    #{sale_tags/sale_tag1 follower:_follower, sale:_sale/}
     <div class="calltoaction-new col12">
-	  <a href="http://www.smartsale.kz">
-	    <strong>New to SmartSale?</strong>Create a stunning 
-	    <div class="calltoaction-cycle" style="width: 53px;">
-	      <ul class="calltoaction-keywords" style="top: -1px;">
-		      <li class="calltoaction-current"><span>t-shirt</span></li>
-		      <li class=""><span>art</span></li>
-		      <li class=""><span>ebook</span></li>
-		      <li class=""><span>photography</span></li>
-		      <li class=""><span>jewelery</span></li>
-	      </ul> 
-	    </div>
-	    store in minutes.
-	    <span class="button button-primary calltoaction-button-new">Подписаться на скидку</span>
-	  </a>
+	  <ul style="top: -1px; margin: 0 10px 0 15px;">
+	      <li><h4>${_sale.text}</h4></li>
+	  </ul> 
 	</div>
-	</div>
+  </div>
 </div>

@@ -29,61 +29,20 @@
 <meta property="twitter:image" content="/public/images/smartsale-bag.png">
 <meta property="twitter:site" content="@SmartSaleKz">
 <!-- Begin CSS -->
-<link rel="stylesheet" type="text/css" href="@{'/public/stylesheets/home.css'}" media="all">
+<link rel="stylesheet" type="text/css" href="@{'/public/stylesheets/home.min.css'}" media="all">
 #{get 'moreStyles' /}
-<script src="@{'/public/javascripts/jquery.min.js'}"></script>
-<!-- Modernizr -->
-<script src="@{'/public/javascripts/modernizr.min.js'}"></script>
-<!-- Multitrack -->
 </head>
 <body class="loaded">
 #{doLayout /} 
 #{footer /}
-
-<script type="text/javascript">
-$(".overview").css({"display":"none", "visibility":""});
-$(".experience").css({"display":"none", "visibility":""});
-$(".testimonials").css({"padding-top":"0"});
-$(".examples").css({"padding-bottom":"60px"});
-$(function() {
-    $( '#dl-menu' ).dlmenu({
-      animationClasses : { classin : 'dl-animate-in-2', classout : 'dl-animate-out-2' }
-    });
-  });
-</script>
-<script src="@{'/public/javascripts/all.js'}"></script>
+<script src="@{'/public/javascripts/jquery.min.js'}"></script>
+<!-- Modernizr -->
+<script src="@{'/public/javascripts/modernizr.min.js'}"></script>
+<!-- Multitrack -->
+<script src="@{'/public/javascripts/all.min.js'}"></script>
 <script src="@{'/public/javascripts/jquery.fancybox.pack.js'}"></script>
-<script src="@{'/public/javascripts/v2-home.js'}" async="true"></script>
 
 #{get 'moreScripts' /}
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-  ga('create', 'UA-45820109-1', 'smartsale.kz');
-  ga('send', 'pageview');
-
-</script>
-
-<script type="text/javascript">
-$("#segment-test").removeClass('hidden');
-$(".overview").css({"display":"none", "visibility":""});
-$(".experience").css({"display":"none", "visibility":""});
-$(".testimonials").css({"padding-top":"0"});
-$(".examples").css({"padding-bottom":"60px"});
-$(function() {
-    $( '#dl-menu' ).dlmenu({
-      animationClasses : { classin : 'dl-animate-in-2', classout : 'dl-animate-out-2'}     
-	  event.preventDefault();
-    });
-    
-  });
-</script>
-<script src="@{'/public/javascripts/all.js'}"></script>
-<script src="@{'/public/javascripts/jquery.fancybox.pack.js'}"></script>
-<script src="@{'/public/javascripts/v2-home.js'}" async="true"></script>
 </body>
 </html>
 

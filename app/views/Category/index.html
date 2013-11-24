@@ -24,7 +24,8 @@ isActive:'3' /}
 										<li><a href="@{Category.index(category,'alphabetical',subCategory)}" class="list-item"
 											data-value="alphabetical" data-label="Alphabetical"
 											onclick="">&{'alphabetical'}</a></li>
-									</ul></li>
+									</ul>
+								</li>
 							</ul>
 						</div>
 						#{/if}
@@ -56,23 +57,19 @@ isActive:'3' /}
 				</div>
 				<div class="col9">
 					<div class="segment-wrapper">
-						<ul class="tabs-content">
-							<li id="tab-new" style="display: list-item;" class="active">
-								<section class="examples"
-									style="padding-bottom: 60px; padding-top: 0px; margin-top: 50px;">
-									<div class="row clearfix">
-										<!-- Begin examples feed -->
-										<div class="col new-to"></div>
-									</div>
-								</section> <!-- End examples feed -->
-								<section class="examples"
-									style="padding-bottom: 60px; padding-top: 0px; margin-top: 50px;">
-									<div class="row clearfix">
-										<!-- Begin examples feed -->
-										<div class="col new-to"></div>
-									</div>
-								</section> <!-- End examples feed -->
-							</li>
+						<ul class="forum-navigation-home category-ecommerce-discussion">
+						#{if sales}
+						<div class="col12 new-to">
+								#{list items:sales, as:'sale'} 
+									<div class="col4 new-to">
+										#{sale sale:sale/} 
+									</div> 
+								#{/list}
+							</div>
+						#{/if}				
+						#{else}
+							<h2>В данный момент нет ни одной скидки</h2>
+						#{/else}
 						</ul>
 					</div>
 				</div>

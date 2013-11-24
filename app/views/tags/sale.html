@@ -1,7 +1,7 @@
 <div class="col4">
 	<div class="mask">
 		#{if _sale.mainPhoto}
-		<a href="@{Sale.mySale()}"><img class="thumbnail" src="@{Sale.salePhoto(_sale.id)}" width="285"
+		<a href="@{Sale.mySale(_sale.id)}"><img class="thumbnail" src="@{Sale.salePhoto(_sale.id,0)}" width="285"
 			height="200" alt="CXXVI"></a>
 	    #{/if}
 	    #{else}

@@ -1,8 +1,8 @@
 <div class="col4">
 	<div class="mask">
 		#{if _service.photo}
-		<img class="thumbnail" src="@{Application.userShopPhoto(_service.id)}" width="285"
-			height="200" alt="CXXVI">
+		<a href="@{Service.myService(_service.id)}"><img class="thumbnail" src="@{Service.userServicePhoto(_service.id)}" width="285"
+			height="200" alt="CXXVI"></a>
 	    #{/if}
 	    #{else}
 	    <img class="thumbnail" src="/public/images/avatar.jpg" width="285"

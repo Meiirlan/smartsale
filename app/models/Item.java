@@ -19,6 +19,6 @@ public class Item extends Model implements Serializable{
 	public String itemName;
 	@OneToMany(mappedBy="item", cascade=CascadeType.ALL,fetch = FetchType.EAGER)
 	public Set<SaleProperty> saleProperties;
-	@OneToMany(mappedBy="item", cascade=CascadeType.ALL,fetch = FetchType.EAGER)
-	public Set<Follower> followers;
+//	@OneToMany(mappedBy="item", cascade=CascadeType.ALL,fetch = FetchType.EAGER)
+//	public Set<Follower> followers;
 }

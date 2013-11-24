@@ -1,60 +1,27 @@
 #{extends 'main.html' /} 
-#{set title:'Smart Sale' /}
-#{header isActive:'1' /}
-<div id="segment-test" class="">
-	<section class="segments">
-		<div class="row clearfix">
-			<br />
-			<div class="col12">
-				#{salesMenu  isActive:'2'/}
-				<div class="segment-wrapper">
-					<ul class="tabs-content">
-						<li id="tab-new" style="display: list-item;" class="active">
-							<section class="examples"
-								style="padding-bottom: 60px; padding-top: 0px; margin-top: 50px;">
-								<div class="row clearfix">
-									<!-- Begin examples feed -->
-									<div class="col12 new-to">
-										#{shop /}
-									</div>
-								</div>
-							</section> <!-- End examples feed -->
-						</li>
-						<li id="tab-transfer" class="" style="display: none;">
-							<div class="col12 transfer">
-								#{shop /}
+#{set title:'Smart Sale' /} 
+#{header isActive:'0' /}
+<div class="wrapper content">
+	<div id="content-wrapper" class="clearfix row">
+		<div class="row">
+			<div class="segment-wrapper">
+				<div class="col12">
+					<ul class="forum-navigation-home category-ecommerce-discussion">
+						#{if mySales}
+						<div class="col12 new-to">
+								#{list items:mySales, as:'sale'} 
+									<div class="col4 new-to">
+										#{sale sale:sale/} 
+									</div> 
+								#{/list}
 							</div>
-						</li>
-						<li id="tab-apps" style="display: none;" class="">
-							<div class="col12 apps">
-								#{shop /}
-							</div>
-						</li>
-						<li id="tab-experts" style="display: none;" class="">
-							<div class="col12 experts">
-								#{shop /}
-							</div>
-						</li>
+						#{/if}				
+						#{else}
+							<h2>В данный момент нет ни одной скидки</h2>
+						#{/else}
 					</ul>
 				</div>
-				<!-- End slider -->
 			</div>
 		</div>
-	</section>
+	</div>
 </div>
-
-<script type="text/javascript">
-$("#segment-test").removeClass('hidden');
-$(".overview").css({"display":"none", "visibility":""});
-$(".experience").css({"display":"none", "visibility":""});
-$(".testimonials").css({"padding-top":"0"});
-$(".examples").css({"padding-bottom":"60px"});
-$(function() {
-    $( '#dl-menu' ).dlmenu({
-      animationClasses : { classin : 'dl-animate-in-2', classout : 'dl-animate-out-2' }
-    });
-  });
-</script>
-<script src="@{'/public/javascripts/all.js'}"></script>
-<script src="@{'/public/javascripts/jquery.fancybox.pack.js'}"></script>
-<script src="@{'/public/javascripts/v2-home.js'}" async="true"></script>

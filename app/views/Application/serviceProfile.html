@@ -1,5 +1,6 @@
-#{extends 'main.html' /} #{set title:'Smart Sale' /} #{header
-isActive:'1' /}
+#{extends 'main.html' /} 
+#{set title:'Smart Sale' /} 
+#{header isActive:'1' /}
 <div class="wrapper content">
 	<div id="content-wrapper" class="clearfix row">
 		<div class="row">
@@ -8,7 +9,7 @@ isActive:'1' /}
 				<div class="col2">
 					<div class="user_foto">
 						#{if userShop.photo}
-						<img src="@{Application.userShopPhoto(userShop.id)}" 
+						<img src="@{Service.userServicePhoto(userShop.id)}" 
 						style="width: 120px; height: 120px;" class="img-polaroid">
 					    #{/if}
 					    #{else}

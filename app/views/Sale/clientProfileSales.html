@@ -1,0 +1,28 @@
+#{extends 'main.html' /} 
+#{set title:'Smart Sale' /} 
+#{header isActive:'0' /}
+<div class="wrapper content">
+	<div id="content-wrapper" class="clearfix row">
+		<div class="row">
+			#{clientProfileMenu isActive:'sale'/}
+			<div class="segment-wrapper">
+				<div class="col12">
+					<ul class="forum-navigation-home category-ecommerce-discussion">
+						#{if mySales}
+						<div class="col12 new-to">
+								#{list items:mySales, as:'sale'} 
+									<div class="col4 new-to">
+										#{sale sale:sale/} 
+									</div> 
+								#{/list}
+							</div>
+						#{/if}				
+						#{else}
+							<h2>В данный момент нет ни одной скидки</h2>
+						#{/else}
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

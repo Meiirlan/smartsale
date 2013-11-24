@@ -51,8 +51,9 @@ public class Category extends Controller{
 		}else{
 			subCategory = "all";
 		}
+		List<models.Sale> sales = models.Sale.findAll();
 		List<models.Category> categories = models.Category.getSubcategories(category);
-        render(category,sortBy,subCategory,categories);
+        render(sales,category,sortBy,subCategory,categories);
     }
 	public static void serviceCategory() {	
 		List<models.Category> categories = models.Category.findAll();		

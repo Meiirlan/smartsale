@@ -3,15 +3,25 @@ isActive:'1' /}
 <div class="wrapper content">
 	<div id="content-wrapper" class="clearfix row">
 		<div class="row">
+			<h1 style="text-align: center; margin-top: -50px;">Smart sale - <span style="color: green;">умные скидки</spa></h1>
 			#{salesMenu isActive:category/}
 			<div class="segment-wrapper">
-				<ul class="tabs-content">
-					<li id="tab-new" style="display: list-item;" class="active">
-						<div class="row clearfix">
-							<div class="col12 new-to"></div>
-						</div>
-					</li>
-				</ul>
+				<div class="col12">
+					<ul class="forum-navigation-home category-ecommerce-discussion">
+						#{if sales}
+						<div class="col12 new-to">
+								#{list items:sales, as:'sale'} 
+									<div class="col4 new-to">
+										#{sale sale:sale/} 
+									</div> 
+								#{/list}
+							</div>
+						#{/if}				
+						#{else}
+							<h2>В данный момент нет ни одной скидки</h2>
+						#{/else}
+					</ul>
+				</div>
 			</div>
 		</div>
 	</div>

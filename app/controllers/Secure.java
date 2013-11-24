@@ -114,6 +114,7 @@ public class Secure extends Controller {
 		if (client != null) {
 			Cache.set(session.getId() + "client", client, "30mn");
 			session.put("user","client");
+			flash.put("url", Play.ctxPath + "/sale/clientsales");
 		} else if (userShop != null) {
 			Cache.set(session.getId() + "userShop", userShop, "30mn");
 			session.put("user","userShop");

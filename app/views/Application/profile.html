@@ -1,20 +1,17 @@
-#{extends 'main.html' /} #{set title:'Login' /} #{header/}
-<script type="text/javascript">
-	$(document).ready(function() {
-		$('body').removeClass('long-landing');
-		$('body').addClass('v2-subpage');
-	});
-</script>
-<link rel="stylesheet" type="text/css"
-	href="@{'/public/stylesheets/login.css'}" media="all">
+#{extends 'main.html' /} 
+#{set title:'Login' /} 
+#{header isActive:'5' /}
+
 <div class="wrapper content">
 	<div id="content-wrapper" class="clearfix row">
-		<div class="row login-area">
-			<div class="col2">
+		<div class="row">
+			#{clientProfileMenu isActive:'profile'/}
+			<div class="segment-wrapper">
+				<div class="col2">
 					<div class="user_foto">
 						#{if client.photo}
-						<img src="@{Application.userPhoto(client.id)}" 
-						style="width: 120px; height: 120px;" class="img-polaroid">
+						<img src="@{Application.userPhoto(client.id)}"  width="120px" height="120px" 
+						 class="img-polaroid">
 					    #{/if}
 					    #{else}
 					    	<img src="/public/images/avatar.jpg" width="100px;" height="100px;"><br/>
@@ -27,19 +24,19 @@
 						<table>
 							<tbody><tr>
 								<th>Имя:</th>
-								<td>${client.firstName}</td>
+								<td>${client?.firstName}</td>
 							</tr>
 							<tr>
 								<th>Фамилия:</th>
-								<td>${client.lastName}</td>
+								<td>${client?.lastName}</td>
 							</tr>
 							<tr>
 								<th>Пол:</th>
-								<td>${client.gender}</td>
+								<td>${client?.gender}</td>
 							</tr>
 							<tr>
 								<th>Дата рождения:</th>
-								<td>${client.birthday.format('dd-MM-yyyy')}</td>
+								<td>${client?.birthday?.format('dd-MM-yyyy')}</td>
 							</tr>
 							<tr>
 								<th>E-mail:</th>
@@ -47,7 +44,7 @@
 							</tr>
 							<tr>
 								<th>Город:</th>
-								<td>${client.city.city}</td>
+								<td>${client?.city?.city}</td>
 							</tr>
 						</tbody></table>
 					</div>
@@ -55,6 +52,7 @@
 				<div class="user_link_edit">
 					<a href="@{Application.editProfile()}">Редактировать</a>
 				</div>
+			</div>
 		</div>
 		<br/>
 	</div>

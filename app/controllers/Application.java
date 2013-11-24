@@ -83,17 +83,7 @@ public class Application extends Controller {
 			renderBinary(client.photo.get());
 		}
 	}
-	
-	public static void userShopPhoto(long id) {
-		final UserShop userShop = UserShop.findById(id);
-		notFoundIfNull(userShop);
-		System.out.println(userShop.photo + "---------------");
-		if (userShop.photo != null) {
-			response.setContentTypeIfNotSet(userShop.photo.type());
-			renderBinary(userShop.photo.get());
-		}
-	}
-	
+		
 	public static void saveProfile(String email, String firstName,
 			String lastName, File photo, String gender, String phone,
 			String birthday, String city) throws FileNotFoundException {
@@ -160,18 +150,25 @@ public class Application extends Controller {
 	public static void serviceFollowers() {
 		render();
 	}
-
-	public static void myQuestions() {
+	
+	public static void clientQuestions() {
 		render();
 	}
-
 	public static void save(Long id,
 			@Required(message = "Email is required") String email,
 			String firstName, String lastName,
 			@Required(message = "Password is required") String pwd,
 			@Required(message = "Password confirmation is required") String cpwd)
 			throws Throwable {
-
+		String emailreg = "^[_A-Za-z0-9-]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9-]+)*(\\.[A-Za-z]{2,})$";
+		
+		Boolean b = email.matches(emailreg);
+		if(!b){
+			flash.keep("url");
+			flash.error("Неправильный адрес");
+			params.flash();
+			signup();
+		}
 		System.out.println(email);
 		System.out.println(firstName);
 		System.out.println(lastName);
@@ -180,14 +177,14 @@ public class Application extends Controller {
 
 		if (!pwd.equals(cpwd)) {
 			flash.keep("url");
-			flash.error("passwords are not equal");
+			flash.error("Пароли не совпадают");
 			params.flash();
 			signup();
 		}
 		Client client = Client.getUserByEmail(email);
 		if (client != null) {
 			flash.keep("url");
-			flash.error("email already exists");
+			flash.error("Пользователь с такой почтой уже существует");
 			params.flash();
 			signup();
 		}
@@ -230,7 +227,7 @@ public class Application extends Controller {
 		System.out.println("2");
 
 		if (!pwd.equals(cpwd)) {
-			flash.error("passwords are not equal");
+			flash.error("Пароли не совпадают");
 			params.flash();
 			validation.keep(); // keep the errors for the next request
 			signupStore();
@@ -277,14 +274,21 @@ public class Application extends Controller {
 	}
 
 	public static void feedback() {
-		render();
+		Client client = Cache.get(session.getId() + "client", Client.class);
+		if(client!=null){
+			render(client);
+		}else{
+			UserShop service = Cache.get(session.getId() + "userShop", UserShop.class);
+			render(service);
+		}
 	}
 
 	public static void sendFeedback(String firstName, String question,
 			String phone, String email, String content) {
+		System.out.println(question);
 		if (question.equals("quest")) {
 			question = "Вопрос";
-		} else if (question.equals("quest")) {
+		} else if (question.equals("problem")) {
 			question = "Отзыв об скидке";
 		} else if (question.equals("new_func")) {
 			question = "Предложение";
@@ -303,10 +307,12 @@ public class Application extends Controller {
 		System.out.println(email);
 		System.out.println(content);
 		Mails.feedBack(firstName, question, phone, email, content);
-		feedback();
+		feedbackSuccess();
 		// index();
 	}
-
+	public static void feedbackSuccess() {
+		render();
+	}
 	public static void reset(String email) {
 		String destinationAddress = email;
 		Mails.lostPassword(email, destinationAddress);

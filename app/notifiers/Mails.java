@@ -75,9 +75,9 @@ public class Mails extends Mailer {
 
 	public static void feedBack(String firstName, String question,
 			String phone, String email, String content) {
-		setSubject("Feedback: %s", projectName);
-		addRecipient(email);
-		setFrom("Me <me@me.com>");
+		setSubject("Обратная связь : %s", projectName);
+		addRecipient("zh.sulta@gmail.com");
+		setFrom("SmartSale.kz <smartsalekz@gmail.com>");
 		send(firstName,question,phone,email,content);
 	}
 

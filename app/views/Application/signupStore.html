@@ -1,7 +1,6 @@
-#{extends 'main.html' /} #{set title:'Login' /} #{header isActive:'5' /}
-
-<link rel="stylesheet" type="text/css"
-	href="@{'/public/stylesheets/login.css'}" media="all">
+#{extends 'main.html' /} 
+#{set title:'Login' /} 
+#{header isActive:'5' /}
 <div class="wrapper content">
 	<div id="content-wrapper" class="clearfix row">
 		<div class="row login-area">
@@ -13,6 +12,7 @@
 				#{/if} #{if flash.success}
 				<h6 class="success">&{flash.success}</h6>
 				#{/if} 
+
 				<label for="login">E-mail*:</label> 
 				<input name="email" id="login" type="text" class="email" value="${flash.email}">
 				<span class="error">#{error 'user.email' /}</span> 
@@ -57,7 +57,6 @@
 				</p>
 				#{/form}
 			</div>
-
 			<div class="col4 border-left">
 				<h3>Есть учетная запись?</h3>
 				<p>
@@ -65,40 +64,17 @@
 						href="/login" class="internal-auth"> войдите</a>.
 				</p>
 			</div>
-
-		</div>
-
-
-		<script type="text/javascript">
-	$(document).ready(function() {
-		$('body').removeClass('long-landing');
-		$('body').addClass('v2-subpage');
-		//$('#oferta').is(":checked");
-		$('#oferta').click(function(){
-		    if($(this).is(':checked')){
-		    	$('input[type="submit"]').removeClass('button-disabled');
-		    } else {
-		    	$('input[type="submit"]').addClass('button-disabled');
-		    }
-		});
-	});
-</script>
-
-
-	</div>
-
-	<div class="row">
-		<div id="sub-call-to-action">
-
-
-			<h3 class="tc signup">
-				Start your free, <strong>no-risk</strong>, 14 day trial! <a href="#"
-					class="button button-primary call-to-action">Create your store
-					now</a>
-			</h3>
-
-
 		</div>
 	</div>
-
 </div>
+#{set 'moreScripts' }
+<script type="text/javascript">
+   $('#oferta').click(function(){
+        if($(this).is(':checked')){
+                $('input[type="submit"]').removeClass('button-disabled');
+        } else {
+                $('input[type="submit"]').addClass('button-disabled');
+        }
+    });
+</script>
+#{/set}

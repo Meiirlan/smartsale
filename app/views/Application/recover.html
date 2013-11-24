@@ -16,20 +16,20 @@
 							&{flash.success}
 						</h6>
 					#{/if}
-				    <label for="login">Email Address</label>
+				    <label for="login">E-mail*:</label>
 			    	<input name="email" id="email" type="text" class="email">	
 				    <span class="error">#{error 'user.email' /}</span>
 				    <p>
-				    	<input type="reset" value="Cancel" class="button button-destroy">
-				    	<input type="submit" value="Send Email" class="button button-primary">
+				    	<input type="reset" value="Отмена" class="button button-destroy">
+				    	<input type="submit" value="Восстановить пароль" class="button button-primary">
 				    </p>
 		        #{/form} 
 			</div>
 			<div class="col4 border-left">
-				<h3>Have an Account?</h3>
-				<p> 
-					If you already have a password, <br/>please
-					<a href="/login" class="internal-auth"> sign in</a>.
+				<h3>Есть учетная запись?</h3>
+				<p>
+					Если у вас уже есть учетная запись,<br /> пожалуйста <a
+						href="/login" class="internal-auth"> войдите</a>.
 				</p>
 			</div>
 		</div>

@@ -1,0 +1,27 @@
+<div class="calltoaction-new col12">
+  <a href="http://www.smartsale.kz">
+    <strong>New to SmartSale?</strong>Create a stunning 
+    <div class="calltoaction-cycle" style="width: 53px;">
+      <ul class="calltoaction-keywords" style="top: -1px;">
+	      <li class="calltoaction-current"><span>t-shirt</span></li>
+	      <li class=""><span>art</span></li>
+	      <li class=""><span>ebook</span></li>
+	      <li class=""><span>photography</span></li>
+	      <li class=""><span>jewelery</span></li>
+      </ul> 
+    </div>
+    store in minutes.	    
+  </a>
+  #{if session.user == 'client'}
+	  #{if _follower?.ok}
+	  <a href="@{Sale.follow(_sale.id,_sale.userShop.id)}" 
+	  title="Отказаться от подписки на скидку в этом сервисе/магазине" 
+	  class="button button-primary calltoaction-button_new">Вы подписаны</a>
+	  #{/if}
+	  #{else}
+	  <a href="@{Sale.follow(_sale.id,_sale.userShop.id)}" 
+	  title="Подписаться на скидку в этом сервисе/магазине" 
+	  class="button button-secondary calltoaction-button_new">Подписаться</a>
+	  #{/else}
+  #{/if}
+</div>
