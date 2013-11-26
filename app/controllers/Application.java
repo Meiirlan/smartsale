@@ -342,6 +342,16 @@ public class Application extends Controller {
 				break;
 			}
 		}
+		ArrayList<UserShop> userShops = (ArrayList<UserShop>) UserShop.getnotActiveUsers();
+
+		for (int i = 0; i < userShops.size(); i++) {
+			if (address.equals(userShops.get(i).user_email)) {
+				userShops.get(i).isActive = true;
+				userShops.get(i).save();
+				render(address);
+				break;
+			}
+		}
 		render("errors/404.html");
 	}
 

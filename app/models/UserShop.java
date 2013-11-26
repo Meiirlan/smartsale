@@ -92,4 +92,8 @@ public class UserShop extends Model implements Serializable {
 	public String toString(){
 		return this.serviceName;
 	}
+
+	public static List<UserShop> getnotActiveUsers() {
+		return UserShop.find("byIsActive", false).fetch();
+	}
 }
